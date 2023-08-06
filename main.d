@@ -132,7 +132,7 @@ void main(string[] args) {
 		html ~= "<td>" ~ to!string(E.duration) ~ "</td>";
 		if (N.length > 0) {
 			size_t newDuration = N[0].duration;
-			string cssClass = newDuration < E.duration ? "nice" : "meh";
+			string cssClass = newDuration < E.duration ? "nice" : (newDuration == E.duration ? "fine" : "meh");
 			html ~= "<td class=\"" ~ cssClass ~ "\" >" ~ to!string(N[0].duration) ~ "</td>";
 
 			double diff = cast(double)newDuration - cast(double)E.duration;
