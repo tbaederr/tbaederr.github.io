@@ -1,0 +1,40 @@
+
+
+
+body {
+	font-size: 1em;
+	font-family: sans;
+}
+
+table {
+	/*background-color: #444;*/
+	font-size: 0.8em;
+}
+
+td, tr { background-color: #fff; }
+
+td {
+	padding: 0.4em 0.8em;
+}
+
+td a {
+	color: #000;
+}
+
+.eventname {
+	/*max-width: 1em;*/
+	width: 100em;
+	border-collapse: collapse;
+}
+
+.nice {
+	background-color: #ACE1AF;
+}
+
+.meh {
+	background-color: #F08080;
+}
+
+.omg {
+	color: #DC143C;
+}
