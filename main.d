@@ -71,6 +71,12 @@ ParsedDetail parseDetail(string s) {
 	// Drop leading <
 	s  = s[1..$];
 	size_t firstColon = s.indexOf(':');
+	if (firstColon == -1) {
+		writeln("Couldn't parse detail:");
+		writeln(s);
+		return ParsedDetail("", "", "");
+	}
+
 	string filePath = s[0..firstColon];
 	string filename = filePath[filePath.lastIndexOf('/')+1..$];
 	string fromLine = s[firstColon + 1..s.indexOf(':', firstColon + 1)];
