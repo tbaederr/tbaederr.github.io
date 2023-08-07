@@ -5,7 +5,7 @@ import std.array;
 import std.string;
 import std.format;
 import std.conv: to;
-import std.algorithm: sort;
+import std.algorithm: sort, map, sum;
 import std.algorithm.searching: find;
 
 
@@ -72,8 +72,6 @@ ParsedDetail parseDetail(string s) {
 	s  = s[1..$];
 	size_t firstColon = s.indexOf(':');
 	if (firstColon == -1) {
-		writeln("Couldn't parse detail:");
-		writeln(s);
 		return ParsedDetail("", "", "");
 	}
 
@@ -108,6 +106,9 @@ void main(string[] args) {
 	Event[] oldEvents = readTraceEvents(args[1]);
 	Event[] newEvents = readTraceEvents(args[2]);
 
+	size_t sumOldEvents = oldEvents.map!(e => e.duration).sum();
+	size_t sumNewEvents = newEvents.map!(e => e.duration).sum();
+
 	writeln("Old events: ", oldEvents.length);
 	writeln("New events: ", newEvents.length);
 
@@ -125,6 +126,17 @@ void main(string[] args) {
 
 	html ~= "<table>\n";
 	html ~= "<tr><th>Event</th><th>Old</th><th>New</th><th>Diff</th></tr>\n";
+
+	// Sum row.
+	{
+		html ~= "<tr><td>Sum</td><td>" ~ to!string(sumOldEvents) ~ "</td>";
+		string cssClass = sumNewEvents < sumOldEvents ? "nice" : (sumOldEvents == sumNewEvents ? "fine" : "meh");
+		html ~= "<td class=\"" ~ cssClass ~ "\">" ~ to!string(sumNewEvents) ~ "</td>";
+		double diff = cast(double)sumNewEvents - cast(double)sumOldEvents;
+		double percent = diff / cast(double)sumNewEvents;
+		html ~= "<td>" ~ (percent > 0 ? "+" : "") ~ format("%.2f", percent) ~ "%</td></tr>\n";
+	}
+
 	size_t i = 0;
 	foreach (const ref Event E; oldEvents) {
 		// Find corresponding event in newEvents.
