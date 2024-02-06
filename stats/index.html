@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<body>
+<canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+
+<script>
+
+function listElements(arr, elementName) {
+  let res = []
+  arr.forEach((e) => {
+    res.push(e[elementName]);
+  });
+  return res;
+}
+
+const GraphData = [
+  {
+    name: "2024-02-06",
+    ast: 12,
+    sema: 95,
+    semacxx: 176,
+    codegen: 414,
+  },
+];
+
+const AST_Data     = listElements(GraphData, "ast");
+const Sema_Data    = listElements(GraphData, "sema");
+const SemaCXX_Data = listElements(GraphData, "semacxx");
+const CodeGen_Data = listElements(GraphData, "codegen");
+
+const labels = function() {
+  let res = [];
+  GraphData.forEach((e) => {
+    let sum = e.ast + e.sema + e.semacxx + e.codegen;
+    res.push(e.name + ' (' + sum + ')');
+  });
+  return res;
+}();
+
+const data = {
+  datasets: [
+    {
+      label: 'AST',
+      data: AST_Data,
+      backgroundColor: "#DC8686",
+      stack: 'Stack 0',
+      type: 'bar',
+    },
+    {
+      label: 'Sema',
+      data: Sema_Data,
+      backgroundColor: "#F0DBAF",
+      stack: 'Stack 0',
+      type: 'bar',
+    },
+    {
+      label: 'SemaCXX',
+      data: SemaCXX_Data,
+      backgroundColor: "#B06161",
+      stack: 'Stack 0',
+      type: 'bar',
+    },
+    {
+      label: 'CodeGen',
+      data: CodeGen_Data,
+      backgroundColor: "#7ED7C1",
+      stack: 'Stack 0',
+      type: 'bar',
+    },
+/*
+    {
+      label: 'Total failures',
+      data: LineData,
+      type: 'line',
+    }*/
+  ],
+  labels: labels,
+};
+
+
+
+const config = {
+  type: 'bar',
+  data: data,
+  options: {
+    plugins: {
+      title: {
+        display: true,
+        text: '-fexperimental-new-constant-interpreter testsuite failures'
+      },
+    },
+    responsive: true,
+    interaction: {
+      intersect: false,
+    },
+    scales: {
+      x: {
+        stacked: true,
+      },
+      y: {
+        stacked: true
+      }
+    }
+  }
+};
+new Chart("myChart", config);
+</script>
+
+</body>
+</html>
+
+
+
