@@ -12,14 +12,14 @@
 </style>
 <body>
   <h1>Test failures</h1>
-  <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+  <canvas id="myChart" style="width:100%; max-width:500px"></canvas>
     <p>Test failures in clang test subdirectories when using the new constant expression interpreter.</p>
     <p>Disabled tests:</p>
       <ul>
         <li><em>AST/Interp/</em> - Relies on using the old interpreter</li>
         <li><em>SemaCXX/constant-expression-cxx11.cpp</em> - Hangs</li>
         <li><em>SemaCXX/aggregate-initialization.cpp</em> - Hangs</li>
-        <li><em>SemaCXX/constexpr-function-recovery-crash.cpp</em> - Test infinite loop detection which is currently unimplemented.</li>
+        <li><em>SemaCXX/constexpr-function-recovery-crash.cpp</em> - Tests infinite loop detection which is currently unimplemented.</li>
       </ul>
 <script>
 
