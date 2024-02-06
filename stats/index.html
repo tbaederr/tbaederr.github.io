@@ -1,9 +1,26 @@
 <!DOCTYPE html>
 <html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-<body>
-<canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+<style>
+  * {
+    font-family: Arial;
+  }
+  em {
+    font-family: monospace;
+  }
 
+</style>
+<body>
+  <h1>Test failures</h1>
+  <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+    <p>Test failures in clang test subdirectories when using the new constant expression interpreter.</p>
+    <p>Disabled tests:</p>
+      <ul>
+        <li><em>AST/Interp/</em> - Relies on using the old interpreter</li>
+        <li><em>SemaCXX/constant-expression-cxx11.cpp</em> - Hangs</li>
+        <li><em>SemaCXX/aggregate-initialization.cpp</em> - Hangs</li>
+        <li><em>SemaCXX/constexpr-function-recovery-crash.cpp</em> - Test infinite loop detection which is currently unimplemented.</li>
+      </ul>
 <script>
 
 function listElements(arr, elementName) {
