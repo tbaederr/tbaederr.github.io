@@ -20,6 +20,7 @@
         <li><em>SemaCXX/constant-expression-cxx11.cpp</em> - Hangs</li>
         <li><em>SemaCXX/aggregate-initialization.cpp</em> - Hangs</li>
         <li><em>SemaCXX/constexpr-function-recovery-crash.cpp</em> - Tests infinite loop detection which is currently unimplemented.</li>
+        <li><em>SemaCXX/source_location.cpp</em> - The new interpreter is actually correct here.</li>
       </ul>
 <script>
 
@@ -59,6 +60,13 @@ const GraphData = [
     sema: 73,
     semacxx: 128,
     codegen: 255,
+  },
+  {
+    name: "2024-02-23",
+    ast: 12,
+    sema: 59,
+    semacxx: 108,
+    codegen: 213,
   },
 ];
 
