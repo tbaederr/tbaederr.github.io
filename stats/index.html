@@ -12,7 +12,7 @@
 </style>
 <body>
   <h1>Test failures</h1>
-  <canvas id="myChart" style="width:100%; max-width:500px"></canvas>
+  <canvas id="myChart" style="width:100%; max-width:700px"></canvas>
     <p>Test failures in clang test subdirectories when using the new constant expression interpreter.</p>
     <p>Disabled tests:</p>
       <ul>
@@ -68,6 +68,14 @@ const GraphData = [
     semacxx: 108,
     codegen: 213,
   },
+  {
+    name: "2024-03-01",
+    ast: 10,
+    sema: 47,
+    semacxx: 106,
+    codegen: 118,
+  },
+
 ];
 
 const AST_Data     = listElements(GraphData, "ast");
