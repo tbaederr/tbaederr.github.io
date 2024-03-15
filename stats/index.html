@@ -12,7 +12,7 @@
 </style>
 <body>
   <h1>Test failures</h1>
-  <canvas id="myChart" style="width:100%; max-width:700px"></canvas>
+  <canvas id="myChart" style="width:100%; max-width:900px"></canvas>
     <p>Test failures in clang test subdirectories when using the new constant expression interpreter.</p>
     <p>Disabled tests:</p>
       <ul>
@@ -22,6 +22,7 @@
         <li><em>SemaCXX/constexpr-function-recovery-crash.cpp</em> - Tests infinite loop detection which is currently unimplemented.</li>
         <li><em>SemaCXX/source_location.cpp</em> - The new interpreter is actually correct here.</li>
         <li><em>SemaCXX/constexpr-cxx2a.cpp</em> - We run into an infinite loop while trying to find the correct overriding function in a constructor.</li>
+        <li><em>SemaCXX/constexpr-subobj-initialization.cpp</em> - The differences in diagnstics are fine.</li>
       </ul>
 <script>
 
@@ -75,6 +76,13 @@ const GraphData = [
     sema: 47,
     semacxx: 106,
     codegen: 118,
+  },
+  {
+    name: "2024-03-15",
+    ast: 10,
+    sema: 48,
+    semacxx: 102,
+    codegen: 103,
   },
 
 ];
