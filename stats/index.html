@@ -15,15 +15,21 @@
   <canvas id="myChart" style="width:100%; max-width:900px"></canvas>
     <p>Test failures in clang test subdirectories when using the new constant expression interpreter.</p>
     <p>Disabled tests:</p>
-      <ul>
-        <li><em>AST/Interp/</em> - Relies on using the old interpreter</li>
-        <li><em>SemaCXX/constant-expression-cxx11.cpp</em> - Hangs</li>
-        <li><em>SemaCXX/aggregate-initialization.cpp</em> - Hangs</li>
-        <li><em>SemaCXX/constexpr-function-recovery-crash.cpp</em> - Tests infinite loop detection which is currently unimplemented.</li>
-        <li><em>SemaCXX/source_location.cpp</em> - The new interpreter is actually correct here.</li>
-        <li><em>SemaCXX/constexpr-cxx2a.cpp</em> - We run into an infinite loop while trying to find the correct overriding function in a constructor.</li>
-        <li><em>SemaCXX/constexpr-subobj-initialization.cpp</em> - The differences in diagnstics are fine.</li>
-      </ul>
+    <ul>
+      <li><em>AST/Interp/</em> - Relies on using the old interpreter</li>
+      <li><em>SemaCXX/constant-expression-cxx11.cpp</em> - Hangs</li>
+      <li><em>SemaCXX/aggregate-initialization.cpp</em> - Hangs</li>
+      <li><em>SemaCXX/constexpr-function-recovery-crash.cpp</em> - Tests infinite loop detection which is currently unimplemented.</li>
+      <li><em>SemaCXX/source_location.cpp</em> - The new interpreter is actually correct here.</li>
+      <li><em>SemaCXX/constexpr-cxx2a.cpp</em> - We run into an infinite loop while trying to find the correct overriding function in a constructor.</li>
+      <li><em>SemaCXX/constexpr-subobj-initialization.cpp</em> - The differences in diagnstics are fine.</li>
+    </ul>
+
+
+<p>Test failures in all of <em>check-clang</em>:</p>
+<canvas id="allChart" style="width:100%; max-width:900px"></canvas>
+
+
 <script>
 
 function listElements(arr, elementName) {
@@ -103,6 +109,13 @@ const GraphData = [
     ast: 9,
     sema: 37,
     semacxx: 88,
+    codegen: 61,
+  },
+  {
+    name: "2024-04-26",
+    ast: 9,
+    sema: 37,
+    semacxx: 87,
     codegen: 61,
   },
 
@@ -188,7 +201,29 @@ const config = {
     }
   }
 };
+
+const allData = {
+  labels: [],
+
+  datasets: [
+    {
+      label: 'check-clang',
+      borderColor: '#ff0000',
+      fill: false,
+      tension: 0.4,
+      data: [597,584]
+    },
+  ],
+};
+
+const allConfig = {
+  type: 'line',
+  data: allData,
+};
+
+
 new Chart("myChart", config);
+new Chart("allChart", allConfig);
 </script>
 
 </body>
