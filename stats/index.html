@@ -1,34 +1,33 @@
+
 <!DOCTYPE html>
 <html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <style>
   * {
     font-family: Arial;
+    font-size: 12px;
   }
+  h1 { font-size: 1.9em; }
   em {
     font-family: monospace;
   }
 
+  table {
+    background-color: #777;
+  }
+  th, td {
+    background-color: #fff;
+    padding: 0 1em 0 1em;
+    vercital-align: top;
+  }
+
+
 </style>
 <body>
   <h1>Test failures</h1>
-  <canvas id="myChart" style="width:100%; max-width:900px"></canvas>
-    <p>Test failures in clang test subdirectories when using the new constant expression interpreter.</p>
-    <p>Disabled tests:</p>
-    <ul>
-      <li><em>AST/Interp/</em> - Relies on using the old interpreter</li>
-      <li><em>SemaCXX/constant-expression-cxx11.cpp</em> - Hangs</li>
-      <li><em>SemaCXX/aggregate-initialization.cpp</em> - Hangs</li>
-      <li><em>SemaCXX/constexpr-function-recovery-crash.cpp</em> - Tests infinite loop detection which is currently unimplemented.</li>
-      <li><em>SemaCXX/source_location.cpp</em> - The new interpreter is actually correct here.</li>
-      <li><em>SemaCXX/constexpr-cxx2a.cpp</em> - We run into an infinite loop while trying to find the correct overriding function in a constructor.</li>
-      <li><em>SemaCXX/constexpr-subobj-initialization.cpp</em> - The differences in diagnstics are fine.</li>
-    </ul>
-
 
 <p>Test failures in all of <em>check-clang</em>:</p>
 <canvas id="allChart" style="width:100%; max-width:900px"></canvas>
-
 
 <script>
 
@@ -40,178 +39,18 @@ function listElements(arr, elementName) {
   return res;
 }
 
-const GraphData = [
-  {
-    name: "2024-02-06",
-    ast: 12,
-    sema: 95,
-    semacxx: 176,
-    codegen: 414,
-  },
-  {
-    name: "2024-02-07",
-    ast: 12,
-    sema: 83,
-    semacxx: 166,
-    codegen: 302,
-  },
-  {
-    name: "2024-02-09",
-    ast: 12,
-    sema: 81,
-    semacxx: 141,
-    codegen: 280,
-  },
-  {
-    name: "2024-02-16",
-    ast: 12,
-    sema: 73,
-    semacxx: 128,
-    codegen: 255,
-  },
-  {
-    name: "2024-02-23",
-    ast: 12,
-    sema: 59,
-    semacxx: 108,
-    codegen: 213,
-  },
-  {
-    name: "2024-03-01",
-    ast: 10,
-    sema: 47,
-    semacxx: 106,
-    codegen: 118,
-  },
-  {
-    name: "2024-03-15",
-    ast: 10,
-    sema: 48,
-    semacxx: 99,
-    codegen: 102,
-  },
-  {
-    name: "2024-04-04",
-    ast: 10,
-    sema: 51,
-    semacxx: 95,
-    codegen: 102,
-  },
-  {
-    name: "2024-04-12",
-    ast: 9,
-    sema: 39,
-    semacxx: 92,
-    codegen: 69,
-  },
-  {
-    name: "2024-04-19",
-    ast: 9,
-    sema: 37,
-    semacxx: 88,
-    codegen: 61,
-  },
-  {
-    name: "2024-04-26",
-    ast: 9,
-    sema: 37,
-    semacxx: 87,
-    codegen: 61,
-  },
-
-];
-
-const AST_Data     = listElements(GraphData, "ast");
-const Sema_Data    = listElements(GraphData, "sema");
-const SemaCXX_Data = listElements(GraphData, "semacxx");
-const CodeGen_Data = listElements(GraphData, "codegen");
-
-const labels = function() {
-  let res = [];
-  GraphData.forEach((e) => {
-    let sum = e.ast + e.sema + e.semacxx + e.codegen;
-    res.push(e.name + ' (' + sum + ')');
-  });
-  return res;
-}();
-
-const data = {
-  datasets: [
-    {
-      label: 'AST',
-      data: AST_Data,
-      backgroundColor: "#DC8686",
-      stack: 'Stack 0',
-      type: 'bar',
-    },
-    {
-      label: 'Sema',
-      data: Sema_Data,
-      backgroundColor: "#F0DBAF",
-      stack: 'Stack 0',
-      type: 'bar',
-    },
-    {
-      label: 'SemaCXX',
-      data: SemaCXX_Data,
-      backgroundColor: "#B06161",
-      stack: 'Stack 0',
-      type: 'bar',
-    },
-    {
-      label: 'CodeGen',
-      data: CodeGen_Data,
-      backgroundColor: "#7ED7C1",
-      stack: 'Stack 0',
-      type: 'bar',
-    },
-/*
-    {
-      label: 'Total failures',
-      data: LineData,
-      type: 'line',
-    }*/
-  ],
-  labels: labels,
-};
-
-
-
-const config = {
-  type: 'bar',
-  data: data,
-  options: {
-    plugins: {
-      title: {
-        display: true,
-        text: '-fexperimental-new-constant-interpreter testsuite failures'
-      },
-    },
-    responsive: true,
-    interaction: {
-      intersect: false,
-    },
-    scales: {
-      x: {
-        stacked: true,
-      },
-      y: {
-        stacked: true
-      }
-    }
-  }
-};
 
 const allData = {
-  labels: [],
+  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16',],
+  borderColor: '#0f0',
 
   datasets: [
     {
       label: 'check-clang',
-      borderColor: '#ff0000',
-      fill: false,
-      tension: 0.4,
-      data: [597,584]
+      data: [597, 584, 566, 591, 561, ],
+      stepped: true,
+      backgroundColor: '#7ED7C1',
+      borderColor: 'green',
     },
   ],
 };
@@ -219,15 +58,179 @@ const allData = {
 const allConfig = {
   type: 'line',
   data: allData,
+  plugins: {
+    responsive: true,
+    title: {
+      display: true,
+        text: 'Zomg',
+      },
+    },
+    interaction: {
+      intersect: false,
+    },
+  options: {
+    scales: {
+      x: {
+        display: true,
+        title: {
+          display: true
+        }
+      },
+      y: {
+        display: true,
+        title: {
+          display: true,
+          text: 'Value'
+        },
+        suggestedMin: 0,
+        suggestedMax: 600
+      }
+    }
+  }
 };
 
 
-new Chart("myChart", config);
 new Chart("allChart", allConfig);
 </script>
 
+<table>
+        <tr>
+          <th>Date</th>
+          <th>Failures</th>
+          <th>Regressions</th>
+        </tr>
+        
+<tr>
+  <td>2024-04-19</td>
+  <td>597</td>
+<td>
+</td>
+</tr>
+<tr>
+  <td>2024-04-26</td>
+  <td>584</td>
+<td>
+  <ul>
+<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/165/327</li>
+<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/315/327</li>
+<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/318/327</li>
+<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/36/327</li>
+<li>Analysis/array-struct-region.cpp</li>
+<li>Analysis/derived-to-base.cpp</li>
+<li>Analysis/dynamic-cast.cpp</li>
+<li>CodeGenCXX/microsoft-abi-member-pointers.cpp</li>
+<li>SemaCXX/constant-expression-cxx14.cpp</li>
+<li>SemaCXX/cxx23-assume-disabled.cpp</li>
+<li>SemaTemplate/ms-function-specialization-class-scope.cpp</li>
+</ul>
+</td>
+</tr>
+<tr>
+  <td>2024-05-02</td>
+  <td>566</td>
+<td>
+  <ul>
+<li>CodeGenCXX/template-param-objects-linkage.cpp</li>
+<li>Sema/constant_builtins_vector.cpp</li>
+<li>SemaCXX/recovery-expr-type.cpp</li>
+<li>SemaCXX/warn-comma-operator.cpp</li>
+</ul>
+</td>
+</tr>
+<tr>
+  <td>2024-05-13</td>
+  <td>591</td>
+<td>
+  <ul>
+<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/168/330</li>
+<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/36/330</li>
+<li>Analysis/index-type.c</li>
+<li>Analysis/out-of-bounds.c</li>
+<li>Analysis/reinterpret-cast.cpp</li>
+<li>Analysis/temporaries.cpp</li>
+<li>Analysis/uninit-structured-binding-array.cpp</li>
+<li>CXX/class/class.compare/class.compare.default/p4.cpp</li>
+<li>CXX/dcl/dcl.init/aggr.cpp</li>
+<li>CXX/drs/cwg0xx.cpp</li>
+<li>CXX/drs/cwg13xx.cpp</li>
+<li>CXX/drs/cwg14xx.cpp</li>
+<li>CXX/drs/cwg15xx.cpp</li>
+<li>CXX/drs/cwg16xx.cpp</li>
+<li>CXX/drs/cwg18xx.cpp</li>
+<li>CXX/drs/cwg19xx.cpp</li>
+<li>CXX/drs/cwg1xx.cpp</li>
+<li>CXX/drs/cwg20xx.cpp</li>
+<li>CXX/drs/cwg21xx.cpp</li>
+<li>CXX/drs/cwg23xx.cpp</li>
+<li>CXX/drs/cwg25xx.cpp</li>
+<li>CXX/drs/cwg2xx.cpp</li>
+<li>CXX/drs/cwg3xx.cpp</li>
+<li>CXX/drs/cwg4xx.cpp</li>
+<li>CXX/drs/cwg6xx.cpp</li>
+<li>CodeGenCXX/2005-02-20-BrokenReferenceTest.cpp</li>
+<li>CodeGenCXX/alignment.cpp</li>
+<li>CodeGenCXX/attr-mustprogress.cpp</li>
+<li>CodeGenCXX/builtin-dump-struct.cpp</li>
+<li>Index/usrs.cpp</li>
+<li>OpenMP/distribute_ast_print.cpp</li>
+<li>OpenMP/distribute_parallel_for_ast_print.cpp</li>
+<li>OpenMP/distribute_parallel_for_simd_ast_print.cpp</li>
+<li>OpenMP/distribute_simd_ast_print.cpp</li>
+<li>OpenMP/for_ast_print.cpp</li>
+<li>OpenMP/for_simd_ast_print.cpp</li>
+<li>OpenMP/parallel_ast_print.cpp</li>
+<li>OpenMP/parallel_for_ast_print.cpp</li>
+<li>OpenMP/parallel_for_simd_ast_print.cpp</li>
+<li>OpenMP/parallel_masked_ast_print.cpp</li>
+<li>OpenMP/parallel_master_ast_print.cpp</li>
+<li>OpenMP/simd_ast_print.cpp</li>
+<li>OpenMP/target_parallel_for_ast_print.cpp</li>
+<li>OpenMP/target_parallel_for_simd_ast_print.cpp</li>
+<li>OpenMP/target_simd_ast_print.cpp</li>
+<li>OpenMP/target_teams_distribute_ast_print.cpp</li>
+<li>OpenMP/target_teams_distribute_parallel_for_ast_print.cpp</li>
+<li>OpenMP/target_teams_distribute_parallel_for_simd_ast_print.cpp</li>
+<li>OpenMP/target_teams_distribute_simd_ast_print.cpp</li>
+<li>OpenMP/task_ast_print.cpp</li>
+<li>OpenMP/taskgroup_ast_print.cpp</li>
+<li>OpenMP/teams_distribute_ast_print.cpp</li>
+<li>OpenMP/teams_distribute_parallel_for_ast_print.cpp</li>
+<li>OpenMP/teams_distribute_parallel_for_simd_ast_print.cpp</li>
+<li>OpenMP/teams_distribute_simd_ast_print.cpp</li>
+<li>SemaCXX/new-delete.cpp</li>
+</ul>
+</td>
+</tr>
+<tr>
+  <td>2024-05-16</td>
+  <td>561</td>
+<td>
+  <ul>
+<li>ASTMatchers/./ASTMatchersTests/203/246</li>
+<li>ASTMatchers/./ASTMatchersTests/204/246</li>
+<li>ASTMatchers/./ASTMatchersTests/205/246</li>
+<li>ASTMatchers/./ASTMatchersTests/206/246</li>
+<li>ASTMatchers/./ASTMatchersTests/207/246</li>
+<li>ASTMatchers/./ASTMatchersTests/208/246</li>
+<li>ASTMatchers/./ASTMatchersTests/209/246</li>
+<li>ASTMatchers/./ASTMatchersTests/210/246</li>
+<li>ASTMatchers/./ASTMatchersTests/211/246</li>
+<li>ASTMatchers/./ASTMatchersTests/212/246</li>
+<li>ASTMatchers/./ASTMatchersTests/213/246</li>
+<li>ASTMatchers/./ASTMatchersTests/214/246</li>
+<li>ASTMatchers/./ASTMatchersTests/27/246</li>
+<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/169/331</li>
+<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/36/331</li>
+<li>CXX/expr/expr.unary/expr.unary.general/p1.cpp</li>
+<li>CodeGen/X86/avx-cast-builtins.c</li>
+<li>CodeGen/X86/avx512f-builtins.c</li>
+<li>CodeGen/X86/avx512fp16-builtins.c</li>
+<li>CodeGen/X86/sse2-builtins.c</li>
+<li>Parser/cxx-class.cpp</li>
+<li>SemaCXX/constant-expression-cxx14.cpp</li>
+</ul>
+</td>
+</tr>
+</table>
 </body>
 </html>
-
-
-
