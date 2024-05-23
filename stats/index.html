@@ -21,6 +21,13 @@
     vercital-align: top;
   }
 
+  .pos {
+    color: #73B66B;
+  }
+  .neg {
+    color: #FF6D31;
+  }
+
 
 </style>
 <body>
@@ -97,18 +104,26 @@ new Chart("allChart", allConfig);
         <tr>
           <th>Date</th>
           <th>Failures</th>
+          <th>Diff</th>
           <th>Regressions</th>
         </tr>
         
 <tr>
   <td>2024-04-19</td>
   <td>597</td>
+  <td>
+  </td>
 <td>
 </td>
 </tr>
 <tr>
   <td>2024-04-26</td>
   <td>584</td>
+  <td>
+<span class='pos'>
+-13
+</span>
+  </td>
 <td>
   <ul>
 <li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/165/327</li>
@@ -128,6 +143,11 @@ new Chart("allChart", allConfig);
 <tr>
   <td>2024-05-02</td>
   <td>566</td>
+  <td>
+<span class='pos'>
+-18
+</span>
+  </td>
 <td>
   <ul>
 <li>CodeGenCXX/template-param-objects-linkage.cpp</li>
@@ -140,6 +160,11 @@ new Chart("allChart", allConfig);
 <tr>
   <td>2024-05-13</td>
   <td>591</td>
+  <td>
+<span class='neg'>
+25
+</span>
+  </td>
 <td>
   <ul>
 <li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/168/330</li>
@@ -204,6 +229,11 @@ new Chart("allChart", allConfig);
 <tr>
   <td>2024-05-16</td>
   <td>561</td>
+  <td>
+<span class='pos'>
+-30
+</span>
+  </td>
 <td>
   <ul>
 <li>ASTMatchers/./ASTMatchersTests/203/246</li>
@@ -234,6 +264,11 @@ new Chart("allChart", allConfig);
 <tr>
   <td>2024-05-23</td>
   <td>541</td>
+  <td>
+<span class='pos'>
+-20
+</span>
+  </td>
 <td>
   <ul>
 <li>AST/./ASTTests/53/223</li>
