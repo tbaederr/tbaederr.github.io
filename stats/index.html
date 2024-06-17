@@ -18,13 +18,55 @@
   th, td {
     background-color: #fff;
     padding: 0 1em 0 1em;
-    vercital-align: top;
+    vertical-align: top;
   }
 
+  td {
+    padding: 1em;
+  }
 
+  ul {
+    padding: 0 1em 0 1em;
+    margin: 0;
+  }
+
+  .pos {
+    color: #73B66B;
+  }
+  .neg {
+    color: #FF6D31;
+  }
+  .num {
+    text-align: center;
+  }
+  .slim {
+    padding: 0 1em 0 1em;
+  }
 </style>
 <body>
   <h1>Test failures</h1>
+
+<table>
+  <tr>
+    <th colspan='2'>Allowlist</th>
+  </tr>
+  <tr>
+    <th>Test</th>
+    <th>Reason</th>
+  </tr>
+
+  <!-- ------>
+  <tr>
+    <td class='slim'><em>SemaCXX/source_location.cpp</em></td>
+    <td class='slim'>The new interpreter is correct.</td>
+  </tr>
+  <tr>
+    <td class='slim'><em>CodeGenObjC/encode-test-4.m</em></td>
+    <td class='slim'>Comparison against @encode is unspecified.</td>
+  </tr>
+
+
+</table>
 
 <p>Test failures in all of <em>check-clang</em>:</p>
 <canvas id="allChart" style="width:100%; max-width:900px"></canvas>
@@ -41,13 +83,13 @@ function listElements(arr, elementName) {
 
 
 const allData = {
-  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16',],
+  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13',],
   borderColor: '#0f0',
 
   datasets: [
     {
       label: 'check-clang',
-      data: [597, 584, 566, 591, 561, ],
+      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, ],
       stepped: true,
       backgroundColor: '#7ED7C1',
       borderColor: 'green',
@@ -97,76 +139,361 @@ new Chart("allChart", allConfig);
         <tr>
           <th>Date</th>
           <th>Failures</th>
+          <th>Diff</th>
           <th>Regressions</th>
+          <th>Fixed</th>
         </tr>
         
 <tr>
-  <td>2024-04-19</td>
-  <td>597</td>
+  <td>2024-06-13</td>
+  <td class='num'>409</td>
+  <td class='num'>
+<span class='pos'>
+-11
+</span>
+  </td>
 <td>
+  <ul>
+<li>CXX/temp/temp.res/temp.dep/temp.dep.constexpr/p2.cpp</li>
+<li>CodeGenObjC/encode-test-4.m</li>
+<li>Sema/array-init.c</li>
+<li>Sema/const-ptr-int-ptr-cast.c</li>
+<li>Tooling/./ToolingTests/25/349</li>
+</ul>
+</td>
+<td>
+  <ul>
+<li>Analysis/inlining/path-notes.cpp</li>
+<li>Analysis/misc-ps-region-store.m</li>
+<li>CXX/basic/basic.link/p6.cpp</li>
+<li>CXX/class/class.compare/class.compare.default/p4.cpp</li>
+<li>CodeGenObjC/bitfield_encoding.m</li>
+<li>CodeGenObjC/encode-test-3.m</li>
+<li>CodeGenObjC/encode-test-5.m</li>
+<li>CodeGenObjCXX/encode.mm</li>
+<li>CodeGenOpenCL/vla.cl</li>
+<li>Sema/aarch64-sme-func-attrs.c</li>
+<li>Sema/constexpr-void-cast.c</li>
+<li>Sema/conversion.c</li>
+<li>SemaCXX/PR86790.cpp</li>
+<li>SemaCXX/for-range-examples.cpp</li>
+<li>SemaCXX/ms-const-member-expr.cpp</li>
+<li>SemaTemplate/instantiate-self.cpp</li>
+</ul>
 </td>
 </tr>
 <tr>
-  <td>2024-04-26</td>
-  <td>584</td>
+  <td>2024-06-06</td>
+  <td class='num'>420</td>
+  <td class='num'>
+<span class='pos'>
+-90
+</span>
+  </td>
 <td>
   <ul>
-<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/165/327</li>
-<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/315/327</li>
-<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/318/327</li>
-<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/36/327</li>
-<li>Analysis/array-struct-region.cpp</li>
-<li>Analysis/derived-to-base.cpp</li>
-<li>Analysis/dynamic-cast.cpp</li>
+<li>C/C11/n1464.c</li>
+<li>Modules/pr93497.cppm</li>
+</ul>
+</td>
+<td>
+  <ul>
+<li>AST/./ASTTests/53/446</li>
+<li>AST/ast-dump-APValue-todo.cpp</li>
+<li>ASTMatchers/./ASTMatchersTests/203/492</li>
+<li>ASTMatchers/./ASTMatchersTests/204/492</li>
+<li>ASTMatchers/./ASTMatchersTests/205/492</li>
+<li>ASTMatchers/./ASTMatchersTests/206/492</li>
+<li>ASTMatchers/./ASTMatchersTests/207/492</li>
+<li>ASTMatchers/./ASTMatchersTests/208/492</li>
+<li>ASTMatchers/./ASTMatchersTests/209/492</li>
+<li>ASTMatchers/./ASTMatchersTests/210/492</li>
+<li>ASTMatchers/./ASTMatchersTests/211/492</li>
+<li>ASTMatchers/./ASTMatchersTests/212/492</li>
+<li>ASTMatchers/./ASTMatchersTests/213/492</li>
+<li>ASTMatchers/./ASTMatchersTests/214/492</li>
+<li>ASTMatchers/./ASTMatchersTests/27/492</li>
+<li>Analysis/ArrayDelete.cpp</li>
+<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/169/662</li>
+<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/36/662</li>
+<li>Analysis/PR46264.cpp</li>
+<li>Analysis/auto-obj-dtors-cfg-output.cpp</li>
+<li>Analysis/cast-to-struct.cpp</li>
+<li>Analysis/cxx-uninitialized-object-ptr-ref.cpp</li>
+<li>Analysis/pointer-to-member.cpp</li>
+<li>CXX/conv/conv.mem/p4.cpp</li>
+<li>CXX/dcl.dcl/dcl.spec/dcl.type/dcl.spec.auto/p3-generic-lambda-1y.cpp</li>
+<li>CXX/dcl.dcl/dcl.spec/dcl.type/dcl.spec.auto/p3.cpp</li>
+<li>CXX/dcl.dcl/dcl.spec/dcl.type/dcl.spec.auto/p6.cpp</li>
+<li>CXX/expr/expr.const/p3-0x.cpp</li>
+<li>CXX/temp/temp.spec/part.spec.cpp</li>
+<li>CodeGen/swift-async-call-conv.c</li>
+<li>CodeGenCXX/2003-11-18-PtrMemConstantInitializer.cpp</li>
+<li>CodeGenCXX/2003-12-08-ArrayOfPtrToMemberFunc.cpp</li>
+<li>CodeGenCXX/2007-01-06-PtrMethodInit.cpp</li>
+<li>CodeGenCXX/2010-05-10-Var-DbgInfo.cpp</li>
+<li>CodeGenCXX/2010-05-12-PtrToMember-Dbg.cpp</li>
+<li>CodeGenCXX/PR37481.cpp</li>
+<li>CodeGenCXX/anonymous-union-member-initializer.cpp</li>
+<li>CodeGenCXX/arm64.cpp</li>
+<li>CodeGenCXX/copy-assign-synthesis-2.cpp</li>
+<li>CodeGenCXX/debug-info-codeview-unnamed.cpp</li>
+<li>CodeGenCXX/debug-info-indirect-field-decl.cpp</li>
+<li>CodeGenCXX/dependent-type-member-pointer.cpp</li>
+<li>CodeGenCXX/dllimport-memptr-global.cpp</li>
+<li>CodeGenCXX/incomplete-member-function-pointer.cpp</li>
+<li>CodeGenCXX/mangle.cpp</li>
+<li>CodeGenCXX/member-function-pointers.cpp</li>
 <li>CodeGenCXX/microsoft-abi-member-pointers.cpp</li>
-<li>SemaCXX/constant-expression-cxx14.cpp</li>
-<li>SemaCXX/cxx23-assume-disabled.cpp</li>
-<li>SemaTemplate/ms-function-specialization-class-scope.cpp</li>
-</ul>
-</td>
-</tr>
-<tr>
-  <td>2024-05-02</td>
-  <td>566</td>
-<td>
-  <ul>
+<li>CodeGenCXX/microsoft-abi-vmemptr-vbase.cpp</li>
+<li>CodeGenCXX/no-odr-use.cpp</li>
+<li>CodeGenCXX/pointers-to-data-members.cpp</li>
+<li>CodeGenCXX/rtti-layout.cpp</li>
 <li>CodeGenCXX/template-param-objects-linkage.cpp</li>
-<li>Sema/constant_builtins_vector.cpp</li>
-<li>SemaCXX/recovery-expr-type.cpp</li>
-<li>SemaCXX/warn-comma-operator.cpp</li>
+<li>CodeGenCXX/ubsan-nullability-arg.cpp</li>
+<li>CodeGenCXX/value-init.cpp</li>
+<li>CodeGenCXX/wasm-sanitize-vptr.cpp</li>
+<li>CoverageMapping/strong_order.cpp</li>
+<li>Frontend/noderef.cpp</li>
+<li>Headers/x86-intrinsics-headers-clean.cpp</li>
+<li>Import/cxx-member-pointers/test.cpp</li>
+<li>Interpreter/./ClangReplInterpreterTests/10/27</li>
+<li>Modules/templates-2.mm</li>
+<li>PCH/cxx2a-compare.cpp</li>
+<li>Parser/cxx1z-using-declaration.cpp</li>
+<li>SemaCXX/MicrosoftExtensions.cpp</li>
+<li>SemaCXX/attr-weak.cpp</li>
+<li>SemaCXX/crash-lambda-weak-attr.cpp</li>
+<li>SemaCXX/cxx23-assume-disabled.cpp</li>
+<li>SemaCXX/cxx98-compat.cpp</li>
+<li>SemaCXX/dllimport-constexpr.cpp</li>
+<li>SemaCXX/dllimport-memptr.cpp</li>
+<li>SemaCXX/member-pointer.cpp</li>
+<li>SemaCXX/overload-bitint.cpp</li>
+<li>SemaCXX/ptrtomember-overload-resolution.cpp</li>
+<li>SemaCXX/uninitialized.cpp</li>
+<li>SemaCXX/warn-thread-safety-analysis.cpp</li>
+<li>SemaCXX/warn-thread-safety-parsing.cpp</li>
+<li>SemaCXX/warn-unsafe-buffer-usage.cpp</li>
+<li>SemaCXX/warn-unsequenced.cpp</li>
+<li>SemaCXX/warn-unused-local-typedef.cpp</li>
+<li>SemaCXX/warn-unused-private-field.cpp</li>
+<li>SemaCXX/warn-zero-nullptr-cxx20.cpp</li>
+<li>SemaTemplate/argument-dependent-lookup.cpp</li>
+<li>SemaTemplate/concepts-lambda.cpp</li>
+<li>SemaTemplate/cxx1z-fold-expressions.cpp</li>
+<li>SemaTemplate/deduction.cpp</li>
+<li>SemaTemplate/instantiate-member-expr.cpp</li>
+<li>SemaTemplate/instantiate-member-pointers.cpp</li>
+<li>SemaTemplate/instantiate-non-type-template-parameter.cpp</li>
+<li>SemaTemplate/instantiate-using-decl.cpp</li>
+<li>SemaTemplate/ms-function-specialization-class-scope.cpp</li>
+<li>SemaTemplate/ms-lookup-template-base-classes.cpp</li>
+<li>SemaTemplate/temp_arg_nontype_cxx11.cpp</li>
 </ul>
 </td>
 </tr>
 <tr>
-  <td>2024-05-13</td>
-  <td>591</td>
+  <td>2024-05-27</td>
+  <td class='num'>510</td>
+  <td class='num'>
+<span class='pos'>
+-31
+</span>
+  </td>
 <td>
   <ul>
+<li>AST/./ASTTests/53/446</li>
+<li>ASTMatchers/./ASTMatchersTests/203/492</li>
+<li>ASTMatchers/./ASTMatchersTests/204/492</li>
+<li>ASTMatchers/./ASTMatchersTests/205/492</li>
+<li>ASTMatchers/./ASTMatchersTests/206/492</li>
+<li>ASTMatchers/./ASTMatchersTests/207/492</li>
+<li>ASTMatchers/./ASTMatchersTests/208/492</li>
+<li>ASTMatchers/./ASTMatchersTests/209/492</li>
+<li>ASTMatchers/./ASTMatchersTests/210/492</li>
+<li>ASTMatchers/./ASTMatchersTests/211/492</li>
+<li>ASTMatchers/./ASTMatchersTests/212/492</li>
+<li>ASTMatchers/./ASTMatchersTests/213/492</li>
+<li>ASTMatchers/./ASTMatchersTests/214/492</li>
+<li>ASTMatchers/./ASTMatchersTests/27/492</li>
+<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/169/662</li>
+<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/36/662</li>
+<li>CodeGenObjC/2008-10-3-EhValue.m</li>
+<li>CoverageMapping/templates.cpp</li>
+<li>Misc/diag-template-diffing-cxx26.cpp</li>
+<li>SemaCXX/constant-expression-cxx11.cpp</li>
+<li>SemaCXX/constexpr-function-recovery-crash.cpp</li>
+<li>SemaCXX/constexpr-subobj-initialization.cpp</li>
+<li>SemaCXX/cxx2a-constexpr-dynalloc-limits.cpp</li>
+</ul>
+</td>
+<td>
+  <ul>
+<li>APINotes/nullability.m</li>
+<li>AST/./ASTTests/53/223</li>
+<li>AST/ast-dump-APValue-anon-union.cpp</li>
+<li>ASTMatchers/./ASTMatchersTests/203/246</li>
+<li>ASTMatchers/./ASTMatchersTests/204/246</li>
+<li>ASTMatchers/./ASTMatchersTests/205/246</li>
+<li>ASTMatchers/./ASTMatchersTests/206/246</li>
+<li>ASTMatchers/./ASTMatchersTests/207/246</li>
+<li>ASTMatchers/./ASTMatchersTests/208/246</li>
+<li>ASTMatchers/./ASTMatchersTests/209/246</li>
+<li>ASTMatchers/./ASTMatchersTests/210/246</li>
+<li>ASTMatchers/./ASTMatchersTests/211/246</li>
+<li>ASTMatchers/./ASTMatchersTests/212/246</li>
+<li>ASTMatchers/./ASTMatchersTests/213/246</li>
+<li>ASTMatchers/./ASTMatchersTests/214/246</li>
+<li>ASTMatchers/./ASTMatchersTests/27/246</li>
+<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/3/166</li>
+<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/36/166</li>
+<li>Analysis/edges-new.mm</li>
+<li>Analysis/malloc.mm</li>
+<li>Analysis/nullability-no-arc.mm</li>
+<li>Analysis/nullability.mm</li>
+<li>Analysis/nullability_nullonly.mm</li>
+<li>Analysis/number-object-conversion.mm</li>
+<li>Analysis/objc-arc.m</li>
+<li>Analysis/retain-release.m</li>
+<li>Analysis/retain-release.mm</li>
+<li>CXX/dcl.decl/dcl.init/dcl.init.ref/p4.cpp</li>
+<li>CXX/over/over.match/over.match.funcs/over.match.oper/p3-2a.cpp</li>
+<li>CodeGenCXX/reference-init.cpp</li>
+<li>CodeGenObjC/illegal-UTF8.m</li>
+<li>CodeGenObjC/objc-literal-debugger-test.m</li>
+<li>CodeGenObjCXX/write-barrier-global-assign.mm</li>
+<li>Modules/diagnose-missing-import.m</li>
+<li>Modules/objc-initializer.m</li>
+<li>PCH/cxx2a-bitfield-init.cpp</li>
+<li>PCH/pending-ids.m</li>
+<li>Parser/objc-static-assert.mm</li>
+<li>Rewriter/objc-string-concat-1.m</li>
+<li>Rewriter/rewrite-modern-atautoreleasepool.mm</li>
+<li>Rewriter/rewrite-user-defined-accessors.mm</li>
+<li>Sema/array-init.c</li>
+<li>SemaCXX/recovery-expr-type.cpp</li>
+<li>SemaObjC/arc-repeated-weak.mm</li>
+<li>SemaObjC/default-synthesize-2.m</li>
+<li>SemaObjC/kindof.m</li>
+<li>SemaObjC/method-arg-qualifier-warning.m</li>
+<li>SemaObjC/nullability-arc.m</li>
+<li>SemaObjC/nullability.m</li>
+<li>SemaObjC/string.m</li>
+<li>SemaObjC/unused.m</li>
+<li>SemaObjCXX/literals.mm</li>
+<li>SemaObjCXX/missing-lhs-gun-extension.mm</li>
+<li>libclang/./libclangTests/LibclangParseTest/EvaluateChildExpression</li>
+</ul>
+</td>
+</tr>
+<tr>
+  <td>2024-05-23</td>
+  <td class='num'>541</td>
+  <td class='num'>
+<span class='pos'>
+-20
+</span>
+  </td>
+<td>
+  <ul>
+<li>AST/./ASTTests/53/223</li>
+<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/3/166</li>
+<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/36/166</li>
+<li>Analysis/array-init-loop.cpp</li>
+<li>CodeGenCXX/copy-constructor-synthesis-2.cpp</li>
+<li>CodeGenCXX/reference-init.cpp</li>
+<li>Parser/objc-static-assert.mm</li>
+</ul>
+</td>
+<td>
+  <ul>
+<li>AST/./ASTTests/53/446</li>
+<li>AST/ast-dump-APValue-union.cpp</li>
+<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/169/331</li>
+<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/36/331</li>
+<li>CXX/basic/basic.start/basic.start.init/p2.cpp</li>
+<li>CXX/dcl.dcl/dcl.spec/dcl.constexpr/p3.cpp</li>
+<li>CXX/except/except.spec/p1.cpp</li>
+<li>CXX/expr/expr.unary/expr.unary.general/p1.cpp</li>
+<li>CodeGen/SystemZ/zvector.c</li>
+<li>CodeGen/SystemZ/zvector2.c</li>
+<li>CodeGen/X86/avx-cast-builtins.c</li>
+<li>CodeGen/X86/avx512f-builtins.c</li>
+<li>CodeGen/X86/avx512fp16-builtins.c</li>
+<li>CodeGen/X86/sse2-builtins.c</li>
+<li>CodeGen/paren-list-agg-init.cpp</li>
+<li>CodeGenCXX/compound-literals.cpp</li>
+<li>CodeGenCXX/cxx11-thread-local.cpp</li>
+<li>CodeGenCXX/lambda-expressions.cpp</li>
+<li>CodeGenSYCL/unique_stable_name.cpp</li>
+<li>PCH/cxx_paren_init.cpp</li>
+<li>Parser/cxx-class.cpp</li>
+<li>Sema/zvector.c</li>
+<li>Sema/zvector2.c</li>
+<li>SemaCXX/constant-expression-cxx14.cpp</li>
+<li>SemaCXX/warn-comma-operator.cpp</li>
+<li>SemaOpenCL/multistep-explicit-cast.cl</li>
+<li>SemaOpenCL/vector_inc_dec_ops.cl</li>
+</ul>
+</td>
+</tr>
+<tr>
+  <td>2024-05-16</td>
+  <td class='num'>561</td>
+  <td class='num'>
+<span class='pos'>
+-30
+</span>
+  </td>
+<td>
+  <ul>
+<li>ASTMatchers/./ASTMatchersTests/203/246</li>
+<li>ASTMatchers/./ASTMatchersTests/204/246</li>
+<li>ASTMatchers/./ASTMatchersTests/205/246</li>
+<li>ASTMatchers/./ASTMatchersTests/206/246</li>
+<li>ASTMatchers/./ASTMatchersTests/207/246</li>
+<li>ASTMatchers/./ASTMatchersTests/208/246</li>
+<li>ASTMatchers/./ASTMatchersTests/209/246</li>
+<li>ASTMatchers/./ASTMatchersTests/210/246</li>
+<li>ASTMatchers/./ASTMatchersTests/211/246</li>
+<li>ASTMatchers/./ASTMatchersTests/212/246</li>
+<li>ASTMatchers/./ASTMatchersTests/213/246</li>
+<li>ASTMatchers/./ASTMatchersTests/214/246</li>
+<li>ASTMatchers/./ASTMatchersTests/27/246</li>
+<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/169/331</li>
+<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/36/331</li>
+<li>CXX/expr/expr.unary/expr.unary.general/p1.cpp</li>
+<li>CodeGen/X86/avx-cast-builtins.c</li>
+<li>CodeGen/X86/avx512f-builtins.c</li>
+<li>CodeGen/X86/avx512fp16-builtins.c</li>
+<li>CodeGen/X86/sse2-builtins.c</li>
+<li>Parser/cxx-class.cpp</li>
+<li>SemaCXX/constant-expression-cxx14.cpp</li>
+</ul>
+</td>
+<td>
+  <ul>
+<li>ASTMatchers/./ASTMatchersTests/194/247</li>
+<li>ASTMatchers/./ASTMatchersTests/195/247</li>
+<li>ASTMatchers/./ASTMatchersTests/196/247</li>
+<li>ASTMatchers/./ASTMatchersTests/197/247</li>
+<li>ASTMatchers/./ASTMatchersTests/198/247</li>
+<li>ASTMatchers/./ASTMatchersTests/199/247</li>
+<li>ASTMatchers/./ASTMatchersTests/200/247</li>
+<li>ASTMatchers/./ASTMatchersTests/201/247</li>
+<li>ASTMatchers/./ASTMatchersTests/202/247</li>
+<li>ASTMatchers/./ASTMatchersTests/203/247</li>
+<li>ASTMatchers/./ASTMatchersTests/204/247</li>
+<li>ASTMatchers/./ASTMatchersTests/205/247</li>
+<li>ASTMatchers/./ASTMatchersTests/27/247</li>
 <li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/168/330</li>
 <li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/36/330</li>
-<li>Analysis/index-type.c</li>
-<li>Analysis/out-of-bounds.c</li>
 <li>Analysis/reinterpret-cast.cpp</li>
 <li>Analysis/temporaries.cpp</li>
 <li>Analysis/uninit-structured-binding-array.cpp</li>
-<li>CXX/class/class.compare/class.compare.default/p4.cpp</li>
-<li>CXX/dcl/dcl.init/aggr.cpp</li>
-<li>CXX/drs/cwg0xx.cpp</li>
-<li>CXX/drs/cwg13xx.cpp</li>
-<li>CXX/drs/cwg14xx.cpp</li>
-<li>CXX/drs/cwg15xx.cpp</li>
-<li>CXX/drs/cwg16xx.cpp</li>
-<li>CXX/drs/cwg18xx.cpp</li>
-<li>CXX/drs/cwg19xx.cpp</li>
-<li>CXX/drs/cwg1xx.cpp</li>
-<li>CXX/drs/cwg20xx.cpp</li>
-<li>CXX/drs/cwg21xx.cpp</li>
-<li>CXX/drs/cwg23xx.cpp</li>
-<li>CXX/drs/cwg25xx.cpp</li>
-<li>CXX/drs/cwg2xx.cpp</li>
-<li>CXX/drs/cwg3xx.cpp</li>
-<li>CXX/drs/cwg4xx.cpp</li>
-<li>CXX/drs/cwg6xx.cpp</li>
+<li>CodeGen/2004-03-15-SimpleIndirectGoto.c</li>
+<li>CodeGen/statements.c</li>
 <li>CodeGenCXX/2005-02-20-BrokenReferenceTest.cpp</li>
 <li>CodeGenCXX/alignment.cpp</li>
 <li>CodeGenCXX/attr-mustprogress.cpp</li>
@@ -197,40 +524,12 @@ new Chart("allChart", allConfig);
 <li>OpenMP/teams_distribute_parallel_for_ast_print.cpp</li>
 <li>OpenMP/teams_distribute_parallel_for_simd_ast_print.cpp</li>
 <li>OpenMP/teams_distribute_simd_ast_print.cpp</li>
-<li>SemaCXX/new-delete.cpp</li>
+<li>Sema/scope-check.c</li>
+<li>SemaObjC/strong-in-c-struct.m</li>
 </ul>
 </td>
 </tr>
-<tr>
-  <td>2024-05-16</td>
-  <td>561</td>
-<td>
-  <ul>
-<li>ASTMatchers/./ASTMatchersTests/203/246</li>
-<li>ASTMatchers/./ASTMatchersTests/204/246</li>
-<li>ASTMatchers/./ASTMatchersTests/205/246</li>
-<li>ASTMatchers/./ASTMatchersTests/206/246</li>
-<li>ASTMatchers/./ASTMatchersTests/207/246</li>
-<li>ASTMatchers/./ASTMatchersTests/208/246</li>
-<li>ASTMatchers/./ASTMatchersTests/209/246</li>
-<li>ASTMatchers/./ASTMatchersTests/210/246</li>
-<li>ASTMatchers/./ASTMatchersTests/211/246</li>
-<li>ASTMatchers/./ASTMatchersTests/212/246</li>
-<li>ASTMatchers/./ASTMatchersTests/213/246</li>
-<li>ASTMatchers/./ASTMatchersTests/214/246</li>
-<li>ASTMatchers/./ASTMatchersTests/27/246</li>
-<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/169/331</li>
-<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/36/331</li>
-<li>CXX/expr/expr.unary/expr.unary.general/p1.cpp</li>
-<li>CodeGen/X86/avx-cast-builtins.c</li>
-<li>CodeGen/X86/avx512f-builtins.c</li>
-<li>CodeGen/X86/avx512fp16-builtins.c</li>
-<li>CodeGen/X86/sse2-builtins.c</li>
-<li>Parser/cxx-class.cpp</li>
-<li>SemaCXX/constant-expression-cxx14.cpp</li>
-</ul>
-</td>
-</tr>
+<tr><td colspan='5'>Showing only 5 datasets of 9 total</td></tr>
 </table>
 </body>
 </html>
