@@ -83,13 +83,13 @@ function listElements(arr, elementName) {
 
 
 const allData = {
-  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13',],
+  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20',],
   borderColor: '#0f0',
 
   datasets: [
     {
       label: 'check-clang',
-      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, ],
+      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, ],
       stepped: true,
       backgroundColor: '#7ED7C1',
       borderColor: 'green',
@@ -144,6 +144,68 @@ new Chart("allChart", allConfig);
           <th>Fixed</th>
         </tr>
         
+<tr>
+  <td>2024-06-20</td>
+  <td class='num'>382</td>
+  <td class='num'>
+<span class='pos'>
+-27
+</span>
+  </td>
+<td>
+  <ul>
+<li>C/C2x/n3017.c</li>
+<li>CodeGen/aarch64-sve-intrinsics/acle_sve_create2-bfloat.c</li>
+<li>CodeGen/ptrauth-intrinsic-sign-constant.c</li>
+<li>CodeGen/ptrauth-intrinsics.c</li>
+<li>CodeGen/xcore-abi.cpp</li>
+<li>CodeGenCXX/microsoft-abi-vbtables.cpp</li>
+<li>Modules/pr91418.cppm</li>
+<li>OpenMP/target_parallel_generic_loop_codegen.cpp</li>
+<li>Sema/ptrauth.c</li>
+</ul>
+</td>
+<td>
+  <ul>
+<li>ASTMerge/exprs-cpp/test.cpp</li>
+<li>ASTMerge/namespace/test.cpp</li>
+<li>ASTMerge/var-cpp/test.cpp</li>
+<li>C/C11/n1464.c</li>
+<li>C/drs/dr4xx.c</li>
+<li>CXX/dcl.decl/dcl.init/dcl.init.aggr/p7.cpp</li>
+<li>CXX/dcl/dcl.init/aggr.cpp</li>
+<li>CXX/drs/cwg25xx.cpp</li>
+<li>CodeGenCXX/builtin-is-constant-evaluated.cpp</li>
+<li>CodeGenCXX/static-init-inline-variable.cpp</li>
+<li>CodeGenCXX/static-init-variable-template.cpp</li>
+<li>CodeGenCXX/static-member-variable-explicit-specialization.cpp</li>
+<li>CodeGenCXX/template-instantiation.cpp</li>
+<li>CodeGenObjC/encode-test-4.m</li>
+<li>CodeGenOpenCLCXX/address-space-deduction.clcpp</li>
+<li>CodeGenOpenCLCXX/constexpr.clcpp</li>
+<li>Import/namespace/test.cpp</li>
+<li>Interpreter/execute-stmts.cpp</li>
+<li>Modules/ExtDebugInfo.cpp</li>
+<li>Modules/const-var-init-update.cpp</li>
+<li>Modules/cxx-templates.cpp</li>
+<li>Modules/explicit-build-relpath.cpp</li>
+<li>Modules/explicit-build.cpp</li>
+<li>Modules/lambda-in-variable.cpp</li>
+<li>Modules/merge-lifetime-extended-temporary.cpp</li>
+<li>Modules/pr62796.cppm</li>
+<li>Modules/pr77995.cppm</li>
+<li>Modules/pr93497.cppm</li>
+<li>Modules/reduced-bmi-generating-codes.cppm</li>
+<li>PCH/cxx11-constexpr.cpp</li>
+<li>PCH/cxx1y-variable-templates.cpp</li>
+<li>PCH/cxx_exprs.cpp</li>
+<li>Sema/complex-arithmetic.c</li>
+<li>Sema/complex-int.c</li>
+<li>SemaCXX/complex-folding.cpp</li>
+<li>Tooling/./ToolingTests/25/349</li>
+</ul>
+</td>
+</tr>
 <tr>
   <td>2024-06-13</td>
   <td class='num'>409</td>
@@ -438,98 +500,7 @@ new Chart("allChart", allConfig);
 </ul>
 </td>
 </tr>
-<tr>
-  <td>2024-05-16</td>
-  <td class='num'>561</td>
-  <td class='num'>
-<span class='pos'>
--30
-</span>
-  </td>
-<td>
-  <ul>
-<li>ASTMatchers/./ASTMatchersTests/203/246</li>
-<li>ASTMatchers/./ASTMatchersTests/204/246</li>
-<li>ASTMatchers/./ASTMatchersTests/205/246</li>
-<li>ASTMatchers/./ASTMatchersTests/206/246</li>
-<li>ASTMatchers/./ASTMatchersTests/207/246</li>
-<li>ASTMatchers/./ASTMatchersTests/208/246</li>
-<li>ASTMatchers/./ASTMatchersTests/209/246</li>
-<li>ASTMatchers/./ASTMatchersTests/210/246</li>
-<li>ASTMatchers/./ASTMatchersTests/211/246</li>
-<li>ASTMatchers/./ASTMatchersTests/212/246</li>
-<li>ASTMatchers/./ASTMatchersTests/213/246</li>
-<li>ASTMatchers/./ASTMatchersTests/214/246</li>
-<li>ASTMatchers/./ASTMatchersTests/27/246</li>
-<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/169/331</li>
-<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/36/331</li>
-<li>CXX/expr/expr.unary/expr.unary.general/p1.cpp</li>
-<li>CodeGen/X86/avx-cast-builtins.c</li>
-<li>CodeGen/X86/avx512f-builtins.c</li>
-<li>CodeGen/X86/avx512fp16-builtins.c</li>
-<li>CodeGen/X86/sse2-builtins.c</li>
-<li>Parser/cxx-class.cpp</li>
-<li>SemaCXX/constant-expression-cxx14.cpp</li>
-</ul>
-</td>
-<td>
-  <ul>
-<li>ASTMatchers/./ASTMatchersTests/194/247</li>
-<li>ASTMatchers/./ASTMatchersTests/195/247</li>
-<li>ASTMatchers/./ASTMatchersTests/196/247</li>
-<li>ASTMatchers/./ASTMatchersTests/197/247</li>
-<li>ASTMatchers/./ASTMatchersTests/198/247</li>
-<li>ASTMatchers/./ASTMatchersTests/199/247</li>
-<li>ASTMatchers/./ASTMatchersTests/200/247</li>
-<li>ASTMatchers/./ASTMatchersTests/201/247</li>
-<li>ASTMatchers/./ASTMatchersTests/202/247</li>
-<li>ASTMatchers/./ASTMatchersTests/203/247</li>
-<li>ASTMatchers/./ASTMatchersTests/204/247</li>
-<li>ASTMatchers/./ASTMatchersTests/205/247</li>
-<li>ASTMatchers/./ASTMatchersTests/27/247</li>
-<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/168/330</li>
-<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/36/330</li>
-<li>Analysis/reinterpret-cast.cpp</li>
-<li>Analysis/temporaries.cpp</li>
-<li>Analysis/uninit-structured-binding-array.cpp</li>
-<li>CodeGen/2004-03-15-SimpleIndirectGoto.c</li>
-<li>CodeGen/statements.c</li>
-<li>CodeGenCXX/2005-02-20-BrokenReferenceTest.cpp</li>
-<li>CodeGenCXX/alignment.cpp</li>
-<li>CodeGenCXX/attr-mustprogress.cpp</li>
-<li>CodeGenCXX/builtin-dump-struct.cpp</li>
-<li>Index/usrs.cpp</li>
-<li>OpenMP/distribute_ast_print.cpp</li>
-<li>OpenMP/distribute_parallel_for_ast_print.cpp</li>
-<li>OpenMP/distribute_parallel_for_simd_ast_print.cpp</li>
-<li>OpenMP/distribute_simd_ast_print.cpp</li>
-<li>OpenMP/for_ast_print.cpp</li>
-<li>OpenMP/for_simd_ast_print.cpp</li>
-<li>OpenMP/parallel_ast_print.cpp</li>
-<li>OpenMP/parallel_for_ast_print.cpp</li>
-<li>OpenMP/parallel_for_simd_ast_print.cpp</li>
-<li>OpenMP/parallel_masked_ast_print.cpp</li>
-<li>OpenMP/parallel_master_ast_print.cpp</li>
-<li>OpenMP/simd_ast_print.cpp</li>
-<li>OpenMP/target_parallel_for_ast_print.cpp</li>
-<li>OpenMP/target_parallel_for_simd_ast_print.cpp</li>
-<li>OpenMP/target_simd_ast_print.cpp</li>
-<li>OpenMP/target_teams_distribute_ast_print.cpp</li>
-<li>OpenMP/target_teams_distribute_parallel_for_ast_print.cpp</li>
-<li>OpenMP/target_teams_distribute_parallel_for_simd_ast_print.cpp</li>
-<li>OpenMP/target_teams_distribute_simd_ast_print.cpp</li>
-<li>OpenMP/task_ast_print.cpp</li>
-<li>OpenMP/taskgroup_ast_print.cpp</li>
-<li>OpenMP/teams_distribute_ast_print.cpp</li>
-<li>OpenMP/teams_distribute_parallel_for_ast_print.cpp</li>
-<li>OpenMP/teams_distribute_parallel_for_simd_ast_print.cpp</li>
-<li>OpenMP/teams_distribute_simd_ast_print.cpp</li>
-<li>Sema/scope-check.c</li>
-<li>SemaObjC/strong-in-c-struct.m</li>
-</ul>
-</td>
-</tr>
-<tr><td colspan='5'>Showing only 5 datasets of 9 total</td></tr>
+<tr><td colspan='5'>Showing only 5 datasets of 10 total</td></tr>
 </table>
 </body>
 </html>
