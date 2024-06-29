@@ -83,13 +83,13 @@ function listElements(arr, elementName) {
 
 
 const allData = {
-  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20',],
+  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20','2024-06-29',],
   borderColor: '#0f0',
 
   datasets: [
     {
       label: 'check-clang',
-      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, ],
+      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, 350, ],
       stepped: true,
       backgroundColor: '#7ED7C1',
       borderColor: 'green',
@@ -144,6 +144,61 @@ new Chart("allChart", allConfig);
           <th>Fixed</th>
         </tr>
         
+<tr>
+  <td>2024-06-29</td>
+  <td class='num'>350</td>
+  <td class='num'>
+<span class='pos'>
+-32
+</span>
+  </td>
+<td>
+  <ul>
+<li>CodeGen/ptrauth-function-init-fail.c</li>
+<li>CodeGen/ptrauth-function-init.c</li>
+<li>SemaTemplate/instantiate-function-params.cpp</li>
+</ul>
+</td>
+<td>
+  <ul>
+<li>Analysis/dtor.cpp</li>
+<li>C/C2x/n3017.c</li>
+<li>CXX/expr/p10-0x.cpp</li>
+<li>CXX/temp/temp.res/temp.dep/temp.dep.constexpr/p2-0x.cpp</li>
+<li>CodeGen/aarch64-sve-intrinsics/acle_sve_create2-bfloat.c</li>
+<li>CodeGen/avr/builtin-function-start.c</li>
+<li>CodeGen/cf-runtime-abi.c</li>
+<li>CodeGen/cfstring-elf-cfbuild-x86_64.c</li>
+<li>CodeGen/cfstring-elf-sections-x86_64.c</li>
+<li>CodeGen/cfstring-windows.c</li>
+<li>CodeGen/cfstring.c</li>
+<li>CodeGen/cfstring3.c</li>
+<li>CodeGen/darwin-string-literals.c</li>
+<li>CodeGen/ptrauth-intrinsic-sign-constant.c</li>
+<li>CodeGen/ptrauth-intrinsics.c</li>
+<li>CodeGen/utf16-cfstrings.c</li>
+<li>CodeGenCXX/PR24289.cpp</li>
+<li>CodeGenCXX/blocks-cxx11.cpp</li>
+<li>CodeGenCXX/const-init-cxx1y.cpp</li>
+<li>CodeGenCXX/cxx0x-initializer-references.cpp</li>
+<li>CodeGenCXX/cxx0x-initializer-stdinitializerlist-startend.cpp</li>
+<li>CodeGenCXX/cxx0x-initializer-stdinitializerlist.cpp</li>
+<li>CodeGenCXX/cxx1y-initializer-aggregate.cpp</li>
+<li>CodeGenCXX/finegrain-bitfield-access.cpp</li>
+<li>CodeGenCXX/mangle-ms.cpp</li>
+<li>CodeGenCXX/microsoft-uuidof.cpp</li>
+<li>CodeGenCXX/static-data-member-single-emission.cpp</li>
+<li>OpenMP/teams_codegen.cpp</li>
+<li>OpenMP/threadprivate_codegen.cpp</li>
+<li>Sema/ptrauth.c</li>
+<li>SemaCUDA/amdgpu-attrs.cu</li>
+<li>SemaCUDA/launch_bounds.cu</li>
+<li>SemaCUDA/launch_bounds_sm_90.cu</li>
+<li>SemaCXX/cxx0x-initializer-stdinitializerlist.cpp</li>
+<li>SemaCXX/warn-global-constructors.cpp</li>
+</ul>
+</td>
+</tr>
 <tr>
   <td>2024-06-20</td>
   <td class='num'>382</td>
@@ -449,58 +504,7 @@ new Chart("allChart", allConfig);
 </ul>
 </td>
 </tr>
-<tr>
-  <td>2024-05-23</td>
-  <td class='num'>541</td>
-  <td class='num'>
-<span class='pos'>
--20
-</span>
-  </td>
-<td>
-  <ul>
-<li>AST/./ASTTests/53/223</li>
-<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/3/166</li>
-<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/36/166</li>
-<li>Analysis/array-init-loop.cpp</li>
-<li>CodeGenCXX/copy-constructor-synthesis-2.cpp</li>
-<li>CodeGenCXX/reference-init.cpp</li>
-<li>Parser/objc-static-assert.mm</li>
-</ul>
-</td>
-<td>
-  <ul>
-<li>AST/./ASTTests/53/446</li>
-<li>AST/ast-dump-APValue-union.cpp</li>
-<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/169/331</li>
-<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/36/331</li>
-<li>CXX/basic/basic.start/basic.start.init/p2.cpp</li>
-<li>CXX/dcl.dcl/dcl.spec/dcl.constexpr/p3.cpp</li>
-<li>CXX/except/except.spec/p1.cpp</li>
-<li>CXX/expr/expr.unary/expr.unary.general/p1.cpp</li>
-<li>CodeGen/SystemZ/zvector.c</li>
-<li>CodeGen/SystemZ/zvector2.c</li>
-<li>CodeGen/X86/avx-cast-builtins.c</li>
-<li>CodeGen/X86/avx512f-builtins.c</li>
-<li>CodeGen/X86/avx512fp16-builtins.c</li>
-<li>CodeGen/X86/sse2-builtins.c</li>
-<li>CodeGen/paren-list-agg-init.cpp</li>
-<li>CodeGenCXX/compound-literals.cpp</li>
-<li>CodeGenCXX/cxx11-thread-local.cpp</li>
-<li>CodeGenCXX/lambda-expressions.cpp</li>
-<li>CodeGenSYCL/unique_stable_name.cpp</li>
-<li>PCH/cxx_paren_init.cpp</li>
-<li>Parser/cxx-class.cpp</li>
-<li>Sema/zvector.c</li>
-<li>Sema/zvector2.c</li>
-<li>SemaCXX/constant-expression-cxx14.cpp</li>
-<li>SemaCXX/warn-comma-operator.cpp</li>
-<li>SemaOpenCL/multistep-explicit-cast.cl</li>
-<li>SemaOpenCL/vector_inc_dec_ops.cl</li>
-</ul>
-</td>
-</tr>
-<tr><td colspan='5'>Showing only 5 datasets of 10 total</td></tr>
+<tr><td colspan='5'>Showing only 5 datasets of 11 total</td></tr>
 </table>
 </body>
 </html>
