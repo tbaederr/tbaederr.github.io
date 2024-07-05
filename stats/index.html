@@ -68,7 +68,9 @@
 
 </table>
 
-<p>Test failures in all of <em>check-clang</em>:</p>
+<p>
+<a href='https://github.com/tbaederr/interp-tests'>Source Code</a>
+</p>
 <canvas id="allChart" style="width:100%; max-width:900px"></canvas>
 
 <script>
@@ -83,13 +85,13 @@ function listElements(arr, elementName) {
 
 
 const allData = {
-  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20','2024-06-29',],
+  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20','2024-06-29','2024-07-05',],
   borderColor: '#0f0',
 
   datasets: [
     {
       label: 'check-clang',
-      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, 350, ],
+      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, 350, 344, ],
       stepped: true,
       backgroundColor: '#7ED7C1',
       borderColor: 'green',
@@ -144,6 +146,33 @@ new Chart("allChart", allConfig);
           <th>Fixed</th>
         </tr>
         
+<tr>
+  <td>2024-07-05</td>
+  <td class='num'>344</td>
+  <td class='num'>
+<span class='pos'>
+-6
+</span>
+  </td>
+<td>
+  <ul>
+<li>OpenMP/for_codegen.cpp</li>
+<li>SemaTemplate/deduction.cpp</li>
+</ul>
+</td>
+<td>
+  <ul>
+<li>Analysis/array-init-loop.cpp</li>
+<li>Analysis/index-type.c</li>
+<li>Analysis/initialization.c</li>
+<li>Analysis/misc-ps-region-store.cpp</li>
+<li>Analysis/out-of-bounds.c</li>
+<li>CodeGenCXX/atomicinit.cpp</li>
+<li>SemaCXX/cxx1y-initializer-aggregates.cpp</li>
+<li>SemaTemplate/dependent-expr.cpp</li>
+</ul>
+</td>
+</tr>
 <tr>
   <td>2024-06-29</td>
   <td class='num'>350</td>
@@ -410,101 +439,7 @@ new Chart("allChart", allConfig);
 </ul>
 </td>
 </tr>
-<tr>
-  <td>2024-05-27</td>
-  <td class='num'>510</td>
-  <td class='num'>
-<span class='pos'>
--31
-</span>
-  </td>
-<td>
-  <ul>
-<li>AST/./ASTTests/53/446</li>
-<li>ASTMatchers/./ASTMatchersTests/203/492</li>
-<li>ASTMatchers/./ASTMatchersTests/204/492</li>
-<li>ASTMatchers/./ASTMatchersTests/205/492</li>
-<li>ASTMatchers/./ASTMatchersTests/206/492</li>
-<li>ASTMatchers/./ASTMatchersTests/207/492</li>
-<li>ASTMatchers/./ASTMatchersTests/208/492</li>
-<li>ASTMatchers/./ASTMatchersTests/209/492</li>
-<li>ASTMatchers/./ASTMatchersTests/210/492</li>
-<li>ASTMatchers/./ASTMatchersTests/211/492</li>
-<li>ASTMatchers/./ASTMatchersTests/212/492</li>
-<li>ASTMatchers/./ASTMatchersTests/213/492</li>
-<li>ASTMatchers/./ASTMatchersTests/214/492</li>
-<li>ASTMatchers/./ASTMatchersTests/27/492</li>
-<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/169/662</li>
-<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/36/662</li>
-<li>CodeGenObjC/2008-10-3-EhValue.m</li>
-<li>CoverageMapping/templates.cpp</li>
-<li>Misc/diag-template-diffing-cxx26.cpp</li>
-<li>SemaCXX/constant-expression-cxx11.cpp</li>
-<li>SemaCXX/constexpr-function-recovery-crash.cpp</li>
-<li>SemaCXX/constexpr-subobj-initialization.cpp</li>
-<li>SemaCXX/cxx2a-constexpr-dynalloc-limits.cpp</li>
-</ul>
-</td>
-<td>
-  <ul>
-<li>APINotes/nullability.m</li>
-<li>AST/./ASTTests/53/223</li>
-<li>AST/ast-dump-APValue-anon-union.cpp</li>
-<li>ASTMatchers/./ASTMatchersTests/203/246</li>
-<li>ASTMatchers/./ASTMatchersTests/204/246</li>
-<li>ASTMatchers/./ASTMatchersTests/205/246</li>
-<li>ASTMatchers/./ASTMatchersTests/206/246</li>
-<li>ASTMatchers/./ASTMatchersTests/207/246</li>
-<li>ASTMatchers/./ASTMatchersTests/208/246</li>
-<li>ASTMatchers/./ASTMatchersTests/209/246</li>
-<li>ASTMatchers/./ASTMatchersTests/210/246</li>
-<li>ASTMatchers/./ASTMatchersTests/211/246</li>
-<li>ASTMatchers/./ASTMatchersTests/212/246</li>
-<li>ASTMatchers/./ASTMatchersTests/213/246</li>
-<li>ASTMatchers/./ASTMatchersTests/214/246</li>
-<li>ASTMatchers/./ASTMatchersTests/27/246</li>
-<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/3/166</li>
-<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/36/166</li>
-<li>Analysis/edges-new.mm</li>
-<li>Analysis/malloc.mm</li>
-<li>Analysis/nullability-no-arc.mm</li>
-<li>Analysis/nullability.mm</li>
-<li>Analysis/nullability_nullonly.mm</li>
-<li>Analysis/number-object-conversion.mm</li>
-<li>Analysis/objc-arc.m</li>
-<li>Analysis/retain-release.m</li>
-<li>Analysis/retain-release.mm</li>
-<li>CXX/dcl.decl/dcl.init/dcl.init.ref/p4.cpp</li>
-<li>CXX/over/over.match/over.match.funcs/over.match.oper/p3-2a.cpp</li>
-<li>CodeGenCXX/reference-init.cpp</li>
-<li>CodeGenObjC/illegal-UTF8.m</li>
-<li>CodeGenObjC/objc-literal-debugger-test.m</li>
-<li>CodeGenObjCXX/write-barrier-global-assign.mm</li>
-<li>Modules/diagnose-missing-import.m</li>
-<li>Modules/objc-initializer.m</li>
-<li>PCH/cxx2a-bitfield-init.cpp</li>
-<li>PCH/pending-ids.m</li>
-<li>Parser/objc-static-assert.mm</li>
-<li>Rewriter/objc-string-concat-1.m</li>
-<li>Rewriter/rewrite-modern-atautoreleasepool.mm</li>
-<li>Rewriter/rewrite-user-defined-accessors.mm</li>
-<li>Sema/array-init.c</li>
-<li>SemaCXX/recovery-expr-type.cpp</li>
-<li>SemaObjC/arc-repeated-weak.mm</li>
-<li>SemaObjC/default-synthesize-2.m</li>
-<li>SemaObjC/kindof.m</li>
-<li>SemaObjC/method-arg-qualifier-warning.m</li>
-<li>SemaObjC/nullability-arc.m</li>
-<li>SemaObjC/nullability.m</li>
-<li>SemaObjC/string.m</li>
-<li>SemaObjC/unused.m</li>
-<li>SemaObjCXX/literals.mm</li>
-<li>SemaObjCXX/missing-lhs-gun-extension.mm</li>
-<li>libclang/./libclangTests/LibclangParseTest/EvaluateChildExpression</li>
-</ul>
-</td>
-</tr>
-<tr><td colspan='5'>Showing only 5 datasets of 11 total</td></tr>
+<tr><td colspan='5'>Showing only 5 datasets of 12 total</td></tr>
 </table>
 </body>
 </html>
