@@ -85,13 +85,13 @@ function listElements(arr, elementName) {
 
 
 const allData = {
-  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20','2024-06-29','2024-07-05',],
+  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20','2024-06-29','2024-07-05','2024-07-12',],
   borderColor: '#0f0',
 
   datasets: [
     {
       label: 'check-clang',
-      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, 350, 344, ],
+      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, 350, 344, 336, ],
       stepped: true,
       backgroundColor: '#7ED7C1',
       borderColor: 'green',
@@ -146,6 +146,45 @@ new Chart("allChart", allConfig);
           <th>Fixed</th>
         </tr>
         
+<tr>
+  <td>2024-07-12</td>
+  <td class='num'>336</td>
+  <td class='num'>
+<span class='pos'>
+-8
+</span>
+  </td>
+<td>
+  <ul>
+<li>C/C2y/n3254.c</li>
+<li>C/drs/dr2xx.c</li>
+<li>CodeGen/ptrauth-function-type-discriminator.c</li>
+<li>Sema/shift-count-negative.c</li>
+<li>Sema/shift-count-overflow.c</li>
+<li>Sema/shift-negative-value.c</li>
+<li>SemaCXX/enum.cpp</li>
+</ul>
+</td>
+<td>
+  <ul>
+<li>Analysis/scan-build/cxx-name.test</li>
+<li>Analysis/scan-build/deduplication.test</li>
+<li>Analysis/scan-build/exclude_directories.test</li>
+<li>Analysis/scan-build/help.test</li>
+<li>Analysis/scan-build/html_output.test</li>
+<li>Analysis/scan-build/plist_html_output.test</li>
+<li>Analysis/scan-build/plist_output.test</li>
+<li>Analysis/scan-build/rebuild_index/rebuild_index.test</li>
+<li>Analysis/scan-build/silence-core-checkers.test</li>
+<li>CXX/class.derived/class.member.lookup/p7.cpp</li>
+<li>CodeGenCXX/microsoft-abi-vbtables.cpp</li>
+<li>CodeGenCXX/ptr-to-datamember.cpp</li>
+<li>CodeGenCXX/virtual-bases.cpp</li>
+<li>Sema/ms_class_layout.cpp</li>
+<li>SemaCXX/warn-unused-variables.cpp</li>
+</ul>
+</td>
+</tr>
 <tr>
   <td>2024-07-05</td>
   <td class='num'>344</td>
@@ -328,118 +367,7 @@ new Chart("allChart", allConfig);
 </ul>
 </td>
 </tr>
-<tr>
-  <td>2024-06-06</td>
-  <td class='num'>420</td>
-  <td class='num'>
-<span class='pos'>
--90
-</span>
-  </td>
-<td>
-  <ul>
-<li>C/C11/n1464.c</li>
-<li>Modules/pr93497.cppm</li>
-</ul>
-</td>
-<td>
-  <ul>
-<li>AST/./ASTTests/53/446</li>
-<li>AST/ast-dump-APValue-todo.cpp</li>
-<li>ASTMatchers/./ASTMatchersTests/203/492</li>
-<li>ASTMatchers/./ASTMatchersTests/204/492</li>
-<li>ASTMatchers/./ASTMatchersTests/205/492</li>
-<li>ASTMatchers/./ASTMatchersTests/206/492</li>
-<li>ASTMatchers/./ASTMatchersTests/207/492</li>
-<li>ASTMatchers/./ASTMatchersTests/208/492</li>
-<li>ASTMatchers/./ASTMatchersTests/209/492</li>
-<li>ASTMatchers/./ASTMatchersTests/210/492</li>
-<li>ASTMatchers/./ASTMatchersTests/211/492</li>
-<li>ASTMatchers/./ASTMatchersTests/212/492</li>
-<li>ASTMatchers/./ASTMatchersTests/213/492</li>
-<li>ASTMatchers/./ASTMatchersTests/214/492</li>
-<li>ASTMatchers/./ASTMatchersTests/27/492</li>
-<li>Analysis/ArrayDelete.cpp</li>
-<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/169/662</li>
-<li>Analysis/FlowSensitive/./ClangAnalysisFlowSensitiveTests/36/662</li>
-<li>Analysis/PR46264.cpp</li>
-<li>Analysis/auto-obj-dtors-cfg-output.cpp</li>
-<li>Analysis/cast-to-struct.cpp</li>
-<li>Analysis/cxx-uninitialized-object-ptr-ref.cpp</li>
-<li>Analysis/pointer-to-member.cpp</li>
-<li>CXX/conv/conv.mem/p4.cpp</li>
-<li>CXX/dcl.dcl/dcl.spec/dcl.type/dcl.spec.auto/p3-generic-lambda-1y.cpp</li>
-<li>CXX/dcl.dcl/dcl.spec/dcl.type/dcl.spec.auto/p3.cpp</li>
-<li>CXX/dcl.dcl/dcl.spec/dcl.type/dcl.spec.auto/p6.cpp</li>
-<li>CXX/expr/expr.const/p3-0x.cpp</li>
-<li>CXX/temp/temp.spec/part.spec.cpp</li>
-<li>CodeGen/swift-async-call-conv.c</li>
-<li>CodeGenCXX/2003-11-18-PtrMemConstantInitializer.cpp</li>
-<li>CodeGenCXX/2003-12-08-ArrayOfPtrToMemberFunc.cpp</li>
-<li>CodeGenCXX/2007-01-06-PtrMethodInit.cpp</li>
-<li>CodeGenCXX/2010-05-10-Var-DbgInfo.cpp</li>
-<li>CodeGenCXX/2010-05-12-PtrToMember-Dbg.cpp</li>
-<li>CodeGenCXX/PR37481.cpp</li>
-<li>CodeGenCXX/anonymous-union-member-initializer.cpp</li>
-<li>CodeGenCXX/arm64.cpp</li>
-<li>CodeGenCXX/copy-assign-synthesis-2.cpp</li>
-<li>CodeGenCXX/debug-info-codeview-unnamed.cpp</li>
-<li>CodeGenCXX/debug-info-indirect-field-decl.cpp</li>
-<li>CodeGenCXX/dependent-type-member-pointer.cpp</li>
-<li>CodeGenCXX/dllimport-memptr-global.cpp</li>
-<li>CodeGenCXX/incomplete-member-function-pointer.cpp</li>
-<li>CodeGenCXX/mangle.cpp</li>
-<li>CodeGenCXX/member-function-pointers.cpp</li>
-<li>CodeGenCXX/microsoft-abi-member-pointers.cpp</li>
-<li>CodeGenCXX/microsoft-abi-vmemptr-vbase.cpp</li>
-<li>CodeGenCXX/no-odr-use.cpp</li>
-<li>CodeGenCXX/pointers-to-data-members.cpp</li>
-<li>CodeGenCXX/rtti-layout.cpp</li>
-<li>CodeGenCXX/template-param-objects-linkage.cpp</li>
-<li>CodeGenCXX/ubsan-nullability-arg.cpp</li>
-<li>CodeGenCXX/value-init.cpp</li>
-<li>CodeGenCXX/wasm-sanitize-vptr.cpp</li>
-<li>CoverageMapping/strong_order.cpp</li>
-<li>Frontend/noderef.cpp</li>
-<li>Headers/x86-intrinsics-headers-clean.cpp</li>
-<li>Import/cxx-member-pointers/test.cpp</li>
-<li>Interpreter/./ClangReplInterpreterTests/10/27</li>
-<li>Modules/templates-2.mm</li>
-<li>PCH/cxx2a-compare.cpp</li>
-<li>Parser/cxx1z-using-declaration.cpp</li>
-<li>SemaCXX/MicrosoftExtensions.cpp</li>
-<li>SemaCXX/attr-weak.cpp</li>
-<li>SemaCXX/crash-lambda-weak-attr.cpp</li>
-<li>SemaCXX/cxx23-assume-disabled.cpp</li>
-<li>SemaCXX/cxx98-compat.cpp</li>
-<li>SemaCXX/dllimport-constexpr.cpp</li>
-<li>SemaCXX/dllimport-memptr.cpp</li>
-<li>SemaCXX/member-pointer.cpp</li>
-<li>SemaCXX/overload-bitint.cpp</li>
-<li>SemaCXX/ptrtomember-overload-resolution.cpp</li>
-<li>SemaCXX/uninitialized.cpp</li>
-<li>SemaCXX/warn-thread-safety-analysis.cpp</li>
-<li>SemaCXX/warn-thread-safety-parsing.cpp</li>
-<li>SemaCXX/warn-unsafe-buffer-usage.cpp</li>
-<li>SemaCXX/warn-unsequenced.cpp</li>
-<li>SemaCXX/warn-unused-local-typedef.cpp</li>
-<li>SemaCXX/warn-unused-private-field.cpp</li>
-<li>SemaCXX/warn-zero-nullptr-cxx20.cpp</li>
-<li>SemaTemplate/argument-dependent-lookup.cpp</li>
-<li>SemaTemplate/concepts-lambda.cpp</li>
-<li>SemaTemplate/cxx1z-fold-expressions.cpp</li>
-<li>SemaTemplate/deduction.cpp</li>
-<li>SemaTemplate/instantiate-member-expr.cpp</li>
-<li>SemaTemplate/instantiate-member-pointers.cpp</li>
-<li>SemaTemplate/instantiate-non-type-template-parameter.cpp</li>
-<li>SemaTemplate/instantiate-using-decl.cpp</li>
-<li>SemaTemplate/ms-function-specialization-class-scope.cpp</li>
-<li>SemaTemplate/ms-lookup-template-base-classes.cpp</li>
-<li>SemaTemplate/temp_arg_nontype_cxx11.cpp</li>
-</ul>
-</td>
-</tr>
-<tr><td colspan='5'>Showing only 5 datasets of 12 total</td></tr>
+<tr><td colspan='5'>Showing only 5 datasets of 13 total</td></tr>
 </table>
 </body>
 </html>
