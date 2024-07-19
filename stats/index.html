@@ -42,6 +42,16 @@
   .slim {
     padding: 0 1em 0 1em;
   }
+  .hardfail {
+    color: #8b0000;
+    margin-right: 0.3em;
+    font-size: 70%;
+  }
+  .note {
+    color: #00308F;
+    margin-right: 0.3em;
+    font-size: 70%;
+  }
 </style>
 <body>
   <h1>Test failures</h1>
@@ -85,13 +95,13 @@ function listElements(arr, elementName) {
 
 
 const allData = {
-  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20','2024-06-29','2024-07-05','2024-07-12',],
+  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20','2024-06-29','2024-07-05','2024-07-12','2024-07-19',],
   borderColor: '#0f0',
 
   datasets: [
     {
       label: 'check-clang',
-      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, 350, 344, 336, ],
+      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, 350, 344, 336, 320, ],
       stepped: true,
       backgroundColor: '#7ED7C1',
       borderColor: 'green',
@@ -147,6 +157,67 @@ new Chart("allChart", allConfig);
         </tr>
         
 <tr>
+  <td>2024-07-19</td>
+  <td class='num'>320</td>
+  <td class='num'>
+<span class='pos'>
+-16
+</span>
+  </td>
+<td>
+  <ul>
+<li>C/C23/n2653.c
+<sup class='note'>[builtin_constant_p]</sup>
+</li>
+<li>CodeGenCXX/blocks-cxx11.cpp
+</li>
+</ul>
+</td>
+<td>
+  <ul>
+<li>C/drs/dr2xx.c
+</li>
+<li>CXX/basic/basic.def.odr/p2-typeid.cpp
+</li>
+<li>CXX/drs/cwg13xx.cpp
+</li>
+<li>CXX/stmt.stmt/stmt.select/stmt.if/p2.cpp
+</li>
+<li>CodeGenCXX/const-init-cxx2a.cpp
+</li>
+<li>CodeGenCXX/cxx1z-constexpr-if.cpp
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+<li>CodeGenCXX/dllimport.cpp
+</li>
+<li>Parser/cxx2a-bitfield-init.cpp
+</li>
+<li>Rewriter/rewrite-modern-super.mm
+</li>
+<li>Sema/shift-count-negative.c
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+<li>Sema/shift-count-overflow.c
+</li>
+<li>Sema/shift-negative-value.c
+</li>
+<li>SemaCXX/altivec.cpp
+</li>
+<li>SemaCXX/constexpr-function-recovery-crash.cpp
+</li>
+<li>SemaCXX/constexpr-turing-cxx2a.cpp
+</li>
+<li>SemaCXX/cxx1z-constexpr-lambdas.cpp
+</li>
+<li>SemaCXX/enum.cpp
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+<li>SemaTemplate/deduction.cpp
+</li>
+</ul>
+</td>
+</tr>
+<tr>
   <td>2024-07-12</td>
   <td class='num'>336</td>
   <td class='num'>
@@ -156,32 +227,57 @@ new Chart("allChart", allConfig);
   </td>
 <td>
   <ul>
-<li>C/C2y/n3254.c</li>
-<li>C/drs/dr2xx.c</li>
-<li>CodeGen/ptrauth-function-type-discriminator.c</li>
-<li>Sema/shift-count-negative.c</li>
-<li>Sema/shift-count-overflow.c</li>
-<li>Sema/shift-negative-value.c</li>
-<li>SemaCXX/enum.cpp</li>
+<li>C/C2y/n3254.c
+</li>
+<li>C/drs/dr2xx.c
+</li>
+<li>CodeGen/ptrauth-function-type-discriminator.c
+</li>
+<li>Sema/shift-count-negative.c
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+<li>Sema/shift-count-overflow.c
+</li>
+<li>Sema/shift-negative-value.c
+</li>
+<li>SemaCXX/enum.cpp
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
 </ul>
 </td>
 <td>
   <ul>
-<li>Analysis/scan-build/cxx-name.test</li>
-<li>Analysis/scan-build/deduplication.test</li>
-<li>Analysis/scan-build/exclude_directories.test</li>
-<li>Analysis/scan-build/help.test</li>
-<li>Analysis/scan-build/html_output.test</li>
-<li>Analysis/scan-build/plist_html_output.test</li>
-<li>Analysis/scan-build/plist_output.test</li>
-<li>Analysis/scan-build/rebuild_index/rebuild_index.test</li>
-<li>Analysis/scan-build/silence-core-checkers.test</li>
-<li>CXX/class.derived/class.member.lookup/p7.cpp</li>
-<li>CodeGenCXX/microsoft-abi-vbtables.cpp</li>
-<li>CodeGenCXX/ptr-to-datamember.cpp</li>
-<li>CodeGenCXX/virtual-bases.cpp</li>
-<li>Sema/ms_class_layout.cpp</li>
-<li>SemaCXX/warn-unused-variables.cpp</li>
+<li>Analysis/scan-build/cxx-name.test
+</li>
+<li>Analysis/scan-build/deduplication.test
+</li>
+<li>Analysis/scan-build/exclude_directories.test
+</li>
+<li>Analysis/scan-build/help.test
+</li>
+<li>Analysis/scan-build/html_output.test
+</li>
+<li>Analysis/scan-build/plist_html_output.test
+</li>
+<li>Analysis/scan-build/plist_output.test
+</li>
+<li>Analysis/scan-build/rebuild_index/rebuild_index.test
+</li>
+<li>Analysis/scan-build/silence-core-checkers.test
+</li>
+<li>CXX/class.derived/class.member.lookup/p7.cpp
+</li>
+<li>CodeGenCXX/microsoft-abi-vbtables.cpp
+</li>
+<li>CodeGenCXX/ptr-to-datamember.cpp
+</li>
+<li>CodeGenCXX/virtual-bases.cpp
+</li>
+<li>Sema/ms_class_layout.cpp
+</li>
+<li>SemaCXX/warn-unused-variables.cpp
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
 </ul>
 </td>
 </tr>
@@ -195,20 +291,31 @@ new Chart("allChart", allConfig);
   </td>
 <td>
   <ul>
-<li>OpenMP/for_codegen.cpp</li>
-<li>SemaTemplate/deduction.cpp</li>
+<li>OpenMP/for_codegen.cpp
+</li>
+<li>SemaTemplate/deduction.cpp
+</li>
 </ul>
 </td>
 <td>
   <ul>
-<li>Analysis/array-init-loop.cpp</li>
-<li>Analysis/index-type.c</li>
-<li>Analysis/initialization.c</li>
-<li>Analysis/misc-ps-region-store.cpp</li>
-<li>Analysis/out-of-bounds.c</li>
-<li>CodeGenCXX/atomicinit.cpp</li>
-<li>SemaCXX/cxx1y-initializer-aggregates.cpp</li>
-<li>SemaTemplate/dependent-expr.cpp</li>
+<li>Analysis/array-init-loop.cpp
+</li>
+<li>Analysis/index-type.c
+</li>
+<li>Analysis/initialization.c
+</li>
+<li>Analysis/misc-ps-region-store.cpp
+</li>
+<li>Analysis/out-of-bounds.c
+</li>
+<li>CodeGenCXX/atomicinit.cpp
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+<li>SemaCXX/cxx1y-initializer-aggregates.cpp
+</li>
+<li>SemaTemplate/dependent-expr.cpp
+</li>
 </ul>
 </td>
 </tr>
@@ -222,48 +329,92 @@ new Chart("allChart", allConfig);
   </td>
 <td>
   <ul>
-<li>CodeGen/ptrauth-function-init-fail.c</li>
-<li>CodeGen/ptrauth-function-init.c</li>
-<li>SemaTemplate/instantiate-function-params.cpp</li>
+<li>CodeGen/ptrauth-function-init-fail.c
+</li>
+<li>CodeGen/ptrauth-function-init.c
+</li>
+<li>SemaTemplate/instantiate-function-params.cpp
+</li>
 </ul>
 </td>
 <td>
   <ul>
-<li>Analysis/dtor.cpp</li>
-<li>C/C2x/n3017.c</li>
-<li>CXX/expr/p10-0x.cpp</li>
-<li>CXX/temp/temp.res/temp.dep/temp.dep.constexpr/p2-0x.cpp</li>
-<li>CodeGen/aarch64-sve-intrinsics/acle_sve_create2-bfloat.c</li>
-<li>CodeGen/avr/builtin-function-start.c</li>
-<li>CodeGen/cf-runtime-abi.c</li>
-<li>CodeGen/cfstring-elf-cfbuild-x86_64.c</li>
-<li>CodeGen/cfstring-elf-sections-x86_64.c</li>
-<li>CodeGen/cfstring-windows.c</li>
-<li>CodeGen/cfstring.c</li>
-<li>CodeGen/cfstring3.c</li>
-<li>CodeGen/darwin-string-literals.c</li>
-<li>CodeGen/ptrauth-intrinsic-sign-constant.c</li>
-<li>CodeGen/ptrauth-intrinsics.c</li>
-<li>CodeGen/utf16-cfstrings.c</li>
-<li>CodeGenCXX/PR24289.cpp</li>
-<li>CodeGenCXX/blocks-cxx11.cpp</li>
-<li>CodeGenCXX/const-init-cxx1y.cpp</li>
-<li>CodeGenCXX/cxx0x-initializer-references.cpp</li>
-<li>CodeGenCXX/cxx0x-initializer-stdinitializerlist-startend.cpp</li>
-<li>CodeGenCXX/cxx0x-initializer-stdinitializerlist.cpp</li>
-<li>CodeGenCXX/cxx1y-initializer-aggregate.cpp</li>
-<li>CodeGenCXX/finegrain-bitfield-access.cpp</li>
-<li>CodeGenCXX/mangle-ms.cpp</li>
-<li>CodeGenCXX/microsoft-uuidof.cpp</li>
-<li>CodeGenCXX/static-data-member-single-emission.cpp</li>
-<li>OpenMP/teams_codegen.cpp</li>
-<li>OpenMP/threadprivate_codegen.cpp</li>
-<li>Sema/ptrauth.c</li>
-<li>SemaCUDA/amdgpu-attrs.cu</li>
-<li>SemaCUDA/launch_bounds.cu</li>
-<li>SemaCUDA/launch_bounds_sm_90.cu</li>
-<li>SemaCXX/cxx0x-initializer-stdinitializerlist.cpp</li>
-<li>SemaCXX/warn-global-constructors.cpp</li>
+<li>Analysis/dtor.cpp
+</li>
+<li>C/C2x/n3017.c
+</li>
+<li>CXX/expr/p10-0x.cpp
+</li>
+<li>CXX/temp/temp.res/temp.dep/temp.dep.constexpr/p2-0x.cpp
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+<li>CodeGen/aarch64-sve-intrinsics/acle_sve_create2-bfloat.c
+</li>
+<li>CodeGen/avr/builtin-function-start.c
+</li>
+<li>CodeGen/cf-runtime-abi.c
+</li>
+<li>CodeGen/cfstring-elf-cfbuild-x86_64.c
+</li>
+<li>CodeGen/cfstring-elf-sections-x86_64.c
+</li>
+<li>CodeGen/cfstring-windows.c
+</li>
+<li>CodeGen/cfstring.c
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+<li>CodeGen/cfstring3.c
+</li>
+<li>CodeGen/darwin-string-literals.c
+</li>
+<li>CodeGen/ptrauth-intrinsic-sign-constant.c
+</li>
+<li>CodeGen/ptrauth-intrinsics.c
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+<li>CodeGen/utf16-cfstrings.c
+</li>
+<li>CodeGenCXX/PR24289.cpp
+</li>
+<li>CodeGenCXX/blocks-cxx11.cpp
+</li>
+<li>CodeGenCXX/const-init-cxx1y.cpp
+</li>
+<li>CodeGenCXX/cxx0x-initializer-references.cpp
+</li>
+<li>CodeGenCXX/cxx0x-initializer-stdinitializerlist-startend.cpp
+</li>
+<li>CodeGenCXX/cxx0x-initializer-stdinitializerlist.cpp
+</li>
+<li>CodeGenCXX/cxx1y-initializer-aggregate.cpp
+</li>
+<li>CodeGenCXX/finegrain-bitfield-access.cpp
+</li>
+<li>CodeGenCXX/mangle-ms.cpp
+</li>
+<li>CodeGenCXX/microsoft-uuidof.cpp
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+<li>CodeGenCXX/static-data-member-single-emission.cpp
+</li>
+<li>OpenMP/teams_codegen.cpp
+</li>
+<li>OpenMP/threadprivate_codegen.cpp
+</li>
+<li>Sema/ptrauth.c
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+<li>SemaCUDA/amdgpu-attrs.cu
+</li>
+<li>SemaCUDA/launch_bounds.cu
+</li>
+<li>SemaCUDA/launch_bounds_sm_90.cu
+</li>
+<li>SemaCXX/cxx0x-initializer-stdinitializerlist.cpp
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+<li>SemaCXX/warn-global-constructors.cpp
+</li>
 </ul>
 </td>
 </tr>
@@ -277,97 +428,108 @@ new Chart("allChart", allConfig);
   </td>
 <td>
   <ul>
-<li>C/C2x/n3017.c</li>
-<li>CodeGen/aarch64-sve-intrinsics/acle_sve_create2-bfloat.c</li>
-<li>CodeGen/ptrauth-intrinsic-sign-constant.c</li>
-<li>CodeGen/ptrauth-intrinsics.c</li>
-<li>CodeGen/xcore-abi.cpp</li>
-<li>CodeGenCXX/microsoft-abi-vbtables.cpp</li>
-<li>Modules/pr91418.cppm</li>
-<li>OpenMP/target_parallel_generic_loop_codegen.cpp</li>
-<li>Sema/ptrauth.c</li>
+<li>C/C2x/n3017.c
+</li>
+<li>CodeGen/aarch64-sve-intrinsics/acle_sve_create2-bfloat.c
+</li>
+<li>CodeGen/ptrauth-intrinsic-sign-constant.c
+</li>
+<li>CodeGen/ptrauth-intrinsics.c
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+<li>CodeGen/xcore-abi.cpp
+</li>
+<li>CodeGenCXX/microsoft-abi-vbtables.cpp
+</li>
+<li>Modules/pr91418.cppm
+</li>
+<li>OpenMP/target_parallel_generic_loop_codegen.cpp
+</li>
+<li>Sema/ptrauth.c
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
 </ul>
 </td>
 <td>
   <ul>
-<li>ASTMerge/exprs-cpp/test.cpp</li>
-<li>ASTMerge/namespace/test.cpp</li>
-<li>ASTMerge/var-cpp/test.cpp</li>
-<li>C/C11/n1464.c</li>
-<li>C/drs/dr4xx.c</li>
-<li>CXX/dcl.decl/dcl.init/dcl.init.aggr/p7.cpp</li>
-<li>CXX/dcl/dcl.init/aggr.cpp</li>
-<li>CXX/drs/cwg25xx.cpp</li>
-<li>CodeGenCXX/builtin-is-constant-evaluated.cpp</li>
-<li>CodeGenCXX/static-init-inline-variable.cpp</li>
-<li>CodeGenCXX/static-init-variable-template.cpp</li>
-<li>CodeGenCXX/static-member-variable-explicit-specialization.cpp</li>
-<li>CodeGenCXX/template-instantiation.cpp</li>
-<li>CodeGenObjC/encode-test-4.m</li>
-<li>CodeGenOpenCLCXX/address-space-deduction.clcpp</li>
-<li>CodeGenOpenCLCXX/constexpr.clcpp</li>
-<li>Import/namespace/test.cpp</li>
-<li>Interpreter/execute-stmts.cpp</li>
-<li>Modules/ExtDebugInfo.cpp</li>
-<li>Modules/const-var-init-update.cpp</li>
-<li>Modules/cxx-templates.cpp</li>
-<li>Modules/explicit-build-relpath.cpp</li>
-<li>Modules/explicit-build.cpp</li>
-<li>Modules/lambda-in-variable.cpp</li>
-<li>Modules/merge-lifetime-extended-temporary.cpp</li>
-<li>Modules/pr62796.cppm</li>
-<li>Modules/pr77995.cppm</li>
-<li>Modules/pr93497.cppm</li>
-<li>Modules/reduced-bmi-generating-codes.cppm</li>
-<li>PCH/cxx11-constexpr.cpp</li>
-<li>PCH/cxx1y-variable-templates.cpp</li>
-<li>PCH/cxx_exprs.cpp</li>
-<li>Sema/complex-arithmetic.c</li>
-<li>Sema/complex-int.c</li>
-<li>SemaCXX/complex-folding.cpp</li>
-<li>Tooling/./ToolingTests/25/349</li>
+<li>ASTMerge/exprs-cpp/test.cpp
+</li>
+<li>ASTMerge/namespace/test.cpp
+</li>
+<li>ASTMerge/var-cpp/test.cpp
+</li>
+<li>C/C11/n1464.c
+</li>
+<li>C/drs/dr4xx.c
+</li>
+<li>CXX/dcl.decl/dcl.init/dcl.init.aggr/p7.cpp
+</li>
+<li>CXX/dcl/dcl.init/aggr.cpp
+</li>
+<li>CXX/drs/cwg25xx.cpp
+</li>
+<li>CodeGenCXX/builtin-is-constant-evaluated.cpp
+</li>
+<li>CodeGenCXX/static-init-inline-variable.cpp
+</li>
+<li>CodeGenCXX/static-init-variable-template.cpp
+</li>
+<li>CodeGenCXX/static-member-variable-explicit-specialization.cpp
+</li>
+<li>CodeGenCXX/template-instantiation.cpp
+</li>
+<li>CodeGenObjC/encode-test-4.m
+</li>
+<li>CodeGenOpenCLCXX/address-space-deduction.clcpp
+</li>
+<li>CodeGenOpenCLCXX/constexpr.clcpp
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+<li>Import/namespace/test.cpp
+</li>
+<li>Interpreter/execute-stmts.cpp
+</li>
+<li>Modules/ExtDebugInfo.cpp
+</li>
+<li>Modules/const-var-init-update.cpp
+</li>
+<li>Modules/cxx-templates.cpp
+</li>
+<li>Modules/explicit-build-relpath.cpp
+</li>
+<li>Modules/explicit-build.cpp
+</li>
+<li>Modules/lambda-in-variable.cpp
+</li>
+<li>Modules/merge-lifetime-extended-temporary.cpp
+</li>
+<li>Modules/pr62796.cppm
+</li>
+<li>Modules/pr77995.cppm
+</li>
+<li>Modules/pr93497.cppm
+</li>
+<li>Modules/reduced-bmi-generating-codes.cppm
+</li>
+<li>PCH/cxx11-constexpr.cpp
+</li>
+<li>PCH/cxx1y-variable-templates.cpp
+</li>
+<li>PCH/cxx_exprs.cpp
+</li>
+<li>Sema/complex-arithmetic.c
+</li>
+<li>Sema/complex-int.c
+</li>
+<li>SemaCXX/complex-folding.cpp
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+<li>Tooling/./ToolingTests/25/349
+</li>
 </ul>
 </td>
 </tr>
-<tr>
-  <td>2024-06-13</td>
-  <td class='num'>409</td>
-  <td class='num'>
-<span class='pos'>
--11
-</span>
-  </td>
-<td>
-  <ul>
-<li>CXX/temp/temp.res/temp.dep/temp.dep.constexpr/p2.cpp</li>
-<li>CodeGenObjC/encode-test-4.m</li>
-<li>Sema/array-init.c</li>
-<li>Sema/const-ptr-int-ptr-cast.c</li>
-<li>Tooling/./ToolingTests/25/349</li>
-</ul>
-</td>
-<td>
-  <ul>
-<li>Analysis/inlining/path-notes.cpp</li>
-<li>Analysis/misc-ps-region-store.m</li>
-<li>CXX/basic/basic.link/p6.cpp</li>
-<li>CXX/class/class.compare/class.compare.default/p4.cpp</li>
-<li>CodeGenObjC/bitfield_encoding.m</li>
-<li>CodeGenObjC/encode-test-3.m</li>
-<li>CodeGenObjC/encode-test-5.m</li>
-<li>CodeGenObjCXX/encode.mm</li>
-<li>CodeGenOpenCL/vla.cl</li>
-<li>Sema/aarch64-sme-func-attrs.c</li>
-<li>Sema/constexpr-void-cast.c</li>
-<li>Sema/conversion.c</li>
-<li>SemaCXX/PR86790.cpp</li>
-<li>SemaCXX/for-range-examples.cpp</li>
-<li>SemaCXX/ms-const-member-expr.cpp</li>
-<li>SemaTemplate/instantiate-self.cpp</li>
-</ul>
-</td>
-</tr>
-<tr><td colspan='5'>Showing only 5 datasets of 13 total</td></tr>
+<tr><td colspan='5'>Showing only 5 datasets of 14 total</td></tr>
 </table>
 </body>
 </html>
