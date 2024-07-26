@@ -95,13 +95,13 @@ function listElements(arr, elementName) {
 
 
 const allData = {
-  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20','2024-06-29','2024-07-05','2024-07-12','2024-07-19',],
+  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20','2024-06-29','2024-07-05','2024-07-12','2024-07-19','2024-07-26',],
   borderColor: '#0f0',
 
   datasets: [
     {
       label: 'check-clang',
-      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, 350, 344, 336, 320, ],
+      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, 350, 344, 336, 320, 296, ],
       stepped: true,
       backgroundColor: '#7ED7C1',
       borderColor: 'green',
@@ -156,6 +156,111 @@ new Chart("allChart", allConfig);
           <th>Fixed</th>
         </tr>
         
+<tr>
+  <td>2024-07-26</td>
+  <td class='num'>296</td>
+  <td class='num'>
+<span class='pos'>
+-24
+</span>
+  </td>
+<td>
+  <ul>
+<li>CodeGen/PowerPC/ppc-emmintrin.c
+</li>
+<li>CodeGen/PowerPC/ppc-tmmintrin.c
+</li>
+<li>CodeGen/PowerPC/ppc-x86gprintrin.c
+</li>
+<li>CodeGen/ms_mangler_templatearg_opte.cpp
+</li>
+<li>CodeGenCXX/builtin-constant-p.cpp
+<sup class='note'>[builtin_constant_p]</sup>
+</li>
+<li>CodeGenCXX/mangle-fail.cpp
+</li>
+<li>CodeGenObjC/builtin-constant-p.m
+<sup class='note'>[builtin_constant_p]</sup>
+</li>
+<li>SemaCXX/ptrauth-type-discriminator.cpp
+</li>
+</ul>
+</td>
+<td>
+  <ul>
+<li>C/C23/n2653.c
+<sup class='note'>[builtin_constant_p]</sup>
+</li>
+<li>CXX/drs/cwg0xx.cpp
+</li>
+<li>CXX/drs/cwg2xx.cpp
+<sup class='note'>[builtin_constant_p]</sup>
+</li>
+<li>CXX/drs/cwg3xx.cpp
+<sup class='note'>[builtin_constant_p]</sup>
+</li>
+<li>CodeGen/2007-09-17-WeakRef.c
+</li>
+<li>CodeGen/2008-09-03-WeakAlias.c
+</li>
+<li>CodeGen/PR3613-static-decl.c
+</li>
+<li>CodeGen/SystemZ/builtins-systemz-zvector.c
+</li>
+<li>CodeGen/annotations-decl-use-decl.c
+</li>
+<li>CodeGen/attr-weakref.c
+</li>
+<li>CodeGen/builtin-function-start.cpp
+</li>
+<li>CodeGen/builtins.c
+</li>
+<li>CodeGen/init-memset.c
+</li>
+<li>CodeGen/libcall-declarations.c
+</li>
+<li>CodeGen/memtag-globals-asm.cpp
+</li>
+<li>CodeGen/struct-passing.c
+</li>
+<li>CodeGenCXX/attr-annotate.cpp
+</li>
+<li>CodeGenCXX/deferred-global-init.cpp
+</li>
+<li>CodeGenCXX/no-unique-address.cpp
+</li>
+<li>CodeGenCXX/template-param-objects-address-space.cpp
+</li>
+<li>CodeGenCXX/template-param-objects.cpp
+</li>
+<li>CodeGenCXX/visibility-inlines-hidden.cpp
+</li>
+<li>CodeGenOpenCL/address-space-constant-initializers.cl
+</li>
+<li>CoverageMapping/templates.cpp
+</li>
+<li>Modules/pr91418.cppm
+</li>
+<li>Rewriter/rewrite-super-message.mm
+</li>
+<li>SemaCXX/builtin_vectorelements.cpp
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+<li>SemaCXX/constant-expression-cxx2b.cpp
+</li>
+<li>SemaCXX/cxx1y-generic-lambdas.cpp
+</li>
+<li>SemaCXX/cxx1z-decomposition.cpp
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+<li>SemaCXX/ms-constexpr.cpp
+</li>
+<li>SemaCXX/new-delete-0x.cpp
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+</ul>
+</td>
+</tr>
 <tr>
   <td>2024-07-19</td>
   <td class='num'>320</td>
@@ -418,118 +523,7 @@ new Chart("allChart", allConfig);
 </ul>
 </td>
 </tr>
-<tr>
-  <td>2024-06-20</td>
-  <td class='num'>382</td>
-  <td class='num'>
-<span class='pos'>
--27
-</span>
-  </td>
-<td>
-  <ul>
-<li>C/C2x/n3017.c
-</li>
-<li>CodeGen/aarch64-sve-intrinsics/acle_sve_create2-bfloat.c
-</li>
-<li>CodeGen/ptrauth-intrinsic-sign-constant.c
-</li>
-<li>CodeGen/ptrauth-intrinsics.c
-<sup class='hardfail'>[Explicit Test]</sup>
-</li>
-<li>CodeGen/xcore-abi.cpp
-</li>
-<li>CodeGenCXX/microsoft-abi-vbtables.cpp
-</li>
-<li>Modules/pr91418.cppm
-</li>
-<li>OpenMP/target_parallel_generic_loop_codegen.cpp
-</li>
-<li>Sema/ptrauth.c
-<sup class='hardfail'>[Explicit Test]</sup>
-</li>
-</ul>
-</td>
-<td>
-  <ul>
-<li>ASTMerge/exprs-cpp/test.cpp
-</li>
-<li>ASTMerge/namespace/test.cpp
-</li>
-<li>ASTMerge/var-cpp/test.cpp
-</li>
-<li>C/C11/n1464.c
-</li>
-<li>C/drs/dr4xx.c
-</li>
-<li>CXX/dcl.decl/dcl.init/dcl.init.aggr/p7.cpp
-</li>
-<li>CXX/dcl/dcl.init/aggr.cpp
-</li>
-<li>CXX/drs/cwg25xx.cpp
-</li>
-<li>CodeGenCXX/builtin-is-constant-evaluated.cpp
-</li>
-<li>CodeGenCXX/static-init-inline-variable.cpp
-</li>
-<li>CodeGenCXX/static-init-variable-template.cpp
-</li>
-<li>CodeGenCXX/static-member-variable-explicit-specialization.cpp
-</li>
-<li>CodeGenCXX/template-instantiation.cpp
-</li>
-<li>CodeGenObjC/encode-test-4.m
-</li>
-<li>CodeGenOpenCLCXX/address-space-deduction.clcpp
-</li>
-<li>CodeGenOpenCLCXX/constexpr.clcpp
-<sup class='hardfail'>[Explicit Test]</sup>
-</li>
-<li>Import/namespace/test.cpp
-</li>
-<li>Interpreter/execute-stmts.cpp
-</li>
-<li>Modules/ExtDebugInfo.cpp
-</li>
-<li>Modules/const-var-init-update.cpp
-</li>
-<li>Modules/cxx-templates.cpp
-</li>
-<li>Modules/explicit-build-relpath.cpp
-</li>
-<li>Modules/explicit-build.cpp
-</li>
-<li>Modules/lambda-in-variable.cpp
-</li>
-<li>Modules/merge-lifetime-extended-temporary.cpp
-</li>
-<li>Modules/pr62796.cppm
-</li>
-<li>Modules/pr77995.cppm
-</li>
-<li>Modules/pr93497.cppm
-</li>
-<li>Modules/reduced-bmi-generating-codes.cppm
-</li>
-<li>PCH/cxx11-constexpr.cpp
-</li>
-<li>PCH/cxx1y-variable-templates.cpp
-</li>
-<li>PCH/cxx_exprs.cpp
-</li>
-<li>Sema/complex-arithmetic.c
-</li>
-<li>Sema/complex-int.c
-</li>
-<li>SemaCXX/complex-folding.cpp
-<sup class='hardfail'>[Explicit Test]</sup>
-</li>
-<li>Tooling/./ToolingTests/25/349
-</li>
-</ul>
-</td>
-</tr>
-<tr><td colspan='5'>Showing only 5 datasets of 14 total</td></tr>
+<tr><td colspan='5'>Showing only 5 datasets of 15 total</td></tr>
 </table>
 </body>
 </html>
