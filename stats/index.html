@@ -102,13 +102,13 @@ function listElements(arr, elementName) {
 
 
 const allData = {
-  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20','2024-06-29','2024-07-05','2024-07-12','2024-07-19','2024-07-26','2024-08-09',],
+  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20','2024-06-29','2024-07-05','2024-07-12','2024-07-19','2024-07-26','2024-08-09','2024-08-20',],
   borderColor: '#0f0',
 
   datasets: [
     {
       label: 'check-clang',
-      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, 350, 344, 336, 320, 296, 278, ],
+      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, 350, 344, 336, 320, 296, 278, 224, ],
       stepped: true,
       backgroundColor: '#7ED7C1',
       borderColor: 'green',
@@ -162,6 +162,140 @@ new Chart("allChart", allConfig);
           <th>Fixed</th>
         </tr>
         
+<tr>
+  <td>2024-08-20</td>
+  <td class='num'>224</td>
+  <td class='num'>
+<span class='pos'>
+-54
+</span>
+  </td>
+<td>
+  <ul>
+<li>Parser/parser_overflow.c
+</li>
+</ul>
+</td>
+<td>
+  <ul>
+<li>Analysis/inline-not-supported.c
+</li>
+<li>Analysis/stack-addr-ps.c
+</li>
+<li>Analysis/stack-block-returned.cpp
+</li>
+<li>CXX/drs/cwg14xx.cpp
+</li>
+<li>CXX/drs/cwg23xx.cpp
+</li>
+<li>CodeGen/2008-08-07-GEPIntToPtr.c
+</li>
+<li>CodeGen/block-with-predefinedexpr.c
+</li>
+<li>CodeGen/blocks.c
+</li>
+<li>CodeGen/blocksignature.c
+</li>
+<li>CodeGen/blockstret.c
+</li>
+<li>CodeGen/blockwithlocalstatic.c
+</li>
+<li>CodeGen/cfi-icall-cross-dso2.c
+</li>
+<li>CodeGen/debug-info-block-out-return.c
+</li>
+<li>CodeGen/global-blocks-lines.c
+</li>
+<li>CodeGen/global-blocks-win32.c
+</li>
+<li>CodeGen/sanitize-blocks.c
+</li>
+<li>CodeGenCXX/2008-05-07-CrazyOffsetOf.cpp
+</li>
+<li>CodeGenCXX/blocks-cxx11.cpp
+</li>
+<li>CodeGenCXX/const-init-cxx11.cpp
+</li>
+<li>CodeGenCXX/copy-constructor-synthesis-2.cpp
+</li>
+<li>CodeGenCXX/cxx11-thread-local-instantiated.cpp
+</li>
+<li>CodeGenCXX/global-block-literal-helpers.cpp
+</li>
+<li>CodeGenCXX/mangle-ms-templates-memptrs.cpp
+</li>
+<li>CodeGenCXX/mangle-nttp-anon-union.cpp
+</li>
+<li>CodeGenObjC/2008-10-3-EhValue.m
+</li>
+<li>CodeGenObjC/ivar-invariant.m
+</li>
+<li>CodeGenObjC/local-static-block.m
+</li>
+<li>CodeGenOpenCL/blocks.cl
+</li>
+<li>CodeGenOpenCL/cl20-device-side-enqueue.cl
+</li>
+<li>InterfaceStubs/blocks.c
+</li>
+<li>Modules/compare-record.c
+</li>
+<li>Modules/enum-codegen.cpp
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+<li>Modules/merge-decl-context.cpp
+</li>
+<li>Modules/merge-implicit-special-members.cpp
+</li>
+<li>Modules/merge-record-definition-visibility.m
+</li>
+<li>Modules/merge-records.cppm
+</li>
+<li>Modules/merge-using-decls.cpp
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+<li>Modules/submodules-merge-defs.cpp
+</li>
+<li>Rewriter/rewrite-block-literal.mm
+</li>
+<li>Sema/block-literal.c
+</li>
+<li>Sema/block-misc.c
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+<li>Sema/block-return.c
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+<li>Sema/compound-literal.c
+</li>
+<li>Sema/warn-shadow.c
+</li>
+<li>SemaCXX/builtin-align-cxx.cpp
+</li>
+<li>SemaCXX/consteval-cleanup.cpp
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+<li>SemaCXX/cxx0x-nontrivial-union.cpp
+</li>
+<li>SemaCXX/discrim-union.cpp
+</li>
+<li>SemaObjC/arc-nsconsumed-errors.m
+</li>
+<li>SemaObjC/block-literal-with-attribute.m
+</li>
+<li>SemaObjC/exprs.m
+</li>
+<li>SemaObjC/externally-retained.m
+</li>
+<li>SemaObjC/nonnull.m
+</li>
+<li>SemaObjC/unguarded-availability.m
+</li>
+<li>SemaObjCXX/nullability-pragmas.mm
+</li>
+</ul>
+</td>
+</tr>
 <tr>
   <td>2024-08-09</td>
   <td class='num'>278</td>
@@ -460,45 +594,7 @@ new Chart("allChart", allConfig);
 </ul>
 </td>
 </tr>
-<tr>
-  <td>2024-07-05</td>
-  <td class='num'>344</td>
-  <td class='num'>
-<span class='pos'>
--6
-</span>
-  </td>
-<td>
-  <ul>
-<li>OpenMP/for_codegen.cpp
-</li>
-<li>SemaTemplate/deduction.cpp
-</li>
-</ul>
-</td>
-<td>
-  <ul>
-<li>Analysis/array-init-loop.cpp
-</li>
-<li>Analysis/index-type.c
-</li>
-<li>Analysis/initialization.c
-</li>
-<li>Analysis/misc-ps-region-store.cpp
-</li>
-<li>Analysis/out-of-bounds.c
-</li>
-<li>CodeGenCXX/atomicinit.cpp
-<sup class='hardfail'>[Explicit Test]</sup>
-</li>
-<li>SemaCXX/cxx1y-initializer-aggregates.cpp
-</li>
-<li>SemaTemplate/dependent-expr.cpp
-</li>
-</ul>
-</td>
-</tr>
-<tr><td colspan='5'>Showing only 5 datasets of 16 total</td></tr>
+<tr><td colspan='5'>Showing only 5 datasets of 17 total</td></tr>
 </table>
 </body>
 </html>
