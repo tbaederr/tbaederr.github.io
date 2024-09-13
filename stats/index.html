@@ -81,6 +81,10 @@
     <td class='slim'><em>CodeGenObjC/encode-test-4.m</em></td>
     <td class='slim'>Comparison against @encode is unspecified.</td>
   </tr>
+  <tr>
+    <td class='slim'><em>SemaCXX/new-delete.cpp</em></td>
+    <td class='slim'>Diagnostic differences are okay.</td>
+  </tr>
 
 
 </table>
@@ -102,13 +106,13 @@ function listElements(arr, elementName) {
 
 
 const allData = {
-  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20','2024-06-29','2024-07-05','2024-07-12','2024-07-19','2024-07-26','2024-08-09','2024-08-20','2024-09-02',],
+  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20','2024-06-29','2024-07-05','2024-07-12','2024-07-19','2024-07-26','2024-08-09','2024-08-20','2024-09-02','2024-09-13',],
   borderColor: '#0f0',
 
   datasets: [
     {
       label: 'check-clang',
-      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, 350, 344, 336, 320, 296, 278, 224, 212, ],
+      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, 350, 344, 336, 320, 296, 278, 224, 212, 208, ],
       stepped: true,
       backgroundColor: '#7ED7C1',
       borderColor: 'green',
@@ -163,6 +167,57 @@ new Chart("allChart", allConfig);
           <th>Fixed</th>
         </tr>
         
+<tr>
+  <td>2024-09-13</td>
+  <td class='num'>208</td>
+  <td class='num'>2798</td>
+  <td class='num'>
+<span class='pos'>
+-4
+</span>
+  </td>
+<td>
+  <ul>
+<li>Analysis/inlining/path-notes.cpp
+</li>
+<li>Analysis/misc-ps-region-store.cpp
+</li>
+<li>Sema/fp16vec-sema.c
+</li>
+<li>SemaCXX/builtin-is-within-lifetime.cpp
+<sup class='note'>[builtin_bit_cast]</sup>
+</li>
+<li>SemaCXX/consteval-builtin.cpp
+</li>
+</ul>
+</td>
+<td>
+  <ul>
+<li>CXX/drs/cwg15xx.cpp
+</li>
+<li>CXX/temp/temp.res/temp.dep/temp.dep.constexpr/p2.cpp
+</li>
+<li>CodeGenCXX/const-base-cast.cpp
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+<li>CodeGenCXX/member-expressions.cpp
+</li>
+<li>CodeGenObjC/boxing.m
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+<li>Parser/cxx0x-lambda-expressions.cpp
+</li>
+<li>SemaCXX/cxx2a-consteval-default-params.cpp
+</li>
+<li>SemaCXX/new-delete.cpp
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+<li>SemaObjC/non-trivial-c-union.m
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+</ul>
+</td>
+</tr>
 <tr>
   <td>2024-09-02</td>
   <td class='num'>212</td>
@@ -525,69 +580,7 @@ new Chart("allChart", allConfig);
 </ul>
 </td>
 </tr>
-<tr>
-  <td>2024-07-19</td>
-  <td class='num'>320</td>
-  <td class='num'>2749</td>
-  <td class='num'>
-<span class='pos'>
--16
-</span>
-  </td>
-<td>
-  <ul>
-<li>C/C23/n2653.c
-<sup class='note'>[builtin_constant_p]</sup>
-</li>
-<li>CodeGenCXX/blocks-cxx11.cpp
-</li>
-</ul>
-</td>
-<td>
-  <ul>
-<li>C/drs/dr2xx.c
-</li>
-<li>CXX/basic/basic.def.odr/p2-typeid.cpp
-</li>
-<li>CXX/drs/cwg13xx.cpp
-</li>
-<li>CXX/stmt.stmt/stmt.select/stmt.if/p2.cpp
-</li>
-<li>CodeGenCXX/const-init-cxx2a.cpp
-</li>
-<li>CodeGenCXX/cxx1z-constexpr-if.cpp
-<sup class='hardfail'>[Explicit Test]</sup>
-</li>
-<li>CodeGenCXX/dllimport.cpp
-</li>
-<li>Parser/cxx2a-bitfield-init.cpp
-</li>
-<li>Rewriter/rewrite-modern-super.mm
-</li>
-<li>Sema/shift-count-negative.c
-<sup class='hardfail'>[Explicit Test]</sup>
-</li>
-<li>Sema/shift-count-overflow.c
-</li>
-<li>Sema/shift-negative-value.c
-</li>
-<li>SemaCXX/altivec.cpp
-</li>
-<li>SemaCXX/constexpr-function-recovery-crash.cpp
-</li>
-<li>SemaCXX/constexpr-turing-cxx2a.cpp
-</li>
-<li>SemaCXX/cxx1z-constexpr-lambdas.cpp
-</li>
-<li>SemaCXX/enum.cpp
-<sup class='hardfail'>[Explicit Test]</sup>
-</li>
-<li>SemaTemplate/deduction.cpp
-</li>
-</ul>
-</td>
-</tr>
-<tr><td colspan='6'>Showing only 5 datasets of 18 total</td></tr>
+<tr><td colspan='6'>Showing only 5 datasets of 19 total</td></tr>
 </table>
 </body>
 </html>
