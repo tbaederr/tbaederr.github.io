@@ -106,13 +106,13 @@ function listElements(arr, elementName) {
 
 
 const allData = {
-  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20','2024-06-29','2024-07-05','2024-07-12','2024-07-19','2024-07-26','2024-08-09','2024-08-20','2024-09-02','2024-09-13','2024-09-23','2024-09-27','2024-10-04','2024-10-14','2024-10-20',],
+  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20','2024-06-29','2024-07-05','2024-07-12','2024-07-19','2024-07-26','2024-08-09','2024-08-20','2024-09-02','2024-09-13','2024-09-23','2024-09-27','2024-10-04','2024-10-14','2024-10-20','2024-10-30',],
   borderColor: '#0f0',
 
   datasets: [
     {
       label: 'check-clang',
-      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, 350, 344, 336, 320, 296, 278, 224, 212, 208, 198, 190, 181, 179, 175, ],
+      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, 350, 344, 336, 320, 296, 278, 224, 212, 208, 198, 190, 181, 179, 175, 155, ],
       stepped: true,
       backgroundColor: '#7ED7C1',
       borderColor: 'green',
@@ -167,6 +167,64 @@ new Chart("allChart", allConfig);
           <th>Fixed</th>
         </tr>
         
+<tr>
+  <td>2024-10-30</td>
+  <td class='num'>155</td>
+  <td class='num'>1953</td>
+  <td class='num'>
+<span class='pos'>
+-20
+</span>
+  </td>
+<td>
+</td>
+<td>
+  <ul>
+<li>CodeGen/builtins-mips-msa.c
+</li>
+<li>CodeGenCXX/2005-01-03-StaticInitializers.cpp
+</li>
+<li>OpenMP/distribute_parallel_for_simd_aligned_messages.cpp
+</li>
+<li>OpenMP/distribute_simd_aligned_messages.cpp
+</li>
+<li>OpenMP/for_simd_aligned_messages.cpp
+</li>
+<li>OpenMP/masked_taskloop_simd_aligned_messages.cpp
+</li>
+<li>OpenMP/master_taskloop_simd_aligned_messages.cpp
+</li>
+<li>OpenMP/parallel_for_simd_aligned_messages.cpp
+</li>
+<li>OpenMP/parallel_masked_taskloop_simd_aligned_messages.cpp
+</li>
+<li>OpenMP/parallel_master_taskloop_simd_aligned_messages.cpp
+</li>
+<li>OpenMP/simd_aligned_messages.cpp
+</li>
+<li>OpenMP/target_parallel_for_simd_aligned_messages.cpp
+</li>
+<li>OpenMP/target_simd_aligned_messages.cpp
+</li>
+<li>OpenMP/target_teams_distribute_parallel_for_simd_aligned_messages.cpp
+</li>
+<li>OpenMP/target_teams_distribute_simd_aligned_messages.cpp
+</li>
+<li>OpenMP/taskloop_simd_aligned_messages.cpp
+</li>
+<li>OpenMP/teams_distribute_parallel_for_simd_aligned_messages.cpp
+</li>
+<li>OpenMP/teams_distribute_simd_aligned_messages.cpp
+</li>
+<li>Sema/arithmetic-fence-builtin.c
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+<li>SemaCXX/c99-variable-length-array.cpp
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+</ul>
+</td>
+</tr>
 <tr>
   <td>2024-10-20</td>
   <td class='num'>175</td>
@@ -354,61 +412,7 @@ new Chart("allChart", allConfig);
 </ul>
 </td>
 </tr>
-<tr>
-  <td>2024-09-23</td>
-  <td class='num'>198</td>
-  <td class='num'>2391</td>
-  <td class='num'>
-<span class='pos'>
--10
-</span>
-  </td>
-<td>
-  <ul>
-<li>CodeGen/2005-03-05-OffsetOfHack.c
-</li>
-<li>SemaHLSL/BuiltIns/asfloat-constexpr.hlsl
-</li>
-<li>SemaHLSL/BuiltIns/asuint-constexpr.hlsl
-</li>
-</ul>
-</td>
-<td>
-  <ul>
-<li>CXX/special/class.init/class.inhctor.init/p1.cpp
-</li>
-<li>CodeGen/2005-01-02-ConstantInits.c
-</li>
-<li>CodeGenCXX/weak-init.cpp
-<sup class='hardfail'>[Explicit Test]</sup>
-</li>
-<li>CodeGenObjC/2009-08-05-utf16.m
-</li>
-<li>CodeGenObjC/2010-02-01-utf16-with-null.m
-</li>
-<li>CodeGenObjC/constant-strings.m
-</li>
-<li>CodeGenObjC/ns-constant-strings.m
-</li>
-<li>CodeGenObjCXX/arc-constexpr.mm
-</li>
-<li>CodeGenObjCXX/arc-cxx11-init-list.mm
-</li>
-<li>Sema/annotate-type.c
-<sup class='hardfail'>[Explicit Test]</sup>
-</li>
-<li>SemaCXX/constexpr-vectors.cpp
-<sup class='hardfail'>[Explicit Test]</sup>
-</li>
-<li>SemaCXX/vartemplate-lambda.cpp
-</li>
-<li>SemaCXX/weak-init.cpp
-<sup class='hardfail'>[Explicit Test]</sup>
-</li>
-</ul>
-</td>
-</tr>
-<tr><td colspan='6'>Showing only 5 datasets of 24 total</td></tr>
+<tr><td colspan='6'>Showing only 5 datasets of 25 total</td></tr>
 </table>
 </body>
 </html>
