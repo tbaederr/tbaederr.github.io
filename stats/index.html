@@ -106,13 +106,13 @@ function listElements(arr, elementName) {
 
 
 const allData = {
-  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20','2024-06-29','2024-07-05','2024-07-12','2024-07-19','2024-07-26','2024-08-09','2024-08-20','2024-09-02','2024-09-13','2024-09-23','2024-09-27','2024-10-04','2024-10-14','2024-10-20','2024-10-30',],
+  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20','2024-06-29','2024-07-05','2024-07-12','2024-07-19','2024-07-26','2024-08-09','2024-08-20','2024-09-02','2024-09-13','2024-09-23','2024-09-27','2024-10-04','2024-10-14','2024-10-20','2024-10-30','2024-11-08',],
   borderColor: '#0f0',
 
   datasets: [
     {
       label: 'check-clang',
-      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, 350, 344, 336, 320, 296, 278, 224, 212, 208, 198, 190, 181, 179, 175, 155, ],
+      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, 350, 344, 336, 320, 296, 278, 224, 212, 208, 198, 190, 181, 179, 175, 155, 145, ],
       stepped: true,
       backgroundColor: '#7ED7C1',
       borderColor: 'green',
@@ -167,6 +167,46 @@ new Chart("allChart", allConfig);
           <th>Fixed</th>
         </tr>
         
+<tr>
+  <td>2024-11-08</td>
+  <td class='num'>145</td>
+  <td class='num'>1637</td>
+  <td class='num'>
+<span class='pos'>
+-10
+</span>
+  </td>
+<td>
+</td>
+<td>
+  <ul>
+<li>Analysis/builtin_bitcast.cpp
+<sup class='note'>[builtin_bit_cast]</sup>
+</li>
+<li>C/C11/n1310.c
+<sup class='note'>[builtin_bit_cast]</sup>
+</li>
+<li>CodeGen/X86/x86-builtins.c
+</li>
+<li>CodeGen/builtins-hexagon.c
+</li>
+<li>CodeGen/pr4349.c
+</li>
+<li>CodeGenCXX/mangle-ms-templates.cpp
+</li>
+<li>Sema/constant_builtins_vector.cpp
+<sup class='note'>[builtin_bit_cast]</sup>
+</li>
+<li>SemaCXX/builtin-std-move.cpp
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+<li>SemaHLSL/BuiltIns/asfloat-constexpr.hlsl
+</li>
+<li>SemaHLSL/BuiltIns/asuint-constexpr.hlsl
+</li>
+</ul>
+</td>
+</tr>
 <tr>
   <td>2024-10-30</td>
   <td class='num'>155</td>
@@ -364,55 +404,7 @@ new Chart("allChart", allConfig);
 </ul>
 </td>
 </tr>
-<tr>
-  <td>2024-09-27</td>
-  <td class='num'>190</td>
-  <td class='num'>2076</td>
-  <td class='num'>
-<span class='pos'>
--8
-</span>
-  </td>
-<td>
-  <ul>
-<li>Modules/string-literal-uniqueness.cpp
-</li>
-<li>SemaCXX/builtins.cpp
-</li>
-<li>SemaCXX/ptrauth-sign-constant.cpp
-</li>
-</ul>
-</td>
-<td>
-  <ul>
-<li>AST/fixed_point.c
-</li>
-<li>AST/fixed_point_to_string.c
-</li>
-<li>CXX/basic/basic.types/p10.cpp
-</li>
-<li>CXX/drs/cwg18xx.cpp
-</li>
-<li>CXX/drs/cwg29xx.cpp
-</li>
-<li>CodeGenCXX/cxx2a-consteval.cpp
-<sup class='hardfail'>[Explicit Test]</sup>
-</li>
-<li>CodeGenObjC/extern-void-class-decl.m
-</li>
-<li>Frontend/fixed_point_declarations.c
-</li>
-<li>Frontend/fixed_point_to_bool.c
-</li>
-<li>Sema/fp16vec-sema.c
-<sup class='hardfail'>[Explicit Test]</sup>
-</li>
-<li>SemaCXX/ms-constexpr-new.cpp
-</li>
-</ul>
-</td>
-</tr>
-<tr><td colspan='6'>Showing only 5 datasets of 25 total</td></tr>
+<tr><td colspan='6'>Showing only 5 datasets of 26 total</td></tr>
 </table>
 </body>
 </html>
