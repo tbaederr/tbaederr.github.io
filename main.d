@@ -34,7 +34,7 @@ pure bool isRelevantEvent(const ref JSONValue V) {
 struct Event {
 	string name;
 	string detail;
-	size_t duration; // Nanoseconds.
+	size_t duration; // Microseconds.
 
 	pure bool opEquals(const ref Event E) {
 		return E.name == name && E.detail == detail;
@@ -57,6 +57,20 @@ Event[] readTraceEvents(string filename) {
 	}
 
 	return events;
+}
+
+void sumEvents(ref Event[] A, const ref Event[] B) {
+	assert(A.length == B.length);
+
+	size_t i = 0;
+	foreach (const ref Event E; B) {
+		assert(A[i].detail == E.detail);
+
+		A[i].duration += E.duration;
+
+		++i;
+	}
+
 }
 
 struct ParsedDetail {
@@ -90,21 +104,64 @@ pure string escape(string s) {
 
 
 void main(string[] args) {
-	if (args.length < 3) {
-		writeln("Must pass input files");
+
+	int nInputFiles = 0;
+	if (args.length < 2) {
+		writeln("Usage: N [files] Limit");
 		return;
 	}
+	nInputFiles = to!int(args[1]);
+
+
+	string[] oldFiles;
+	string[] newFiles;
+
+	for (int i = 0; i < nInputFiles; ++i) {
+		oldFiles ~= args[1 + 1 + i];
+	}
+	writeln("oldFiles: ", oldFiles);
+
+	for (int i = 0; i < nInputFiles; ++i) {
+		newFiles ~= args[1 + 1 + nInputFiles + i];
+	}
+	writeln("newFiles: ", newFiles);
 
 	size_t limit = 1000;
-	if (args.length == 4) {
-		if (args[3][0] == '-')
+	if (args.length == (1 + (nInputFiles * 2) + 1) + 1) {
+		if (args[1 + (nInputFiles * 2) + 1][0] == '-')
 			limit = cast(size_t)-1;
 		else
-			limit = to!size_t(args[3]);
+			limit = to!size_t(args[1 + (nInputFiles * 2) + 1]);
+	}
+	writeln("Limit: ", limit);
+
+	Event[] oldEvents;
+	Event[] newEvents;
+	// Read all old files.
+	bool first = true;
+	foreach (string file; oldFiles) {
+		writeln("Reading ", file, "...");
+		Event[] fileEvents = readTraceEvents(file);
+		if (first) {
+			oldEvents = fileEvents;
+			first = false;
+		} else {
+			sumEvents(oldEvents, fileEvents);
+		}
 	}
 
-	Event[] oldEvents = readTraceEvents(args[1]);
-	Event[] newEvents = readTraceEvents(args[2]);
+	// Read all new files.
+	first = true;
+	foreach (string file; newFiles) {
+		writeln("Reading ", file, "...");
+		Event[] fileEvents = readTraceEvents(file);
+		if (first) {
+			newEvents = fileEvents;
+			first = false;
+		} else {
+			sumEvents(newEvents, fileEvents);
+		}
+	}
 
 	size_t sumOldEvents = oldEvents.map!(e => e.duration).sum();
 	size_t sumNewEvents = newEvents.map!(e => e.duration).sum();
@@ -133,8 +190,10 @@ void main(string[] args) {
 		string cssClass = sumNewEvents < sumOldEvents ? "nice" : (sumOldEvents == sumNewEvents ? "fine" : "meh");
 		html ~= "<td class=\"" ~ cssClass ~ "\">" ~ to!string(sumNewEvents) ~ "</td>";
 		double diff = cast(double)sumNewEvents - cast(double)sumOldEvents;
-		double percent = diff / cast(double)sumNewEvents;
-		html ~= "<td>" ~ (percent > 0 ? "+" : "") ~ format("%.2f", percent) ~ "%</td></tr>\n";
+		writeln("diff: ", diff);
+		writeln(diff, " / ", sumOldEvents);
+		double percent = diff / cast(double)sumOldEvents;
+		html ~= "<td>" ~ (percent > 0 ? "+" : "") ~ format("%.2f", percent * 100) ~ "%</td></tr>\n";
 	}
 
 	size_t i = 0;

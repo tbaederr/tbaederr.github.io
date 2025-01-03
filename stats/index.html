@@ -114,13 +114,13 @@ function listElements(arr, elementName) {
 
 
 const allData = {
-  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20','2024-06-29','2024-07-05','2024-07-12','2024-07-19','2024-07-26','2024-08-09','2024-08-20','2024-09-02','2024-09-13','2024-09-23','2024-09-27','2024-10-04','2024-10-14','2024-10-20','2024-10-30','2024-11-08','2024-11-25','2024-12-03','2024-12-18',],
+  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20','2024-06-29','2024-07-05','2024-07-12','2024-07-19','2024-07-26','2024-08-09','2024-08-20','2024-09-02','2024-09-13','2024-09-23','2024-09-27','2024-10-04','2024-10-14','2024-10-20','2024-10-30','2024-11-08','2024-11-25','2024-12-03','2024-12-18','2025-01-03',],
   borderColor: '#0f0',
 
   datasets: [
     {
       label: 'check-clang',
-      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, 350, 344, 336, 320, 296, 278, 224, 212, 208, 198, 190, 181, 179, 175, 155, 145, 146, 140, 135, ],
+      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, 350, 344, 336, 320, 296, 278, 224, 212, 208, 198, 190, 181, 179, 175, 155, 145, 146, 140, 135, 127, ],
       stepped: true,
       backgroundColor: '#7ED7C1',
       borderColor: 'green',
@@ -175,6 +175,47 @@ new Chart("allChart", allConfig);
           <th>Fixed</th>
         </tr>
         
+<tr>
+  <td>2025-01-03</td>
+  <td class='num'>127</td>
+  <td class='num'>1368</td>
+  <td class='num'>
+<span class='pos'>
+-8
+</span>
+  </td>
+<td>
+  <ul>
+<li>CodeGen/pr41027.c
+<sup class='note'>[builtin_constant_p]</sup>
+</li>
+</ul>
+</td>
+<td>
+  <ul>
+<li>CXX/drs/cwg19xx.cpp
+</li>
+<li>CodeGen/SystemZ/builtins-systemz-zvector-error.c
+</li>
+<li>CodeGenCXX/builtin-constant-p.cpp
+<sup class='note'>[builtin_constant_p]</sup>
+</li>
+<li>CodeGenCXX/typeid-cxx11-with-address-space.cpp
+</li>
+<li>CodeGenCXX/typeid-cxx11.cpp
+</li>
+<li>CodeGenCXX/typeid-with-address-space.cpp
+</li>
+<li>CodeGenCXX/typeid.cpp
+</li>
+<li>CodeGenCXX/visibility-ms-compat.cpp
+</li>
+<li>Sema/warn-unsequenced.c
+<sup class='note'>[builtin_constant_p]</sup>
+</li>
+</ul>
+</td>
+</tr>
 <tr>
   <td>2024-12-18</td>
   <td class='num'>135</td>
@@ -315,65 +356,7 @@ new Chart("allChart", allConfig);
 </ul>
 </td>
 </tr>
-<tr>
-  <td>2024-10-30</td>
-  <td class='num'>155</td>
-  <td class='num'>1953</td>
-  <td class='num'>
-<span class='pos'>
--20
-</span>
-  </td>
-<td>
-</td>
-<td>
-  <ul>
-<li>CodeGen/builtins-mips-msa.c
-</li>
-<li>CodeGenCXX/2005-01-03-StaticInitializers.cpp
-</li>
-<li>OpenMP/distribute_parallel_for_simd_aligned_messages.cpp
-</li>
-<li>OpenMP/distribute_simd_aligned_messages.cpp
-</li>
-<li>OpenMP/for_simd_aligned_messages.cpp
-</li>
-<li>OpenMP/masked_taskloop_simd_aligned_messages.cpp
-</li>
-<li>OpenMP/master_taskloop_simd_aligned_messages.cpp
-</li>
-<li>OpenMP/parallel_for_simd_aligned_messages.cpp
-</li>
-<li>OpenMP/parallel_masked_taskloop_simd_aligned_messages.cpp
-</li>
-<li>OpenMP/parallel_master_taskloop_simd_aligned_messages.cpp
-</li>
-<li>OpenMP/simd_aligned_messages.cpp
-</li>
-<li>OpenMP/target_parallel_for_simd_aligned_messages.cpp
-</li>
-<li>OpenMP/target_simd_aligned_messages.cpp
-</li>
-<li>OpenMP/target_teams_distribute_parallel_for_simd_aligned_messages.cpp
-</li>
-<li>OpenMP/target_teams_distribute_simd_aligned_messages.cpp
-</li>
-<li>OpenMP/taskloop_simd_aligned_messages.cpp
-</li>
-<li>OpenMP/teams_distribute_parallel_for_simd_aligned_messages.cpp
-</li>
-<li>OpenMP/teams_distribute_simd_aligned_messages.cpp
-</li>
-<li>Sema/arithmetic-fence-builtin.c
-<sup class='hardfail'>[Explicit Test]</sup>
-</li>
-<li>SemaCXX/c99-variable-length-array.cpp
-<sup class='hardfail'>[Explicit Test]</sup>
-</li>
-</ul>
-</td>
-</tr>
-<tr><td colspan='6'>Showing only 5 datasets of 29 total</td></tr>
+<tr><td colspan='6'>Showing only 5 datasets of 30 total</td></tr>
 </table>
 </body>
 </html>
