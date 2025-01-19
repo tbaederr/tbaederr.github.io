@@ -114,13 +114,13 @@ function listElements(arr, elementName) {
 
 
 const allData = {
-  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20','2024-06-29','2024-07-05','2024-07-12','2024-07-19','2024-07-26','2024-08-09','2024-08-20','2024-09-02','2024-09-13','2024-09-23','2024-09-27','2024-10-04','2024-10-14','2024-10-20','2024-10-30','2024-11-08','2024-11-25','2024-12-03','2024-12-18','2025-01-03',],
+  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20','2024-06-29','2024-07-05','2024-07-12','2024-07-19','2024-07-26','2024-08-09','2024-08-20','2024-09-02','2024-09-13','2024-09-23','2024-09-27','2024-10-04','2024-10-14','2024-10-20','2024-10-30','2024-11-08','2024-11-25','2024-12-03','2024-12-18','2025-01-03','2025-01-19',],
   borderColor: '#0f0',
 
   datasets: [
     {
       label: 'check-clang',
-      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, 350, 344, 336, 320, 296, 278, 224, 212, 208, 198, 190, 181, 179, 175, 155, 145, 146, 140, 135, 127, ],
+      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, 350, 344, 336, 320, 296, 278, 224, 212, 208, 198, 190, 181, 179, 175, 155, 145, 146, 140, 135, 127, 125, ],
       stepped: true,
       backgroundColor: '#7ED7C1',
       borderColor: 'green',
@@ -175,6 +175,42 @@ new Chart("allChart", allConfig);
           <th>Fixed</th>
         </tr>
         
+<tr>
+  <td>2025-01-19</td>
+  <td class='num'>125</td>
+  <td class='num'>1327</td>
+  <td class='num'>
+<span class='pos'>
+-2
+</span>
+  </td>
+<td>
+  <ul>
+<li>CXX/drs/cwg1xx.cpp
+<sup class='note'>[builtin_constant_p]</sup>
+</li>
+<li>CXX/drs/cwg28xx.cpp
+</li>
+<li>CodeGen/builtins-hexagon.c
+</li>
+</ul>
+</td>
+<td>
+  <ul>
+<li>CXX/drs/cwg4xx.cpp
+</li>
+<li>CodeGenCXX/mangle-fail.cpp
+</li>
+<li>PCH/cxx1y-default-initializer.cpp
+</li>
+<li>SemaCXX/attr-annotate.cpp
+</li>
+<li>SemaCXX/ptrauth-type-discriminator.cpp
+<sup class='hardfail'>[Explicit Test]</sup>
+</li>
+</ul>
+</td>
+</tr>
 <tr>
   <td>2025-01-03</td>
   <td class='num'>127</td>
@@ -316,47 +352,7 @@ new Chart("allChart", allConfig);
 </ul>
 </td>
 </tr>
-<tr>
-  <td>2024-11-08</td>
-  <td class='num'>145</td>
-  <td class='num'>1637</td>
-  <td class='num'>
-<span class='pos'>
--10
-</span>
-  </td>
-<td>
-</td>
-<td>
-  <ul>
-<li>Analysis/builtin_bitcast.cpp
-<sup class='note'>[builtin_bit_cast]</sup>
-</li>
-<li>C/C11/n1310.c
-<sup class='note'>[builtin_bit_cast]</sup>
-</li>
-<li>CodeGen/X86/x86-builtins.c
-</li>
-<li>CodeGen/builtins-hexagon.c
-</li>
-<li>CodeGen/pr4349.c
-</li>
-<li>CodeGenCXX/mangle-ms-templates.cpp
-</li>
-<li>Sema/constant_builtins_vector.cpp
-<sup class='note'>[builtin_bit_cast]</sup>
-</li>
-<li>SemaCXX/builtin-std-move.cpp
-<sup class='hardfail'>[Explicit Test]</sup>
-</li>
-<li>SemaHLSL/BuiltIns/asfloat-constexpr.hlsl
-</li>
-<li>SemaHLSL/BuiltIns/asuint-constexpr.hlsl
-</li>
-</ul>
-</td>
-</tr>
-<tr><td colspan='6'>Showing only 5 datasets of 30 total</td></tr>
+<tr><td colspan='6'>Showing only 5 datasets of 31 total</td></tr>
 </table>
 </body>
 </html>
