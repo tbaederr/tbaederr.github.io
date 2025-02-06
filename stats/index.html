@@ -114,13 +114,13 @@ function listElements(arr, elementName) {
 
 
 const allData = {
-  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20','2024-06-29','2024-07-05','2024-07-12','2024-07-19','2024-07-26','2024-08-09','2024-08-20','2024-09-02','2024-09-13','2024-09-23','2024-09-27','2024-10-04','2024-10-14','2024-10-20','2024-10-30','2024-11-08','2024-11-25','2024-12-03','2024-12-18','2025-01-03','2025-01-19','2025-01-31',],
+  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20','2024-06-29','2024-07-05','2024-07-12','2024-07-19','2024-07-26','2024-08-09','2024-08-20','2024-09-02','2024-09-13','2024-09-23','2024-09-27','2024-10-04','2024-10-14','2024-10-20','2024-10-30','2024-11-08','2024-11-25','2024-12-03','2024-12-18','2025-01-03','2025-01-19','2025-01-31','2025-02-06',],
   borderColor: '#0f0',
 
   datasets: [
     {
       label: 'check-clang',
-      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, 350, 344, 336, 320, 296, 278, 224, 212, 208, 198, 190, 181, 179, 175, 155, 145, 146, 140, 135, 127, 125, 124, ],
+      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, 350, 344, 336, 320, 296, 278, 224, 212, 208, 198, 190, 181, 179, 175, 155, 145, 146, 140, 135, 127, 125, 124, 124, ],
       stepped: true,
       borderColor: '#003f5c',
 
@@ -128,7 +128,7 @@ const allData = {
     },
     {
       label: 'check-cxx',
-      data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 755, ],
+      data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 755, 629, ],
       stepped: true,
       borderColor: '#ffa600',
       backgroundColor: '#ffce72',
@@ -184,6 +184,274 @@ new Chart("allChart", allConfig);
           <th>Fixed</th>
         </tr>
         
+<tr>
+  <td>2025-02-06</td>
+  <td class='num'>753</td>
+  <td class='num'>1220</td>
+  <td class='num'>
+<span class='pos'>
+-126
+</span>
+  </td>
+<td>
+</td>
+<td>
+  <ul>
+<li>libcxx/algorithms/alg.modifying.operations/copy_move_nontrivial.pass.cpp
+</li>
+<li>libcxx/ranges/range.adaptors/range.move.wrap/assign.copy.pass.cpp
+</li>
+<li>libcxx/ranges/range.adaptors/range.move.wrap/assign.move.pass.cpp
+</li>
+<li>libcxx/ranges/range.adaptors/range.move.wrap/deref.pass.cpp
+</li>
+<li>libcxx/utilities/optional/optional.object/optional.object.ctor/copy.pass.cpp
+</li>
+<li>libcxx/utilities/optional/optional.object/optional.object.ctor/move.pass.cpp
+</li>
+<li>std/algorithms/alg.sorting/alg.sort/stable.sort/stable_sort.pass.cpp
+</li>
+<li>std/containers/sequences/vector.bool/assign_move.pass.cpp
+</li>
+<li>std/containers/sequences/vector.bool/move.pass.cpp
+</li>
+<li>std/containers/sequences/vector.bool/move_alloc.pass.cpp
+</li>
+<li>std/containers/sequences/vector.bool/swap.pass.cpp
+</li>
+<li>std/containers/sequences/vector/access.pass.cpp
+</li>
+<li>std/containers/sequences/vector/contiguous.pass.cpp
+</li>
+<li>std/containers/sequences/vector/iterators.pass.cpp
+</li>
+<li>std/containers/sequences/vector/reverse_iterators.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.capacity/capacity.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.capacity/empty.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.capacity/reserve.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.capacity/resize_size_value.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.capacity/shrink_to_fit.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.capacity/size.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.capacity/swap.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.cons/assign_copy.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.cons/assign_initializer_list.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.cons/assign_size_value.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.cons/construct_size.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.cons/construct_size_value.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.cons/construct_size_value_alloc.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.cons/copy.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.cons/copy_alloc.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.cons/deduct.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.cons/initializer_list.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.cons/initializer_list_alloc.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.cons/op_equal_initializer_list.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.erasure/erase.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.erasure/erase_if.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.modifiers/clear.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.modifiers/insert_iter_initializer_list.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.modifiers/insert_iter_iter_iter.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.modifiers/insert_iter_size_value.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.modifiers/pop_back.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.modifiers/push_back.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.special/swap.pass.cpp
+</li>
+<li>std/containers/views/views.span/span.elem/at.pass.cpp
+</li>
+<li>std/iterators/predef.iterators/iterators.common/ctor.default.pass.cpp
+</li>
+<li>std/iterators/predef.iterators/iterators.common/ctor.iter.pass.cpp
+</li>
+<li>std/iterators/predef.iterators/iterators.common/ctor.sentinel.pass.cpp
+</li>
+<li>std/iterators/predef.iterators/iterators.common/iter_move.pass.cpp
+</li>
+<li>std/iterators/predef.iterators/iterators.common/iter_swap.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.adaptor.object/range_adaptor_closure.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.chunk.by/range.chunk.by.iter/compare.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.chunk.by/range.chunk.by.iter/deref.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.filter/begin.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.filter/iterator/compare.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.filter/iterator/increment.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.filter/iterator/iter_move.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.filter/iterator/iter_swap.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.filter/sentinel/compare.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.join/begin.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.join/end.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.join/range.join.iterator/ctor.other.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.join/range.join.sentinel/ctor.other.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.join/range.join.sentinel/eq.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.lazy.split/ctor.copy_move.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.lazy.split/ctor.view.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.lazy.split/range.lazy.split.inner/base.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.lazy.split/range.lazy.split.inner/iter_swap.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.lazy.split/range.lazy.split.outer.value/begin.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.lazy.split/range.lazy.split.outer.value/ctor.iter.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.lazy.split/range.lazy.split.outer.value/end.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.lazy.split/range.lazy.split.outer/ctor.parent.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.split/iterator/equal.pass.cpp
+</li>
+<li>std/ranges/range.factories/range.iota.view/empty.pass.cpp
+</li>
+<li>std/time/time.zone/time.zone.leap/assign.copy.pass.cpp
+</li>
+<li>std/time/time.zone/time.zone.timezone/time.zone.members/sys_info.zdump.pass.cpp
+</li>
+<li>std/utilities/expected/expected.expected/assign/emplace.pass.cpp
+</li>
+<li>std/utilities/expected/expected.expected/ctor/ctor.inplace_init_list.pass.cpp
+</li>
+<li>std/utilities/expected/expected.expected/ctor/ctor.unexpect_init_list.pass.cpp
+</li>
+<li>std/utilities/expected/expected.expected/observers/deref.pass.cpp
+</li>
+<li>std/utilities/expected/expected.expected/observers/error.pass.cpp
+</li>
+<li>std/utilities/expected/expected.expected/observers/has_value.pass.cpp
+</li>
+<li>std/utilities/expected/expected.expected/observers/value.pass.cpp
+</li>
+<li>std/utilities/expected/expected.unexpected/swap/swap.free.pass.cpp
+</li>
+<li>std/utilities/expected/expected.unexpected/swap/swap.member.pass.cpp
+</li>
+<li>std/utilities/expected/expected.void/assign/emplace.pass.cpp
+</li>
+<li>std/utilities/expected/expected.void/ctor/ctor.unexpect_init_list.pass.cpp
+</li>
+<li>std/utilities/expected/expected.void/observers/error.pass.cpp
+</li>
+<li>std/utilities/expected/expected.void/swap/free.swap.pass.cpp
+</li>
+<li>std/utilities/expected/expected.void/swap/member.swap.pass.cpp
+</li>
+<li>std/utilities/format/format.tuple/format.functions.format.verify.cpp
+</li>
+<li>std/utilities/function.objects/bind/func.bind/func.bind.bind/nested.pass.cpp
+</li>
+<li>std/utilities/memory/allocator.traits/allocator.traits.members/destroy.pass.cpp
+</li>
+<li>std/utilities/optional/optional.monadic/or_else.pass.cpp
+</li>
+<li>std/utilities/optional/optional.object/optional.object.assign/assign_value.pass.cpp
+</li>
+<li>std/utilities/optional/optional.object/optional.object.assign/copy.pass.cpp
+</li>
+<li>std/utilities/optional/optional.object/optional.object.assign/move.pass.cpp
+</li>
+<li>std/utilities/optional/optional.object/optional.object.ctor/copy.pass.cpp
+</li>
+<li>std/utilities/optional/optional.object/optional.object.ctor/move.pass.cpp
+</li>
+<li>std/utilities/optional/optional.object/optional.object.swap/swap.pass.cpp
+</li>
+<li>std/utilities/smartptr/unique.ptr/unique.ptr.class/unique.ptr.observers/dereference.single.pass.cpp
+</li>
+<li>std/utilities/smartptr/unique.ptr/unique.ptr.special/swap.pass.cpp
+</li>
+<li>std/utilities/tuple/tuple.tuple/tuple.elem/get_const_rv.pass.cpp
+</li>
+<li>std/utilities/utility/pairs/pairs.pair/swap.pass.cpp
+</li>
+<li>std/utilities/variant/variant.get/get_if_index.pass.cpp
+</li>
+<li>std/utilities/variant/variant.get/get_if_type.pass.cpp
+</li>
+<li>std/utilities/variant/variant.get/get_index.pass.cpp
+</li>
+<li>std/utilities/variant/variant.get/get_type.pass.cpp
+</li>
+<li>std/utilities/variant/variant.relops/relops.pass.cpp
+</li>
+<li>std/utilities/variant/variant.variant/variant.assign/copy.pass.cpp
+</li>
+<li>std/utilities/variant/variant.variant/variant.assign/move.pass.cpp
+</li>
+<li>std/utilities/variant/variant.variant/variant.ctor/T.pass.cpp
+</li>
+<li>std/utilities/variant/variant.variant/variant.ctor/default.pass.cpp
+</li>
+<li>std/utilities/variant/variant.variant/variant.ctor/in_place_index_args.pass.cpp
+</li>
+<li>std/utilities/variant/variant.variant/variant.ctor/in_place_index_init_list_args.pass.cpp
+</li>
+<li>std/utilities/variant/variant.variant/variant.ctor/in_place_type_args.pass.cpp
+</li>
+<li>std/utilities/variant/variant.variant/variant.ctor/in_place_type_init_list_args.pass.cpp
+</li>
+<li>std/utilities/variant/variant.variant/variant.mod/emplace_index_args.pass.cpp
+</li>
+<li>std/utilities/variant/variant.variant/variant.mod/emplace_index_init_list_args.pass.cpp
+</li>
+<li>std/utilities/variant/variant.variant/variant.mod/emplace_type_args.pass.cpp
+</li>
+<li>std/utilities/variant/variant.variant/variant.mod/emplace_type_init_list_args.pass.cpp
+</li>
+<li>std/utilities/variant/variant.visit.member/robust_against_adl.pass.cpp
+</li>
+<li>std/utilities/variant/variant.visit.member/visit.pass.cpp
+</li>
+<li>std/utilities/variant/variant.visit.member/visit_return_type.pass.cpp
+</li>
+<li>std/utilities/variant/variant.visit/robust_against_adl.pass.cpp
+</li>
+<li>std/utilities/variant/variant.visit/visit.pass.cpp
+</li>
+<li>std/utilities/variant/variant.visit/visit_return_type.pass.cpp
+</li>
+</ul>
+</td>
+</tr>
 <tr>
   <td>2025-01-31</td>
   <td class='num'>879</td>
@@ -1839,45 +2107,7 @@ new Chart("allChart", allConfig);
 </ul>
 </td>
 </tr>
-<tr>
-  <td>2024-12-03</td>
-  <td class='num'>140</td>
-  <td class='num'>1574</td>
-  <td class='num'>
-<span class='pos'>
--6
-</span>
-  </td>
-<td>
-  <ul>
-<li>CodeGen/builtins-elementwise-math.c
-</li>
-<li>CodeGenObjC/encode-test.m
-</li>
-</ul>
-</td>
-<td>
-  <ul>
-<li>AST/./ASTTests/TypePrinter/TemplateIdWithNTTP
-</li>
-<li>Analysis/global-region-invalidation.c
-</li>
-<li>CXX/lex/lex.literal/lex.ext/p5.cpp
-</li>
-<li>CXX/temp/temp.arg/temp.arg.nontype/p1-cxx20.cpp
-</li>
-<li>CodeGen/PowerPC/altivec.c
-</li>
-<li>Parser/altivec.c
-</li>
-<li>Sema/builtin-memcpy.c
-</li>
-<li>SemaCXX/cxx2a-nttp-printing.cpp
-</li>
-</ul>
-</td>
-</tr>
-<tr><td colspan='6'>Showing only 5 datasets of 32 total</td></tr>
+<tr><td colspan='6'>Showing only 5 datasets of 33 total</td></tr>
 </table>
 </body>
 </html>
