@@ -114,13 +114,13 @@ function listElements(arr, elementName) {
 
 
 const allData = {
-  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20','2024-06-29','2024-07-05','2024-07-12','2024-07-19','2024-07-26','2024-08-09','2024-08-20','2024-09-02','2024-09-13','2024-09-23','2024-09-27','2024-10-04','2024-10-14','2024-10-20','2024-10-30','2024-11-08','2024-11-25','2024-12-03','2024-12-18','2025-01-03','2025-01-19','2025-01-31','2025-02-06',],
+  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20','2024-06-29','2024-07-05','2024-07-12','2024-07-19','2024-07-26','2024-08-09','2024-08-20','2024-09-02','2024-09-13','2024-09-23','2024-09-27','2024-10-04','2024-10-14','2024-10-20','2024-10-30','2024-11-08','2024-11-25','2024-12-03','2024-12-18','2025-01-03','2025-01-19','2025-01-31','2025-02-06','2025-02-14',],
   borderColor: '#0f0',
 
   datasets: [
     {
       label: 'check-clang',
-      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, 350, 344, 336, 320, 296, 278, 224, 212, 208, 198, 190, 181, 179, 175, 155, 145, 146, 140, 135, 127, 125, 124, 124, ],
+      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, 350, 344, 336, 320, 296, 278, 224, 212, 208, 198, 190, 181, 179, 175, 155, 145, 146, 140, 135, 127, 125, 124, 124, 124, ],
       stepped: true,
       borderColor: '#003f5c',
 
@@ -128,7 +128,7 @@ const allData = {
     },
     {
       label: 'check-cxx',
-      data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 755, 629, ],
+      data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 755, 629, 541, ],
       stepped: true,
       borderColor: '#ffa600',
       backgroundColor: '#ffce72',
@@ -184,6 +184,212 @@ new Chart("allChart", allConfig);
           <th>Fixed</th>
         </tr>
         
+<tr>
+  <td>2025-02-14</td>
+  <td class='num'>665</td>
+  <td class='num'>1030</td>
+  <td class='num'>
+<span class='pos'>
+-88
+</span>
+  </td>
+<td>
+  <ul>
+<li>std/algorithms/alg.sorting/alg.sort/stable.sort/stable_sort.pass.cpp
+</li>
+<li>std/containers/sequences/vector/trivial_relocation.pass.cpp
+</li>
+<li>std/ranges/range.utility/range.utility.conv/to_std_containers.pass.cpp
+</li>
+</ul>
+</td>
+<td>
+  <ul>
+<li>libcxx/strings/basic.string/string.modifiers/clear_and_shrink.pass.cpp
+</li>
+<li>std/algorithms/alg.modifying.operations/alg.remove/ranges_remove_copy.pass.cpp
+</li>
+<li>std/algorithms/alg.modifying.operations/alg.replace/ranges_replace_copy.pass.cpp
+</li>
+<li>std/algorithms/alg.sorting/alg.set.operations/set.intersection/ranges_set_intersection.pass.cpp
+</li>
+<li>std/algorithms/alg.sorting/alg.set.operations/set.intersection/set_intersection_complexity.pass.cpp
+</li>
+<li>std/algorithms/ranges_robust_against_proxy_iterators.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.cons/construct_from_range.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.cons/move.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.modifiers/emplace.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.modifiers/emplace_back.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.modifiers/push_back_rvalue.pass.cpp
+</li>
+<li>std/containers/views/mdspan/default_accessor/access.pass.cpp
+</li>
+<li>std/containers/views/mdspan/default_accessor/offset.pass.cpp
+</li>
+<li>std/containers/views/mdspan/layout_left/ctor.layout_stride.pass.cpp
+</li>
+<li>std/containers/views/mdspan/layout_right/ctor.layout_stride.pass.cpp
+</li>
+<li>std/containers/views/mdspan/layout_stride/comparison.pass.cpp
+</li>
+<li>std/containers/views/mdspan/layout_stride/ctor.strided_mapping.pass.cpp
+</li>
+<li>std/containers/views/mdspan/layout_stride/index_operator.pass.cpp
+</li>
+<li>std/containers/views/mdspan/mdspan/assign.pass.cpp
+</li>
+<li>std/containers/views/mdspan/mdspan/conversion.pass.cpp
+</li>
+<li>std/containers/views/mdspan/mdspan/ctor.copy.pass.cpp
+</li>
+<li>std/containers/views/mdspan/mdspan/ctor.default.pass.cpp
+</li>
+<li>std/containers/views/mdspan/mdspan/ctor.dh_array.pass.cpp
+</li>
+<li>std/containers/views/mdspan/mdspan/ctor.dh_extents.pass.cpp
+</li>
+<li>std/containers/views/mdspan/mdspan/ctor.dh_integers.pass.cpp
+</li>
+<li>std/containers/views/mdspan/mdspan/ctor.dh_map.pass.cpp
+</li>
+<li>std/containers/views/mdspan/mdspan/ctor.dh_map_acc.pass.cpp
+</li>
+<li>std/containers/views/mdspan/mdspan/ctor.dh_span.pass.cpp
+</li>
+<li>std/containers/views/mdspan/mdspan/ctor.move.pass.cpp
+</li>
+<li>std/containers/views/mdspan/mdspan/deduction.pass.cpp
+</li>
+<li>std/containers/views/mdspan/mdspan/index_operator.pass.cpp
+</li>
+<li>std/containers/views/mdspan/mdspan/move.pass.cpp
+</li>
+<li>std/containers/views/mdspan/mdspan/properties.pass.cpp
+</li>
+<li>std/iterators/predef.iterators/iterators.common/ctor.converting.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.zip/begin.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.zip/end.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.zip/iterator/arithmetic.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.zip/iterator/compare.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.zip/iterator/decrement.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.zip/iterator/subscript.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.zip/sentinel/ctor.other.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.zip/sentinel/eq.pass.cpp
+</li>
+<li>std/utilities/expected/expected.expected/ctor/ctor.convert.copy.pass.cpp
+</li>
+<li>std/utilities/expected/expected.expected/ctor/ctor.convert.move.pass.cpp
+</li>
+<li>std/utilities/expected/expected.expected/ctor/ctor.copy.pass.cpp
+</li>
+<li>std/utilities/expected/expected.expected/ctor/ctor.move.pass.cpp
+</li>
+<li>std/utilities/expected/expected.expected/ctor/ctor.u.pass.cpp
+</li>
+<li>std/utilities/expected/expected.void/ctor/ctor.convert.copy.pass.cpp
+</li>
+<li>std/utilities/expected/expected.void/ctor/ctor.convert.move.pass.cpp
+</li>
+<li>std/utilities/expected/expected.void/ctor/ctor.copy.pass.cpp
+</li>
+<li>std/utilities/expected/expected.void/ctor/ctor.move.pass.cpp
+</li>
+<li>std/utilities/format/format.range/format.range.fmtmap/parse.pass.cpp
+</li>
+<li>std/utilities/format/format.range/format.range.fmtset/format.functions.format.pass.cpp
+</li>
+<li>std/utilities/format/format.range/format.range.formatter/format.functions.format.pass.cpp
+</li>
+<li>std/utilities/format/format.tuple/format.functions.format.pass.cpp
+</li>
+<li>std/utilities/format/format.tuple/parse.pass.cpp
+</li>
+<li>std/utilities/memory/allocator.uses/allocator.uses.construction/make_obj_using_allocator.pass.cpp
+</li>
+<li>std/utilities/memory/allocator.uses/allocator.uses.construction/uninitialized_construct_using_allocator.pass.cpp
+</li>
+<li>std/utilities/memory/allocator.uses/allocator.uses.construction/uses_allocator_construction_args.pass.cpp
+</li>
+<li>std/utilities/smartptr/unique.ptr/unique.ptr.class/unique.ptr.asgn/move.pass.cpp
+</li>
+<li>std/utilities/smartptr/unique.ptr/unique.ptr.class/unique.ptr.asgn/null.pass.cpp
+</li>
+<li>std/utilities/smartptr/unique.ptr/unique.ptr.class/unique.ptr.asgn/nullptr.pass.cpp
+</li>
+<li>std/utilities/smartptr/unique.ptr/unique.ptr.class/unique.ptr.ctor/move.pass.cpp
+</li>
+<li>std/utilities/smartptr/unique.ptr/unique.ptr.class/unique.ptr.ctor/pointer.pass.cpp
+</li>
+<li>std/utilities/smartptr/unique.ptr/unique.ptr.class/unique.ptr.ctor/pointer_deleter.pass.cpp
+</li>
+<li>std/utilities/smartptr/unique.ptr/unique.ptr.class/unique.ptr.modifiers/release.pass.cpp
+</li>
+<li>std/utilities/smartptr/unique.ptr/unique.ptr.class/unique.ptr.modifiers/reset.pass.cpp
+</li>
+<li>std/utilities/smartptr/unique.ptr/unique.ptr.create/make_unique_for_overwrite.pass.cpp
+</li>
+<li>std/utilities/template.bitset/bitset.members/count.pass.cpp
+</li>
+<li>std/utilities/template.bitset/bitset.members/flip_all.pass.cpp
+</li>
+<li>std/utilities/template.bitset/bitset.members/flip_one.pass.cpp
+</li>
+<li>std/utilities/template.bitset/bitset.members/index.pass.cpp
+</li>
+<li>std/utilities/template.bitset/bitset.members/index_const.pass.cpp
+</li>
+<li>std/utilities/template.bitset/bitset.members/left_shift.pass.cpp
+</li>
+<li>std/utilities/template.bitset/bitset.members/left_shift_eq.pass.cpp
+</li>
+<li>std/utilities/template.bitset/bitset.members/not_all.pass.cpp
+</li>
+<li>std/utilities/template.bitset/bitset.members/op_and_eq.pass.cpp
+</li>
+<li>std/utilities/template.bitset/bitset.members/op_eq_eq.pass.cpp
+</li>
+<li>std/utilities/template.bitset/bitset.members/op_or_eq.pass.cpp
+</li>
+<li>std/utilities/template.bitset/bitset.members/op_xor_eq.pass.cpp
+</li>
+<li>std/utilities/template.bitset/bitset.members/reset_one.pass.cpp
+</li>
+<li>std/utilities/template.bitset/bitset.members/right_shift.pass.cpp
+</li>
+<li>std/utilities/template.bitset/bitset.members/right_shift_eq.pass.cpp
+</li>
+<li>std/utilities/template.bitset/bitset.members/set_one.pass.cpp
+</li>
+<li>std/utilities/template.bitset/bitset.members/test.pass.cpp
+</li>
+<li>std/utilities/template.bitset/bitset.operators/op_and.pass.cpp
+</li>
+<li>std/utilities/template.bitset/bitset.operators/op_not.pass.cpp
+</li>
+<li>std/utilities/template.bitset/bitset.operators/op_or.pass.cpp
+</li>
+<li>std/utilities/variant/variant.variant/variant.ctor/copy.pass.cpp
+</li>
+<li>std/utilities/variant/variant.variant/variant.ctor/move.pass.cpp
+</li>
+<li>std/utilities/variant/variant.variant/variant.swap/swap.pass.cpp
+</li>
+</ul>
+</td>
+</tr>
 <tr>
   <td>2025-02-06</td>
   <td class='num'>753</td>
@@ -2070,44 +2276,7 @@ new Chart("allChart", allConfig);
 </ul>
 </td>
 </tr>
-<tr>
-  <td>2024-12-18</td>
-  <td class='num'>135</td>
-  <td class='num'>1425</td>
-  <td class='num'>
-<span class='pos'>
--5
-</span>
-  </td>
-<td>
-  <ul>
-<li>AST/ms-constexpr-new.cpp
-</li>
-<li>SemaCXX/ms-constexpr-new.cpp
-</li>
-</ul>
-</td>
-<td>
-  <ul>
-<li>CodeGen/X86/avx-builtins.c
-</li>
-<li>CodeGen/X86/avx512f-builtins.c
-</li>
-<li>CodeGen/X86/mmx-builtins.c
-</li>
-<li>CodeGen/X86/sse-builtins.c
-</li>
-<li>CodeGen/X86/sse2-builtins.c
-</li>
-<li>SemaCXX/constexpr-builtin-bit-cast-fp80.cpp
-<sup class='note'>[builtin_bit_cast]</sup>
-</li>
-<li>SemaCXX/cxx1z-noexcept-function-type.cpp
-</li>
-</ul>
-</td>
-</tr>
-<tr><td colspan='6'>Showing only 5 datasets of 33 total</td></tr>
+<tr><td colspan='6'>Showing only 5 datasets of 34 total</td></tr>
 </table>
 </body>
 </html>
