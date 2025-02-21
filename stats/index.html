@@ -114,13 +114,13 @@ function listElements(arr, elementName) {
 
 
 const allData = {
-  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20','2024-06-29','2024-07-05','2024-07-12','2024-07-19','2024-07-26','2024-08-09','2024-08-20','2024-09-02','2024-09-13','2024-09-23','2024-09-27','2024-10-04','2024-10-14','2024-10-20','2024-10-30','2024-11-08','2024-11-25','2024-12-03','2024-12-18','2025-01-03','2025-01-19','2025-01-31','2025-02-06','2025-02-14',],
+  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20','2024-06-29','2024-07-05','2024-07-12','2024-07-19','2024-07-26','2024-08-09','2024-08-20','2024-09-02','2024-09-13','2024-09-23','2024-09-27','2024-10-04','2024-10-14','2024-10-20','2024-10-30','2024-11-08','2024-11-25','2024-12-03','2024-12-18','2025-01-03','2025-01-19','2025-01-31','2025-02-06','2025-02-14','2025-02-21',],
   borderColor: '#0f0',
 
   datasets: [
     {
       label: 'check-clang',
-      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, 350, 344, 336, 320, 296, 278, 224, 212, 208, 198, 190, 181, 179, 175, 155, 145, 146, 140, 135, 127, 125, 124, 124, 124, ],
+      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, 350, 344, 336, 320, 296, 278, 224, 212, 208, 198, 190, 181, 179, 175, 155, 145, 146, 140, 135, 127, 125, 124, 124, 124, 125, ],
       stepped: true,
       borderColor: '#003f5c',
 
@@ -128,7 +128,7 @@ const allData = {
     },
     {
       label: 'check-cxx',
-      data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 755, 629, 541, ],
+      data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 755, 629, 541, 484, ],
       stepped: true,
       borderColor: '#ffa600',
       backgroundColor: '#ffce72',
@@ -184,6 +184,140 @@ new Chart("allChart", allConfig);
           <th>Fixed</th>
         </tr>
         
+<tr>
+  <td>2025-02-21</td>
+  <td class='num'>609</td>
+  <td class='num'>1230</td>
+  <td class='num'>
+<span class='pos'>
+-56
+</span>
+  </td>
+<td>
+  <ul>
+<li>Modules/malformed-constraint-template-non-type-parm-decl.cpp
+</li>
+</ul>
+</td>
+<td>
+  <ul>
+<li>libcxx/algorithms/ranges_robust_against_copying_comparators.pass.cpp
+</li>
+<li>libcxx/algorithms/ranges_robust_against_copying_projections.pass.cpp
+</li>
+<li>libcxx/assertions/modes/override_with_fast_mode.pass.cpp
+</li>
+<li>libcxx/assertions/modes/override_with_unchecked_mode.pass.cpp
+</li>
+<li>libcxx/gdb/gdb_pretty_printer_test.sh.cpp
+</li>
+<li>libcxx/utilities/format/format.string/format.string.std/escaped_output.pass.cpp
+</li>
+<li>libcxx/utilities/format/format.string/format.string.std/extended_grapheme_cluster.pass.cpp
+</li>
+<li>std/algorithms/alg.modifying.operations/alg.partitions/ranges_partition_copy.pass.cpp
+</li>
+<li>std/algorithms/alg.modifying.operations/alg.partitions/ranges_partition_point.pass.cpp
+</li>
+<li>std/algorithms/alg.nonmodifying/alg.equal/equal.pass.cpp
+</li>
+<li>std/algorithms/ranges_robust_against_dangling.pass.cpp
+</li>
+<li>std/algorithms/ranges_robust_against_differing_projections.pass.cpp
+</li>
+<li>std/algorithms/ranges_robust_against_omitting_invoke.pass.cpp
+</li>
+<li>std/algorithms/robust_against_proxy_iterators_lifetime_bugs.pass.cpp
+</li>
+<li>std/containers/sequences/vector.bool/append_range.pass.cpp
+</li>
+<li>std/containers/sequences/vector.bool/assign_range.pass.cpp
+</li>
+<li>std/containers/sequences/vector.bool/insert_range.pass.cpp
+</li>
+<li>std/containers/sequences/vector/compare.pass.cpp
+</li>
+<li>std/containers/sequences/vector/compare.three_way.pass.cpp
+</li>
+<li>std/containers/sequences/vector/trivial_relocation.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.capacity/resize_size.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.cons/assign_iter_iter.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.cons/assign_move.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.cons/construct_iter_iter.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.cons/construct_iter_iter_alloc.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.cons/move_alloc.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.modifiers/emplace_extra.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.modifiers/erase_iter.pass.cpp
+</li>
+<li>std/containers/sequences/vector/vector.modifiers/insert_iter_rvalue.pass.cpp
+</li>
+<li>std/iterators/iterator.requirements/indirectcallable.traits/indirect.value.t.pass.cpp
+</li>
+<li>std/iterators/predef.iterators/move.iterators/move.iter.ops/move.iter.op.const/convert.pass.cpp
+</li>
+<li>std/iterators/predef.iterators/move.iterators/move.iter.ops/move.iter.op=/move_iterator.pass.cpp
+</li>
+<li>std/iterators/predef.iterators/reverse.iterators/reverse.iter.cmp/three-way.pass.cpp
+</li>
+<li>std/language.support/cmp/cmp.alg/compare_partial_order_fallback.pass.cpp
+</li>
+<li>std/language.support/cmp/cmp.alg/partial_order.pass.cpp
+</li>
+<li>std/library/description/conventions/expos.only.func/synth_three_way.pass.cpp
+</li>
+<li>std/numerics/numeric.ops/transform.reduce/transform_reduce_iter_iter_init_bop_uop.pass.cpp
+</li>
+<li>std/numerics/numeric.ops/transform.reduce/transform_reduce_iter_iter_iter_init.pass.cpp
+</li>
+<li>std/numerics/numeric.ops/transform.reduce/transform_reduce_iter_iter_iter_init_op_op.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.chunk.by/range.chunk.by.iter/decrement.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.chunk.by/range.chunk.by.iter/increment.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.split/begin.pass.cpp
+</li>
+<li>std/ranges/range.utility/range.subrange/structured_bindings.pass.cpp
+</li>
+<li>std/utilities/function.objects/comparisons/compare_three_way.pass.cpp
+</li>
+<li>std/utilities/smartptr/unique.ptr/unique.ptr.class/unique.ptr.modifiers/swap.pass.cpp
+</li>
+<li>std/utilities/tuple/tuple.tuple/tuple.cnstr/PR20855_tuple_ref_binding_diagnostics.pass.cpp
+</li>
+<li>std/utilities/tuple/tuple.tuple/tuple.elem/tuple.by.type.pass.cpp
+</li>
+<li>std/utilities/tuple/tuple.tuple/tuple.rel/three_way.pass.cpp
+</li>
+<li>std/utilities/utility/pairs/pairs.spec/three_way_comparison.pass.cpp
+</li>
+<li>std/utilities/utility/utility.intcmp/intcmp.cmp_equal/cmp_equal.pass.cpp
+</li>
+<li>std/utilities/utility/utility.intcmp/intcmp.cmp_greater/cmp_greater.pass.cpp
+</li>
+<li>std/utilities/utility/utility.intcmp/intcmp.cmp_greater_equal/cmp_greater_equal.pass.cpp
+</li>
+<li>std/utilities/utility/utility.intcmp/intcmp.cmp_less/cmp_less.pass.cpp
+</li>
+<li>std/utilities/utility/utility.intcmp/intcmp.cmp_less_equal/cmp_less_equal.pass.cpp
+</li>
+<li>std/utilities/utility/utility.intcmp/intcmp.cmp_not_equal/cmp_not_equal.pass.cpp
+</li>
+<li>std/utilities/utility/utility.intcmp/intcmp.in_range/in_range.pass.cpp
+</li>
+<li>std/utilities/variant/variant.relops/three_way.pass.cpp
+</li>
+</ul>
+</td>
+</tr>
 <tr>
   <td>2025-02-14</td>
   <td class='num'>665</td>
@@ -2235,48 +2369,7 @@ new Chart("allChart", allConfig);
 </ul>
 </td>
 </tr>
-<tr>
-  <td>2025-01-03</td>
-  <td class='num'>127</td>
-  <td class='num'>1368</td>
-  <td class='num'>
-<span class='pos'>
--8
-</span>
-  </td>
-<td>
-  <ul>
-<li>CodeGen/pr41027.c
-<sup class='note'>[builtin_constant_p]</sup>
-</li>
-</ul>
-</td>
-<td>
-  <ul>
-<li>CXX/drs/cwg19xx.cpp
-</li>
-<li>CodeGen/SystemZ/builtins-systemz-zvector-error.c
-</li>
-<li>CodeGenCXX/builtin-constant-p.cpp
-<sup class='note'>[builtin_constant_p]</sup>
-</li>
-<li>CodeGenCXX/typeid-cxx11-with-address-space.cpp
-</li>
-<li>CodeGenCXX/typeid-cxx11.cpp
-</li>
-<li>CodeGenCXX/typeid-with-address-space.cpp
-</li>
-<li>CodeGenCXX/typeid.cpp
-</li>
-<li>CodeGenCXX/visibility-ms-compat.cpp
-</li>
-<li>Sema/warn-unsequenced.c
-<sup class='note'>[builtin_constant_p]</sup>
-</li>
-</ul>
-</td>
-</tr>
-<tr><td colspan='6'>Showing only 5 datasets of 34 total</td></tr>
+<tr><td colspan='6'>Showing only 5 datasets of 35 total</td></tr>
 </table>
 </body>
 </html>
