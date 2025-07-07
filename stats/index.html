@@ -122,13 +122,13 @@ function listElements(arr, elementName) {
 
 
 const allData = {
-  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20','2024-06-29','2024-07-05','2024-07-12','2024-07-19','2024-07-26','2024-08-09','2024-08-20','2024-09-02','2024-09-13','2024-09-23','2024-09-27','2024-10-04','2024-10-14','2024-10-20','2024-10-30','2024-11-08','2024-11-25','2024-12-03','2024-12-18','2025-01-03','2025-01-19','2025-01-31','2025-02-06','2025-02-14','2025-02-21','2025-03-05','2025-03-09','2025-03-21','2025-04-01','2025-04-13','2025-04-16','2025-04-25','2025-05-05','2025-06-22',],
+  labels: ['2024-04-19','2024-04-26','2024-05-02','2024-05-13','2024-05-16','2024-05-23','2024-05-27','2024-06-06','2024-06-13','2024-06-20','2024-06-29','2024-07-05','2024-07-12','2024-07-19','2024-07-26','2024-08-09','2024-08-20','2024-09-02','2024-09-13','2024-09-23','2024-09-27','2024-10-04','2024-10-14','2024-10-20','2024-10-30','2024-11-08','2024-11-25','2024-12-03','2024-12-18','2025-01-03','2025-01-19','2025-01-31','2025-02-06','2025-02-14','2025-02-21','2025-03-05','2025-03-09','2025-03-21','2025-04-01','2025-04-13','2025-04-16','2025-04-25','2025-05-05','2025-06-22','2025-07-07',],
   borderColor: '#0f0',
 
   datasets: [
     {
       label: 'check-clang',
-      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, 350, 344, 336, 320, 296, 278, 224, 212, 208, 198, 190, 181, 179, 175, 155, 145, 146, 140, 135, 127, 125, 124, 124, 124, 125, 124, 115, 116, 116, 114, 114, 107, 104, 101, ],
+      data: [597, 584, 566, 591, 561, 541, 510, 420, 409, 382, 350, 344, 336, 320, 296, 278, 224, 212, 208, 198, 190, 181, 179, 175, 155, 145, 146, 140, 135, 127, 125, 124, 124, 124, 125, 124, 115, 116, 116, 114, 114, 107, 104, 101, 102, ],
       stepped: true,
       borderColor: '#003f5c',
 
@@ -136,7 +136,7 @@ const allData = {
     },
     {
       label: 'check-cxx',
-      data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 755, 629, 541, 484, 343, 194, 104, 27, 7, 0, 0, 0, 36, ],
+      data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 755, 629, 541, 484, 343, 194, 104, 27, 7, 0, 0, 0, 36, 0, ],
       stepped: true,
       borderColor: '#ffa600',
       backgroundColor: '#ffce72',
@@ -192,6 +192,98 @@ new Chart("allChart", allConfig);
           <th>Fixed</th>
         </tr>
         
+<tr>
+  <td>2025-07-07</td>
+  <td class='num'>102</td>
+  <td class='num'>631</td>
+  <td class='num'>
+<span class='pos'>
+-35
+</span>
+  </td>
+<td>
+  <ul>
+<li>SemaCXX/cxx2a-constexpr-dynalloc.cpp
+</li>
+</ul>
+</td>
+<td>
+  <ul>
+<li>std/ranges/range.adaptors/range.join.with/range.join.with.iterator/decrement.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.join.with/range.join.with.iterator/iter_swap.pass.cpp
+</li>
+<li>std/containers/sequences/forwardlist/forwardlist.ops/unique.pass.cpp
+</li>
+<li>std/containers/container.adaptors/flat.map/flat.map.cons/containers.pass.cpp
+</li>
+<li>std/numerics/complex.number/complex.ops/complex_divide_complex.pass.cpp
+</li>
+<li>std/containers/sequences/list/list.modifiers/emplace_back.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.join.with/range.join.with.iterator/iter_move.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.join.with/range.join.with.view/end.pass.cpp
+</li>
+<li>std/containers/container.adaptors/flat.map/flat.map.cons/iter_iter.pass.cpp
+</li>
+<li>std/containers/sequences/forwardlist/forwardlist.ops/splice_after_range.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.join.with/range.join.with.view/ctor.default.pass.cpp
+</li>
+<li>std/containers/sequences/forwardlist/forwardlist.erasure/erase.pass.cpp
+</li>
+<li>std/containers/sequences/forwardlist/forwardlist.ops/unique_pred.pass.cpp
+</li>
+<li>std/containers/container.adaptors/flat.map/op_compare.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.join.with/range.join.with.overview/adaptor.pass.cpp
+</li>
+<li>std/containers/container.adaptors/flat.multimap/flat.multimap.operations/equal_range_transparent.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.join.with/range.join.with.iterator/eq.pass.cpp
+</li>
+<li>std/containers/container.adaptors/flat.map/flat.map.modifiers/insert_or_assign_transparent.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.join.with/range.join.with.overview/example.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.join.with/range.join.with.sentinel/eq.pass.cpp
+</li>
+<li>std/numerics/numeric.ops/numeric.ops.sat/div_sat.pass.cpp
+</li>
+<li>std/containers/container.adaptors/flat.map/flat.map.cons/range.pass.cpp
+</li>
+<li>std/containers/container.adaptors/flat.map/flat.map.modifiers/insert_iter_iter.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.join.with/range.join.with.view/ctor.range.element.pass.cpp
+</li>
+<li>std/containers/container.adaptors/flat.map/flat.map.modifiers/insert_initializer_list.pass.cpp
+</li>
+<li>std/numerics/complex.number/complex.member.ops/divide_equal_complex.pass.cpp
+</li>
+<li>std/strings/basic.string/string.capacity/shrink_to_fit.pass.cpp
+</li>
+<li>std/containers/sequences/forwardlist/forwardlist.ops/remove_if.pass.cpp
+</li>
+<li>std/containers/sequences/list/list.modifiers/emplace_front.pass.cpp
+</li>
+<li>std/containers/sequences/forwardlist/forwardlist.ops/remove.pass.cpp
+</li>
+<li>std/numerics/complex.number/complex.ops/scalar_divide_complex.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.join.with/range.join.with.iterator/increment.pass.cpp
+</li>
+<li>std/containers/sequences/forwardlist/forwardlist.erasure/erase_if.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.join.with/range.join.with.view/begin.pass.cpp
+</li>
+<li>std/ranges/range.adaptors/range.join.with/range.join.with.view/ctor.range.pattern.pass.cpp
+</li>
+<li>std/containers/container.adaptors/flat.map/flat.map.modifiers/try_emplace_transparent.pass.cpp
+</li>
+</ul>
+</td>
+</tr>
 <tr>
   <td>2025-06-22</td>
   <td class='num'>137</td>
@@ -423,67 +515,7 @@ new Chart("allChart", allConfig);
 </ul>
 </td>
 </tr>
-<tr>
-  <td>2025-04-13</td>
-  <td class='num'>121</td>
-  <td class='num'>1011</td>
-  <td class='num'>
-<span class='pos'>
--22
-</span>
-  </td>
-<td>
-</td>
-<td>
-  <ul>
-<li>CodeGen/ptrauth-function-init-fail.c
-</li>
-<li>SemaCXX/builtin-dump-struct.cpp
-</li>
-<li>std/ranges/range.adaptors/range.join/adaptor.pass.cpp
-</li>
-<li>std/language.support/support.rtti/type.info/type_info.pass.cpp
-</li>
-<li>std/utilities/function.objects/refwrap/refwrap.const/type_ctor.pass.cpp
-</li>
-<li>std/utilities/function.objects/refwrap/refwrap.invoke/robust_against_adl.pass.cpp
-</li>
-<li>std/containers/sequences/vector/vector.modifiers/append_range.pass.cpp
-</li>
-<li>std/utilities/function.objects/refwrap/refwrap.invoke/invoke_void_0.pass.cpp
-</li>
-<li>std/utilities/function.objects/refwrap/refwrap.access/conversion.pass.cpp
-</li>
-<li>std/utilities/function.objects/refwrap/refwrap.invoke/invoke_int_0.pass.cpp
-</li>
-<li>std/ranges/range.adaptors/range.join/range.join.iterator/star.pass.cpp
-</li>
-<li>std/ranges/range.adaptors/range.join/range.join.iterator/arrow.pass.cpp
-</li>
-<li>std/language.support/support.rtti/type.info/type_info.equal.pass.cpp
-</li>
-<li>std/ranges/range.adaptors/range.join/range.join.iterator/decrement.pass.cpp
-</li>
-<li>std/ranges/range.adaptors/range.join/range.join.iterator/increment.pass.cpp
-</li>
-<li>std/ranges/range.adaptors/range.join/range.join.iterator/iter.swap.pass.cpp
-</li>
-<li>std/containers/sequences/vector/vector.modifiers/insert_range.pass.cpp
-</li>
-<li>std/utilities/function.objects/refwrap/refwrap.invoke/invoke.pass.cpp
-</li>
-<li>std/utilities/function.objects/refwrap/refwrap.assign/copy_assign.pass.cpp
-</li>
-<li>std/utilities/memory/specialized.algorithms/specialized.addressof/addressof.pass.cpp
-</li>
-<li>std/algorithms/alg.sorting/alg.min.max/ranges.minmax.pass.cpp
-</li>
-<li>std/utilities/function.objects/refwrap/refwrap.const/copy_ctor.pass.cpp
-</li>
-</ul>
-</td>
-</tr>
-<tr><td colspan='6'>Showing only 5 datasets of 44 total</td></tr>
+<tr><td colspan='6'>Showing only 5 datasets of 45 total</td></tr>
 </table>
 </body>
 </html>
