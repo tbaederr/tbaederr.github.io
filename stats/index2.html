@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Clang bytecode interpreter test results</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 10px;
+            background-color: #f5f5f5;
+            font-size: 13px;
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 5px;
+            margin: 10px 0;
+            font-size: 1.3em;
+        }
+        .source-link {
+            font-size: 0.6em;
+            color: #999;
+            font-weight: normal;
+            margin-left: 10px;
+            text-decoration: none;
+        }
+        .source-link:hover {
+            color: #666;
+            text-decoration: underline;
+        }
+        .chart-container {
+            background: linear-gradient(to bottom, #ffffff 0%, #fafafa 100%);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        h2 {
+            color: #555;
+            margin-top: 15px;
+            border-left: 3px solid #2196F3;
+            padding-left: 8px;
+            font-size: 1.1em;
+        }
+        .file-comparison {
+            background-color: white;
+            padding: 10px;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+        }
+        .comparison-header {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #2196F3;
+            margin-bottom: 8px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .test-count {
+            font-size: 0.85em;
+            color: #666;
+            font-weight: normal;
+            margin-left: 10px;
+        }
+        .test-section {
+            margin-top: 8px;
+        }
+        .test-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .test-item {
+            padding: 4px 0;
+            margin: 2px 0;
+            border-radius: 2px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+        }
+        .test-item.fixed {
+            background-color: #d4edda;
+            border-left: 4px solid #28a745;
+        }
+        .test-item.broken {
+            background-color: #ffffff;
+            color: #721c24;
+        }
+        .test-item.still-failing {
+            background-color: #ffffff;
+        }
+        .test-item.only-in-file1 {
+            background-color: #e7f3ff;
+            border-left: 4px solid #2196F3;
+        }
+        .test-item.only-in-file2 {
+            background-color: #f3e7ff;
+            border-left: 4px solid #9c27b0;
+        }
+        .status {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 0.85em;
+            margin-left: 10px;
+        }
+        .status.pass {
+            background-color: #28a745;
+            color: white;
+        }
+        .status.fail {
+            background-color: #dc3545;
+            color: white;
+        }
+        .arrow {
+            margin: 0 5px;
+            color: #666;
+        }
+        .file-info {
+            color: #666;
+            font-size: 0.9em;
+            margin: 10px 0;
+        }
+        .empty-section {
+            color: #999;
+            font-style: italic;
+            padding: 10px;
+        }
+        .verify-badge {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 0.75em;
+            margin-left: 8px;
+            background-color: #6c757d;
+            color: white;
+        }
+        .diagnostic-comparison {
+            margin-top: 5px;
+            padding: 6px;
+            background-color: #f8f9fa;
+            border-radius: 2px;
+            font-size: 0.8em;
+        }
+        .diagnostic-diff {
+            padding: 6px;
+            background-color: white;
+            border-radius: 2px;
+            border: 1px solid #dee2e6;
+        }
+        .diagnostic-section {
+            margin: 5px 0;
+        }
+        .diagnostic-header {
+            font-weight: bold;
+            margin-bottom: 3px;
+            color: #495057;
+            font-size: 0.9em;
+        }
+        .diagnostic-list {
+            list-style: none;
+            padding-left: 10px;
+            margin: 3px 0;
+        }
+        .diagnostic-list li {
+            padding: 2px 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            margin: 1px 0;
+            border-radius: 2px;
+        }
+        .diagnostic-expected {
+            color: #856404;
+        }
+        .diagnostic-seen {
+            color: #004085;
+        }
+        .diagnostic-added {
+            color: #155724;
+        }
+        .diagnostic-removed {
+            color: #721c24;
+        }
+        .diff-added {
+            background-color: #d4edda;
+            border-left: 3px solid #28a745;
+        }
+        .diff-removed {
+            background-color: #f8d7da;
+            border-left: 3px solid #dc3545;
+        }
+        .no-change {
+            color: #6c757d;
+            font-style: italic;
+        }
+        .has-change {
+            background-color: #fff3cd;
+        }
+        .test-header {
+            cursor: pointer;
+            user-select: none;
+        }
+        .test-header:hover {
+            opacity: 0.8;
+        }
+        .collapse-indicator {
+            display: inline-block;
+            margin-right: 8px;
+            font-size: 0.8em;
+            transition: transform 0.2s;
+        }
+        .collapse-indicator.expanded {
+            transform: rotate(90deg);
+        }
+        .test-no-expand {
+            padding-left: 20px;
+        }
+        .diff-count {
+            display: inline-block;
+            padding: 1px 6px;
+            border-radius: 2px;
+            font-weight: bold;
+            font-size: 0.8em;
+            margin-left: 8px;
+            font-family: monospace;
+        }
+        .diff-count.positive {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .diff-count.negative {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .diff-count.neutral {
+            background-color: #e2e3e5;
+            color: #383d41;
+        }
+        .diagnostic-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .diagnostic-content.expanded {
+            max-height: 2000px;
+            transition: max-height 0.5s ease-in;
+        }
+    </style>
+    <script>
+        function toggleDiagnostics(element) {
+            const content = element.nextElementSibling;
+            const indicator = element.querySelector('.collapse-indicator');
+
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                indicator.classList.remove('expanded');
+            } else {
+                content.classList.add('expanded');
+                indicator.classList.add('expanded');
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Clang bytecode interpreter test results <a href="https://github.com/tbaederr/interp-tests" class="source-link">source code</a></h1>
+
+    <div class="chart-container">
+        <canvas id="failureChart" style="max-height: 350px;"></canvas>
+    </div>
+    <script>
+        const ctx = document.getElementById('failureChart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ["2024-04-26", "2024-05-02", "2024-05-13", "2024-05-16", "2024-05-23", "2024-05-27", "2024-06-06", "2024-06-13", "2024-06-20", "2024-06-29", "2024-07-05", "2024-07-12", "2024-07-19", "2024-07-26", "2024-08-09", "2024-08-20", "2024-09-02", "2024-09-13", "2024-09-23", "2024-09-27", "2024-10-04", "2024-10-14", "2024-10-20", "2024-10-30", "2024-11-08", "2024-11-25", "2024-12-03", "2024-12-18", "2025-01-03", "2025-01-19", "2025-01-31", "2025-02-06", "2025-02-14", "2025-02-21", "2025-03-05", "2025-03-09", "2025-03-21", "2025-04-01", "2025-04-13", "2025-04-16", "2025-04-25", "2025-05-05", "2025-06-22", "2025-07-07", "2025-07-16", "2025-08-05", "2025-08-18", "2025-09-05", "2025-11-07", "2025-12-01", "2026-01-10", "2026-01-27", "2026-02-10", "2026-03-09", "2026-04-28", "2026-06-08", "2026-07-02", "2026-07-04", "2026-07-06", "2026-07-07"],
+                datasets: [{"label": "Clang", "data": [584, 566, 591, 561, 541, 510, 420, 409, 382, 350, 344, 336, 320, 296, 278, 224, 212, 208, 198, 190, 181, 179, 175, 155, 145, 146, 140, 135, 127, 125, 124, 124, 124, 125, 124, 115, 116, 116, 114, 115, 107, 104, 101, 102, 99, 94, 103, 90, 92, 91, 90, 85, 81, 77, 57, 53, 49, 49, 50, 50], "borderColor": "#3b82f6", "backgroundColor": "rgba(59, 130, 246, 0.3)", "fill": "origin", "tension": 0.4, "borderWidth": 2, "pointRadius": 0, "pointHoverRadius": 6, "pointHoverBackgroundColor": "#3b82f6", "pointHoverBorderColor": "#fff", "pointHoverBorderWidth": 2}, {"label": "libc++", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 755, 629, 541, 484, 343, 194, 104, 27, 7, 0, 0, 0, 36, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "borderColor": "#f59e0b", "backgroundColor": "rgba(245, 158, 11, 0.3)", "fill": "origin", "tension": 0.4, "borderWidth": 2, "pointRadius": 0, "pointHoverRadius": 6, "pointHoverBackgroundColor": "#f59e0b", "pointHoverBorderColor": "#fff", "pointHoverBorderWidth": 2}]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                aspectRatio: 3,
+                interaction: {
+                    mode: 'index',
+                    intersect: false
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            boxWidth: 15,
+                            padding: 15,
+                            font: {
+                                size: 12,
+                                family: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+                            },
+                            usePointStyle: true,
+                            pointStyle: 'circle'
+                        }
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                        padding: 12,
+                        cornerRadius: 6,
+                        titleFont: {
+                            size: 13,
+                            weight: 'bold'
+                        },
+                        bodyFont: {
+                            size: 12
+                        },
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.parsed.y + ' failures';
+                            },
+                            footer: function(items) {
+                                let sum = 0;
+                                items.forEach(item => sum += item.parsed.y);
+                                return 'Total: ' + sum + ' failures';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        stacked: false,
+                        beginAtZero: true,
+                        ticks: {
+                            precision: 0,
+                            font: {
+                                size: 11
+                            },
+                            color: '#6b7280'
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)',
+                            drawBorder: false
+                        },
+                        border: {
+                            display: false
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 10
+                            },
+                            color: '#6b7280',
+                            maxRotation: 45,
+                            minRotation: 45
+                        },
+                        grid: {
+                            display: false
+                        },
+                        border: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+    <div class="file-comparison">
+        <div class="comparison-header">
+            2026-07-07.txt
+            <span class="test-count">(50 failing)</span>
+        </div>
+
+        <div class="test-section">
+            <ul class="test-list">
+                <li class="test-item still-failing">
+                    <div class="test-header" onclick="toggleDiagnostics(this)">
+                        <span class="collapse-indicator">▶</span>
+                        Clang :: SemaCXX/constant-expression-cxx2a.cpp
+                        <span class="diff-count negative">-2</span>
+                    </div>
+                    <div class="diagnostic-content">
+
+        <div class="diagnostic-comparison has-change">
+            <div class="diagnostic-diff">
+
+                <div class="diagnostic-section">
+                    <div class="diagnostic-header diagnostic-removed">− Seen but not expected (removed):</div>
+                    <ul class="diagnostic-list">
+                        <li class="diff-removed">Line 176: expression evaluates to ''A' (0x41, 65) == 'B' (0x42, 66)'</li>
+                        <li class="diff-removed">Line 176: static assertion failed due to requirement 'd.ba == 'B''</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="file-comparison">
+        <div class="comparison-header">
+            2026-07-06.txt
+            <span class="test-count">(50 failing)</span>
+        </div>
+
+        <div class="test-section">
+            <ul class="test-list">
+                <li class="test-item still-failing">
+                    <div class="test-no-expand">
+                        Clang :: CodeGen/attr-counted-by-with-sanitizers.c
+                        <span class="diff-count neutral">NEW</span>
+                    </div>
+                </li>
+                <li class="test-item still-failing">
+                    <div class="test-no-expand">
+                        Clang :: CodeGen/attr-counted-by-without-sanitizers.c
+                        <span class="diff-count neutral">NEW</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="file-comparison">
+        <div class="comparison-header">
+            2026-07-04.txt
+            <span class="test-count">(49 failing)</span>
+        </div>
+
+        <div class="empty-section">
+            No new failures or diagnostic differences detected.
+        </div>
+
+    </div>
+
+    <div class="file-comparison">
+        <div class="comparison-header">
+            2026-07-02.txt
+            <span class="test-count">(49 failing)</span>
+        </div>
+
+        <div class="test-section">
+            <ul class="test-list">
+                <li class="test-item still-failing">
+                    <div class="test-header" onclick="toggleDiagnostics(this)">
+                        <span class="collapse-indicator">▶</span>
+                        Clang :: CXX/expr/expr.const/p2-0x.cpp
+                        <span class="diff-count negative">-6</span>
+                    </div>
+                    <div class="diagnostic-content">
+
+        <div class="diagnostic-comparison has-change">
+            <div class="diagnostic-diff">
+
+                <div class="diagnostic-section">
+                    <div class="diagnostic-header diagnostic-removed">− Expected but not seen (removed):</div>
+                    <ul class="diagnostic-list">
+                        <li class="diff-removed">Line 573: comparison of addresses of subobjects of different base classes has unspecified value</li>
+                        <li class="diff-removed">Line 573: constant expression</li>
+                        <li class="diff-removed">Line 574: comparison of address of base class subobject 'C' of class 'E' to field 'e' has unspecified value</li>
+                        <li class="diff-removed">Line 574: constant expression</li>
+                        <li class="diff-removed">Line 575: comparison of address of base class subobject 'D' of class 'E' to field 'e' has unspecified value</li>
+                        <li class="diff-removed">Line 575: constant expression</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+                    </div>
+                </li>
+                <li class="test-item still-failing">
+                    <div class="test-header" onclick="toggleDiagnostics(this)">
+                        <span class="collapse-indicator">▶</span>
+                        Clang :: Sema/enable_if.c
+                        <span class="diff-count neutral">NEW</span>
+                    </div>
+                    <div class="diagnostic-content">
+
+        <div class="diagnostic-comparison has-change">
+            <div class="diagnostic-diff">
+
+                <div class="diagnostic-section">
+                    <div class="diagnostic-header diagnostic-added">+ Expected but not seen (added):</div>
+                    <ul class="diagnostic-list">
+                        <li class="diff-added">Line 45: 'strnlen' has been explicitly marked unavailable here</li>
+                        <li class="diff-added">Line 65: 'strnlen' is unavailable: 'maxlen' is larger than the buffer size</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+                    </div>
+                </li>
+                <li class="test-item still-failing">
+                    <div class="test-header" onclick="toggleDiagnostics(this)">
+                        <span class="collapse-indicator">▶</span>
+                        Clang :: SemaCXX/builtin-object-size-cxx14.cpp
+                        <span class="diff-count positive">+8</span>
+                    </div>
+                    <div class="diagnostic-content">
+
+        <div class="diagnostic-comparison has-change">
+            <div class="diagnostic-diff">
+
+                <div class="diagnostic-section">
+                    <div class="diagnostic-header diagnostic-added">+ Seen but not expected (added):</div>
+                    <ul class="diagnostic-list">
+                        <li class="diff-added">Line 44: candidate disabled: <no message provided></li>
+                        <li class="diff-added">Line 51: candidate disabled: <no message provided></li>
+                        <li class="diff-added">Line 70: no matching function for call to 'copy5CharsInto'</li>
+                        <li class="diff-added">Line 73: no matching function for call to 'copy5CharsIntoStrict'</li>
+                        <li class="diff-added">Line 78: no matching function for call to 'copy5CharsInto'</li>
+                        <li class="diff-added">Line 81: no matching function for call to 'copy5CharsIntoStrict'</li>
+                        <li class="diff-added">Line 89: no matching function for call to 'copy5CharsInto'</li>
+                        <li class="diff-added">Line 94: no matching function for call to 'copy5CharsIntoStrict'</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+                    </div>
+                </li>
+                <li class="test-item still-failing">
+                    <div class="test-header" onclick="toggleDiagnostics(this)">
+                        <span class="collapse-indicator">▶</span>
+                        Clang :: SemaCXX/constant-expression-cxx11.cpp
+                        <span class="diff-count negative">-8</span>
+                    </div>
+                    <div class="diagnostic-content">
+
+        <div class="diagnostic-comparison has-change">
+            <div class="diagnostic-diff">
+
+                <div class="diagnostic-section">
+                    <div class="diagnostic-header diagnostic-removed">− Expected but not seen (removed):</div>
+                    <ul class="diagnostic-list">
+                        <li class="diff-removed">Line 12: cannot modify an object that is visible outside that expression</li>
+                        <li class="diff-removed">Line 1545: here</li>
+                        <li class="diff-removed">Line 2016: address of non-static constexpr variable 'n' may differ</li>
+                        <li class="diff-removed">Line 2016: reference to 'n' is not a constant expression</li>
+                    </ul>
+                </div>
+
+                <div class="diagnostic-section">
+                    <div class="diagnostic-header diagnostic-removed">− Seen but not expected (removed):</div>
+                    <ul class="diagnostic-list">
+                        <li class="diff-removed">Line 11: declared here</li>
+                        <li class="diff-removed">Line 12: read of non-const variable 'x' is not allowed in a constant expression</li>
+                        <li class="diff-removed">Line 1544: declared here</li>
+                        <li class="diff-removed">Line 2016: declared here</li>
+                        <li class="diff-removed">Line 2016: initializer of 'n' is not a constant expression</li>
+                        <li class="diff-removed">Line 931: static assertion failed due to requirement '&bot1 != &bot2':</li>
+                    </ul>
+                </div>
+
+                <div class="diagnostic-section">
+                    <div class="diagnostic-header diagnostic-added">+ Seen but not expected (added):</div>
+                    <ul class="diagnostic-list">
+                        <li class="diff-added">Line 1575: in call to 'U(f1.u)'</li>
+                        <li class="diff-added">Line 1583: in call to 'G(g1)'</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+                    </div>
+                </li>
+                <li class="test-item still-failing">
+                    <div class="test-header" onclick="toggleDiagnostics(this)">
+                        <span class="collapse-indicator">▶</span>
+                        Clang :: SemaCXX/constant-expression-cxx14.cpp
+                        <span class="diff-count negative">-7</span>
+                    </div>
+                    <div class="diagnostic-content">
+
+        <div class="diagnostic-comparison has-change">
+            <div class="diagnostic-diff">
+
+                <div class="diagnostic-section">
+                    <div class="diagnostic-header diagnostic-removed">− Expected but not seen (removed):</div>
+                    <ul class="diagnostic-list">
+                        <li class="diff-removed">Line 1216: modification of object of const-qualified type 'const int'</li>
+                        <li class="diff-removed">Line 1221: in call to 'B(true)'</li>
+                        <li class="diff-removed">Line 1221: must be initialized by a constant expression</li>
+                        <li class="diff-removed">Line 836: not supported</li>
+                    </ul>
+                </div>
+
+                <div class="diagnostic-section">
+                    <div class="diagnostic-header diagnostic-removed">− Seen but not expected (removed):</div>
+                    <ul class="diagnostic-list">
+                        <li class="diff-removed">Line 1179: candidate disabled: OK</li>
+                        <li class="diff-removed">Line 1180: no matching function for call to 'test_in_enable_if'</li>
+                        <li class="diff-removed">Line 841: control reached end of constexpr function</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+                    </div>
+                </li>
+                <li class="test-item still-failing">
+                    <div class="test-header" onclick="toggleDiagnostics(this)">
+                        <span class="collapse-indicator">▶</span>
+                        Clang :: SemaCXX/constant-expression-cxx2a.cpp
+                        <span class="diff-count negative">-6</span>
+                    </div>
+                    <div class="diagnostic-content">
+
+        <div class="diagnostic-comparison has-change">
+            <div class="diagnostic-diff">
+
+                <div class="diagnostic-section">
+                    <div class="diagnostic-header diagnostic-removed">− Expected but not seen (removed):</div>
+                    <ul class="diagnostic-list">
+                        <li class="diff-removed">Line 259: reference dynamic_cast failed: 'A' is an ambiguous base class of dynamic type 'DynamicCast::G' of operand</li>
+                        <li class="diff-removed">Line 267: reference dynamic_cast failed: 'A' is an ambiguous base class of dynamic type 'DynamicCast::G' of operand</li>
+                        <li class="diff-removed">Line 274: reference dynamic_cast failed: static type 'DynamicCast::E' of operand is a non-public base class of dynamic type 'DynamicCast::G'</li>
+                        <li class="diff-removed">Line 278: reference dynamic_cast failed: 'E' is a non-public base class of dynamic type 'DynamicCast::G' of operand</li>
+                        <li class="diff-removed">Line 282: reference dynamic_cast failed: dynamic type 'DynamicCast::G' of operand does not have a base class of type 'Unrelated'</li>
+                        <li class="diff-removed">Line 284: reference dynamic_cast failed: dynamic type 'DynamicCast::G' of operand does not have a base class of type 'Unrelated'</li>
+                    </ul>
+                </div>
+
+                <div class="diagnostic-section">
+                    <div class="diagnostic-header diagnostic-removed">− Seen but not expected (removed):</div>
+                    <ul class="diagnostic-list">
+                        <li class="diff-removed">Line 252: static assertion failed due to requirement 'dynamic_cast<const DynamicCast::A *>(static_cast<const DynamicCast::C2 *>(&g)) == nullptr'</li>
+                    </ul>
+                </div>
+
+                <div class="diagnostic-section">
+                    <div class="diagnostic-header diagnostic-added">+ Seen but not expected (added):</div>
+                    <ul class="diagnostic-list">
+                        <li class="diff-added">Line 217: static assertion failed due to requirement 'cc1->f() == (Virtual::C *)&cc.d'</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="file-comparison">
+        <div class="comparison-header">
+            2026-06-08.txt
+            <span class="test-count">(53 failing)</span>
+        </div>
+
+        <div class="test-section">
+            <ul class="test-list">
+                <li class="test-item still-failing">
+                    <div class="test-header" onclick="toggleDiagnostics(this)">
+                        <span class="collapse-indicator">▶</span>
+                        Clang :: CXX/drs/cwg27xx.cpp
+                        <span class="diff-count neutral">NEW</span>
+                    </div>
+                    <div class="diagnostic-content">
+
+        <div class="diagnostic-comparison has-change">
+            <div class="diagnostic-diff">
+
+                <div class="diagnostic-section">
+                    <div class="diagnostic-header diagnostic-added">+ Expected but not seen (added):</div>
+                    <ul class="diagnostic-list">
+                        <li class="diff-added">Line 214: comparison of addresses of potentially overlapping literals has unspecified value</li>
+                        <li class="diff-added">Line 214: constexpr variable 'b2' must be initialized by a constant expression</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+                    </div>
+                </li>
+                <li class="test-item still-failing">
+                    <div class="test-header" onclick="toggleDiagnostics(this)">
+                        <span class="collapse-indicator">▶</span>
+                        Clang :: SemaCXX/constant-expression-cxx11.cpp
+                        <span class="diff-count negative">-28</span>
+                    </div>
+                    <div class="diagnostic-content">
+
+        <div class="diagnostic-comparison has-change">
+            <div class="diagnostic-diff">
+
+                <div class="diagnostic-section">
+                    <div class="diagnostic-header diagnostic-removed">− Expected but not seen (removed):</div>
+                    <ul class="diagnostic-list">
+                        <li class="diff-removed">Line 1479: read of non-constexpr variable 'n'</li>
+                        <li class="diff-removed">Line 1481: read of non-constexpr variable 'n'</li>
+                        <li class="diff-removed">Line 1588: here</li>
+                        <li class="diff-removed">Line 1591: constant</li>
+                        <li class="diff-removed">Line 1591: in call</li>
+                        <li class="diff-removed">Line 1591: mutable</li>
+                        <li class="diff-removed">Line 1670: declared here</li>
+                        <li class="diff-removed">Line 1671: static assertion expression is not an integral constant expression</li>
+                        <li class="diff-removed">Line 1671: subexpression not valid</li>
+                        <li class="diff-removed">Line 1674: declared here</li>
+                        <li class="diff-removed">Line 1674: static assertion expression is not an integral constant expression</li>
+                        <li class="diff-removed">Line 1674: subexpression not valid</li>
+                        <li class="diff-removed">Line 2076: member call on object outside its lifetime</li>
+                        <li class="diff-removed">Line 2079: constant expression</li>
+                        <li class="diff-removed">Line 2079: declared here</li>
+                        <li class="diff-removed">Line 2079: in call</li>
+                        <li class="diff-removed">Line 2084: constant expression</li>
+                        <li class="diff-removed">Line 2084: declared here</li>
+                        <li class="diff-removed">Line 2084: in call</li>
+                        <li class="diff-removed">Line 2267: here</li>
+                        <li class="diff-removed">Line 2274: constant expression</li>
+                        <li class="diff-removed">Line 2274: in call</li>
+                        <li class="diff-removed">Line 2274: read of non-const</li>
+                        <li class="diff-removed">Line 2651: constant expression</li>
+                        <li class="diff-removed">Line 2655: constant expression</li>
+                        <li class="diff-removed">Line 2656: constant expression</li>
+                        <li class="diff-removed">Line 2657: constant expression</li>
+                        <li class="diff-removed">Line 352: not an integral constant expression</li>
+                        <li class="diff-removed">Line 355: not an integral constant expression</li>
+                        <li class="diff-removed">Line 736: non-constexpr variable</li>
+                    </ul>
+                </div>
+
+                <div class="diagnostic-section">
+                    <div class="diagnostic-header diagnostic-added">+ Expected but not seen (added):</div>
+                    <ul class="diagnostic-list">
+                        <li class="diff-added">Line 125: declared here</li>
+                        <li class="diff-added">Line 127: initializer of 'Recurse2' is not a constant expression</li>
+                        <li class="diff-added">Line 127: must be initialized by a constant expression</li>
+                    </ul>
+                </div>
+
+                <div class="diagnostic-section">
+                    <div class="diagnostic-header diagnostic-removed">− Seen but not expected (removed):</div>
+                    <ul class="diagnostic-list">
+                        <li class="diff-removed">Line 1479: initializer of 'n' is unknown</li>
+                        <li class="diff-removed">Line 1481: initializer of 'n' is unknown</li>
+                        <li class="diff-removed">Line 352: expression is not an integral constant expression</li>
+                        <li class="diff-removed">Line 355: expression is not an integral constant expression</li>
+                        <li class="diff-removed">Line 736: initializer of 'carr' is unknown</li>
+                    </ul>
+                </div>
+
+                <div class="diagnostic-section">
+                    <div class="diagnostic-header diagnostic-added">+ Seen but not expected (added):</div>
+                    <ul class="diagnostic-list">
+                        <li class="diff-added">Line 1566: declared here</li>
+                        <li class="diff-added">Line 1575: constexpr variable 'f2' must be initialized by a constant expression</li>
+                        <li class="diff-added">Line 1575: in call to 'F(f1)'</li>
+                        <li class="diff-added">Line 1575: read of mutable member 'u' is not allowed in a constant expression</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+                    </div>
+                </li>
+                <li class="test-item still-failing">
+                    <div class="test-header" onclick="toggleDiagnostics(this)">
+                        <span class="collapse-indicator">▶</span>
+                        Clang :: SemaCXX/constant-expression-cxx14.cpp
+                        <span class="diff-count negative">-19</span>
+                    </div>
+                    <div class="diagnostic-content">
+
+        <div class="diagnostic-comparison has-change">
+            <div class="diagnostic-diff">
+
+                <div class="diagnostic-section">
+                    <div class="diagnostic-header diagnostic-removed">− Expected but not seen (removed):</div>
+                    <ul class="diagnostic-list">
+                        <li class="diff-removed">Line 1323: addresses of potentially overlapping literals</li>
+                        <li class="diff-removed">Line 1325: in call</li>
+                        <li class="diff-removed">Line 1365: read of dereferenced one-past-the-end pointer</li>
+                        <li class="diff-removed">Line 1370: in call to 'f()'</li>
+                        <li class="diff-removed">Line 1370: static assertion expression is not an integral constant expression</li>
+                        <li class="diff-removed">Line 981: here</li>
+                        <li class="diff-removed">Line 987: in call</li>
+                        <li class="diff-removed">Line 987: read</li>
+                        <li class="diff-removed">Line 988: in call</li>
+                        <li class="diff-removed">Line 988: read</li>
+                        <li class="diff-removed">Line 994: constant expression</li>
+                        <li class="diff-removed">Line 994: in call</li>
+                        <li class="diff-removed">Line 997: constant expression</li>
+                        <li class="diff-removed">Line 997: in call</li>
+                    </ul>
+                </div>
+
+                <div class="diagnostic-section">
+                    <div class="diagnostic-header diagnostic-added">+ Expected but not seen (added):</div>
+                    <ul class="diagnostic-list">
+                        <li class="diff-added">Line 1328: addresses of potentially overlapping literals</li>
+                        <li class="diff-added">Line 1330: in call</li>
+                    </ul>
+                </div>
+
+                <div class="diagnostic-section">
+                    <div class="diagnostic-header diagnostic-removed">− Seen but not expected (removed):</div>
+                    <ul class="diagnostic-list">
+                        <li class="diff-removed">Line 1236: modification of object of const-qualified type 'int' is not allowed in a constant expression</li>
+                        <li class="diff-removed">Line 1241: constexpr variable 'aggr2' must be initialized by a constant expression</li>
+                        <li class="diff-removed">Line 1242: expression evaluates to '0 == 1'</li>
+                        <li class="diff-removed">Line 1242: static assertion failed due to requirement 'aggr2.x == 1':</li>
+                        <li class="diff-removed">Line 1287: declared here</li>
+                        <li class="diff-removed">Line 1295: declared here</li>
+                        <li class="diff-removed">Line 1307: declared here</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+                    </div>
+                </li>
+                <li class="test-item still-failing">
+                    <div class="test-header" onclick="toggleDiagnostics(this)">
+                        <span class="collapse-indicator">▶</span>
+                        Clang :: SemaCXX/constant-expression-cxx2a.cpp
+                        <span class="diff-count negative">-4</span>
+                    </div>
+                    <div class="diagnostic-content">
+
+        <div class="diagnostic-comparison has-change">
+            <div class="diagnostic-diff">
+
+                <div class="diagnostic-section">
+                    <div class="diagnostic-header diagnostic-removed">− Expected but not seen (removed):</div>
+                    <ul class="diagnostic-list">
+                        <li class="diff-removed">Line 572: assignment to object outside its lifetime</li>
+                        <li class="diff-removed">Line 585: constant expression</li>
+                        <li class="diff-removed">Line 585: in call</li>
+                        <li class="diff-removed">Line 854: evaluated array bound 3 is too small to hold 4 explicitly initialized elements</li>
+                        <li class="diff-removed">Line 856: evaluated array bound 2 is too small to hold 3 explicitly initialized elements</li>
+                    </ul>
+                </div>
+
+                <div class="diagnostic-section">
+                    <div class="diagnostic-header diagnostic-added">+ Expected but not seen (added):</div>
+                    <ul class="diagnostic-list">
+                        <li class="diff-added">Line 1114: read of object outside its lifetime</li>
+                    </ul>
+                </div>
+
+                <div class="diagnostic-section">
+                    <div class="diagnostic-header diagnostic-removed">− Seen but not expected (removed):</div>
+                    <ul class="diagnostic-list">
+                        <li class="diff-removed">Line 854: assignment to dereferenced one-past-the-end pointer is not allowed in a constant expression</li>
+                        <li class="diff-removed">Line 856: assignment to dereferenced one-past-the-end pointer is not allowed in a constant expression</li>
+                    </ul>
+                </div>
+
+                <div class="diagnostic-section">
+                    <div class="diagnostic-header diagnostic-added">+ Seen but not expected (added):</div>
+                    <ul class="diagnostic-list">
+                        <li class="diff-added">Line 1114: read of uninitialized object is not allowed in a constant expression</li>
+                        <li class="diff-added">Line 579: declared here</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+                    </div>
+                </li>
+                <li class="test-item still-failing">
+                    <div class="test-header" onclick="toggleDiagnostics(this)">
+                        <span class="collapse-indicator">▶</span>
+                        Clang :: SemaCXX/constant-expression-p2280r4.cpp
+                        <span class="diff-count negative">-34</span>
+                    </div>
+                    <div class="diagnostic-content">
+
+        <div class="diagnostic-comparison has-change">
+            <div class="diagnostic-diff">
+
+                <div class="diagnostic-section">
+                    <div class="diagnostic-header diagnostic-removed">− Expected but not seen (removed):</div>
+                    <ul class="diagnostic-list">
+                        <li class="diff-removed">Line 227: use of reference outside its lifetime is not allowed in a constant expression</li>
+                        <li class="diff-removed">Line 232: in call to 'g3()'</li>
+                        <li class="diff-removed">Line 232: must be initialized by a constant expression</li>
+                        <li class="diff-removed">Line 269: read of non-constexpr variable 'x'</li>
+                        <li class="diff-removed">Line 278: dynamic_cast applied to object 'a' whose dynamic type is not constant</li>
+                        <li class="diff-removed">Line 281: dynamic_cast applied to object 'a' whose dynamic type is not constant</li>
+                        <li class="diff-removed">Line 290: arithmetic involving unrelated objects '&a[0]' and '&b[0]' has unspecified value</li>
+                        <li class="diff-removed">Line 293: arithmetic involving unrelated objects '&a[0]' and '&c[2]' has unspecified value</li>
+                        <li class="diff-removed">Line 305: cannot cast object of dynamic type 'A' to type 'B'</li>
+                        <li class="diff-removed">Line 308: initializer of 'b' is not a constant expression</li>
+                        <li class="diff-removed">Line 314: cannot cast object of dynamic type 'B' to type 'C'</li>
+                        <li class="diff-removed">Line 331: comparison between pointers to unrelated objects '&extern_n' and '&extern_n2' has unspecified value</li>
+                        <li class="diff-removed">Line 335: comparison between pointers to unrelated objects '&x' and '&n' has unspecified value</li>
+                        <li class="diff-removed">Line 335: must be initialized by a constant expression</li>
+                        <li class="diff-removed">Line 343: comparison between pointers to unrelated objects '&x' and '&extern_n' has unspecified value</li>
+                        <li class="diff-removed">Line 350: comparison between pointers to unrelated objects '&{*new int#0}' and '&extern_n' has unspecified value</li>
+                        <li class="diff-removed">Line 394: comparison of addresses of subobjects of different base classes has unspecified value</li>
+                        <li class="diff-removed">Line 56: typeid applied to object 'trident' whose dynamic type is not constant</li>
+                    </ul>
+                </div>
+
+                <div class="diagnostic-section">
+                    <div class="diagnostic-header diagnostic-added">+ Expected but not seen (added):</div>
+                    <ul class="diagnostic-list">
+                        <li class="diff-added">Line 226: use of reference outside its lifetime is not allowed in a constant expression</li>
+                        <li class="diff-added">Line 231: in call to 'g3()'</li>
+                        <li class="diff-added">Line 231: must be initialized by a constant expression</li>
+                        <li class="diff-added">Line 299: declared here</li>
+                        <li class="diff-added">Line 300: cannot cast object of dynamic type 'A' to type 'B'</li>
+                        <li class="diff-added">Line 302: initializer of 'b' is not a constant expression</li>
+                        <li class="diff-added">Line 305: cannot cast object of dynamic type 'B' to type 'C'</li>
+                        <li class="diff-added">Line 378: comparison of addresses of subobjects of different base classes has unspecified value</li>
+                        <li class="diff-added">Line 378: constexpr variable 'bases' must be initialized by a constant expression</li>
+                    </ul>
+                </div>
+
+                <div class="diagnostic-section">
+                    <div class="diagnostic-header diagnostic-removed">− Seen but not expected (removed):</div>
+                    <ul class="diagnostic-list">
+                        <li class="diff-removed">Line 269: initializer of 'x' is unknown</li>
+                        <li class="diff-removed">Line 277: declared here</li>
+                        <li class="diff-removed">Line 278: pointer to 'a' is not a constant expression</li>
+                        <li class="diff-removed">Line 281: pointer to 'a' is not a constant expression</li>
+                        <li class="diff-removed">Line 290: arithmetic involving unrelated objects 'a' and 'b' has unspecified value</li>
+                        <li class="diff-removed">Line 293: arithmetic involving unrelated objects 'a' and '*((char*)&c + 8)' has unspecified value</li>
+                        <li class="diff-removed">Line 303: declared here</li>
+                        <li class="diff-removed">Line 304: declared here</li>
+                        <li class="diff-removed">Line 305: initializer of 'a' is unknown</li>
+                        <li class="diff-removed">Line 308: initializer of 'b' is unknown</li>
+                        <li class="diff-removed">Line 312: constexpr variable 't3' must be initialized by a constant expression</li>
+                        <li class="diff-removed">Line 312: initializer of 'b' is unknown</li>
+                        <li class="diff-removed">Line 314: initializer of 'b' is unknown</li>
+                        <li class="diff-removed">Line 320: declared here</li>
+                        <li class="diff-removed">Line 329: initializer of 'extern_n' is unknown</li>
+                        <li class="diff-removed">Line 329: static assertion expression is not an integral constant expression</li>
+                        <li class="diff-removed">Line 331: initializer of 'extern_n' is unknown</li>
+                        <li class="diff-removed">Line 343: initializer of 'extern_n' is unknown</li>
+                        <li class="diff-removed">Line 350: initializer of 'extern_n' is unknown</li>
+                        <li class="diff-removed">Line 386: declared here</li>
+                        <li class="diff-removed">Line 387: constexpr variable 'x' must be initialized by a constant expression</li>
+                        <li class="diff-removed">Line 387: initializer of 'c' is unknown</li>
+                        <li class="diff-removed">Line 393: declared here</li>
+                        <li class="diff-removed">Line 394: initializer of 'z' is unknown</li>
+                        <li class="diff-removed">Line 53: declared here</li>
+                        <li class="diff-removed">Line 56: initializer of 'trident' is unknown</li>
+                    </ul>
+                </div>
+
+                <div class="diagnostic-section">
+                    <div class="diagnostic-header diagnostic-added">+ Seen but not expected (added):</div>
+                    <ul class="diagnostic-list">
+                        <li class="diff-added">Line 304: constexpr variable 't3' must be initialized by a constant expression</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="file-info" style="background-color: #fff3cd; padding: 10px; border-radius: 3px; border-left: 4px solid #ffc107; margin-top: 15px;">
+        <strong>Note:</strong> Showing the 5 most recent test results out of 60 total comparisons.
+        The chart above includes data from all 60 test runs.
+    </div>
+
+</body>
+</html>
