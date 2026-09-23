@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Constexpr Interpreter Benchmark</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 2rem; background: #fafafa; color: #222; font-size: 0.85rem; }
+  h1 { font-size: 1.4rem; margin-bottom: 1.5rem; }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { padding: 0.4rem 0.8rem; border: 1px solid #ddd; text-align: left; white-space: nowrap; }
+  th { background: #f0f0f0; }
+  td code { background: #e8e8e8; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.85em; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .better { color: #1a7f37; font-weight: 600; }
+  .worse  { color: #cf222e; font-weight: 600; }
+  .failed { color: #888; font-style: italic; }
+</style>
+</head>
+<body>
+<h1>Constexpr Interpreter Benchmark — Instructions Delta</h1>
+<table>
+<thead>
+  <tr><th>Commit</th><th><a href="https://github.com/tbaederr/ce-bench/tree/main/tests/arithmetic.cpp">arithmetic</a></th><th><a href="https://github.com/tbaederr/ce-bench/tree/main/tests/heap-alloc-char.cpp">heap-alloc-char</a></th><th><a href="https://github.com/tbaederr/ce-bench/tree/main/tests/sqlite3-embed.cpp">sqlite3-embed</a></th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://github.com/llvm/llvm-project/commit/d42fd8b80c7c8b1142ea875bfdbbbc036b2f6b9d"><code>d42fd8b80c7c</code></a> [clang][bytecode] Store type information inside the custom stack</td><td class="num">871.33M <span class="better">(-5.5%)</span></td><td class="num">37677.68M <span class="better">(-3.2%)</span></td><td class="num">129581.68M <span class="better">(-2.2%)</span></td></tr>
+<tr><td><a href="https://github.com/llvm/llvm-project/commit/aea9d3f15a6ea47baf76457364ec2bdea288570b"><code>aea9d3f15a6e</code></a> [clang][bytecode] Add a bytecode RUN line for constant-builtins-2.c (<a href="https://github.com/llvm/llvm-project/pull/225305">#225305</a>)</td><td class="num">922.32M <span class="">(0.0%)</span></td><td class="num">38927.76M <span class="">(0.0%)</span></td><td class="num">132440.34M <span class="">(0.0%)</span></td></tr>
+<tr><td><a href="https://github.com/llvm/llvm-project/commit/80310178c079fc4ec712ace6d72a97bb5c619a12"><code>80310178c079</code></a> [clang][bytecode] Mark fields as being initialized, even without running a ctor for them (<a href="https://github.com/llvm/llvm-project/pull/225295">#225295</a>)</td><td class="num">922.33M</td><td class="num">38927.76M</td><td class="num">132440.34M</td></tr>
+</tbody>
+</table>
+</body>
+</html>
