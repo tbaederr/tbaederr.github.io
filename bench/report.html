@@ -2,31 +2,82 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Constexpr Interpreter Benchmark</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bytecode Interpreter Benchmark</title>
 <style>
-  body { font-family: system-ui, sans-serif; margin: 2rem; background: #fafafa; color: #222; font-size: 0.85rem; }
-  h1 { font-size: 1.4rem; margin-bottom: 1.5rem; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    margin: 0; padding: 2.5rem;
+    background: #f6f8fa; color: #1f2328;
+    font-size: 0.85rem; line-height: 1.5;
+  }
+  a { text-decoration: none; color: #0969da; }
+  a:hover { text-decoration: underline; }
+  h1 {
+    font-size: 1.3rem; font-weight: 600;
+    margin: 0 0 0.4rem 0; color: #1f2328;
+  }
+  .subtitle {
+    color: #656d76; font-size: 0.8rem; margin-bottom: 1.5rem;
+  }
+  .table-wrap {
+    background: #fff; border: 1px solid #d0d7de; border-radius: 6px;
+    overflow-x: auto;
+  }
   table { border-collapse: collapse; width: 100%; }
-  th, td { padding: 0.4rem 0.8rem; border: 1px solid #ddd; text-align: left; white-space: nowrap; }
-  th { background: #f0f0f0; }
-  td code { background: #e8e8e8; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.85em; }
-  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  th, td {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid #d0d7de;
+    text-align: left; white-space: nowrap;
+  }
+  th {
+    background: #f6f8fa; color: #656d76;
+    font-weight: 600; font-size: 0.8rem;
+    position: sticky; top: 0;
+  }
+  tr:last-child td { border-bottom: none; }
+  td code {
+    background: #eff1f3; padding: 0.15rem 0.4rem;
+    border-radius: 4px; font-size: 0.8em;
+    font-family: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, monospace;
+  }
+  .num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-family: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, monospace;
+    font-size: 0.8rem;
+  }
   .better { color: #1a7f37; font-weight: 600; }
   .worse  { color: #cf222e; font-weight: 600; }
-  .failed { color: #888; font-style: italic; }
+  .failed { color: #8b949e; font-style: italic; }
+  .footer {
+    margin-top: 1.2rem; font-size: 0.75rem; color: #8b949e;
+  }
+  .footer a { color: #8b949e; }
+  .footer a:hover { color: #656d76; }
 </style>
 </head>
 <body>
-<h1>Constexpr Interpreter Benchmark — Instructions Delta</h1>
+<h1>Bytecode Interpreter Benchmark</h1>
+<p class="subtitle">instructions:u delta between consecutive commits</p>
+<div class="table-wrap">
 <table>
 <thead>
   <tr><th>Commit</th><th><a href="https://github.com/tbaederr/ce-bench/tree/main/tests/arithmetic.cpp">arithmetic</a></th><th><a href="https://github.com/tbaederr/ce-bench/tree/main/tests/heap-alloc-char.cpp">heap-alloc-char</a></th><th><a href="https://github.com/tbaederr/ce-bench/tree/main/tests/sqlite3-embed.cpp">sqlite3-embed</a></th></tr>
 </thead>
 <tbody>
-<tr><td><a href="https://github.com/llvm/llvm-project/commit/d42fd8b80c7c8b1142ea875bfdbbbc036b2f6b9d"><code>d42fd8b80c7c</code></a> [clang][bytecode] Store type information inside the custom stack</td><td class="num">871.33M <span class="better">(-5.5%)</span></td><td class="num">37677.68M <span class="better">(-3.2%)</span></td><td class="num">129581.68M <span class="better">(-2.2%)</span></td></tr>
+<tr><td><a href="https://github.com/llvm/llvm-project/commit/60bafedef85aecc6d3dba62436a838ec3f4040a7"><code>60bafedef85a</code></a> [clang][bytecode] Split `InterpFrame::shrink()`/`peekData()` into slow and fast paths (<a href="https://github.com/llvm/llvm-project/pull/225761">#225761</a>)</td><td class="num">774.68M <span class="better">(-13.1%)</span></td><td class="num">34644.09M <span class="better">(-8.6%)</span></td><td class="num">116606.34M <span class="better">(-6.3%)</span></td></tr>
+<tr><td><a href="https://github.com/llvm/llvm-project/commit/2711c15ebeda051a6b3f974c217bb50fdf3bfce2"><code>2711c15ebeda</code></a> [clang][bytecode] Add a CheckLoad overload taking a PtrView (<a href="https://github.com/llvm/llvm-project/pull/225741">#225741</a>)</td><td class="num">891.68M <span class="better">(-3.3%)</span></td><td class="num">37913.00M <span class="better">(-2.6%)</span></td><td class="num">124384.15M <span class="better">(-6.1%)</span></td></tr>
+<tr><td><a href="https://github.com/llvm/llvm-project/commit/0601a126c256e09faea980045ac0b787b49dfe39"><code>0601a126c256</code></a> [clang][bytecode] Short-circuit inelegible functions when compiling (<a href="https://github.com/llvm/llvm-project/pull/225618">#225618</a>)</td><td class="num">922.43M <span class="">(0.0%)</span></td><td class="num">38927.91M <span class="">(0.0%)</span></td><td class="num">132440.45M <span class="">(0.0%)</span></td></tr>
+<tr><td><a href="https://github.com/llvm/llvm-project/commit/7fdffde1a3a932069d1aeb38c8c949166838476c"><code>7fdffde1a3a9</code></a> [clang][bytecode] Add test for variadic inherited constructor calls (<a href="https://github.com/llvm/llvm-project/pull/225611">#225611</a>)</td><td class="num">922.43M <span class="">(0.0%)</span></td><td class="num">38927.90M <span class="">(0.0%)</span></td><td class="num">132440.45M <span class="">(0.0%)</span></td></tr>
+<tr><td><a href="https://github.com/llvm/llvm-project/commit/5e5e63dfc728c38b5aab46b8cd61325fedc562ea"><code>5e5e63dfc728</code></a> [clang][bytecode] Add an `IsNull` bit to integral pointers (<a href="https://github.com/llvm/llvm-project/pull/202356">#202356</a>)</td><td class="num">922.43M <span class="">(0.0%)</span></td><td class="num">38927.91M <span class="">(0.0%)</span></td><td class="num">132440.45M <span class="">(0.0%)</span></td></tr>
+<tr><td><a href="https://github.com/llvm/llvm-project/commit/926b5e99cf68644ea18ae4573d4bdbfd7edf1cb5"><code>926b5e99cf68</code></a> [clang][bytecode] Fix null ptr upcasts adding offset (<a href="https://github.com/llvm/llvm-project/pull/224873">#224873</a>)</td><td class="num">922.38M <span class="">(0.0%)</span></td><td class="num">38927.82M <span class="">(0.0%)</span></td><td class="num">132440.39M <span class="">(0.0%)</span></td></tr>
 <tr><td><a href="https://github.com/llvm/llvm-project/commit/aea9d3f15a6ea47baf76457364ec2bdea288570b"><code>aea9d3f15a6e</code></a> [clang][bytecode] Add a bytecode RUN line for constant-builtins-2.c (<a href="https://github.com/llvm/llvm-project/pull/225305">#225305</a>)</td><td class="num">922.32M <span class="">(0.0%)</span></td><td class="num">38927.76M <span class="">(0.0%)</span></td><td class="num">132440.34M <span class="">(0.0%)</span></td></tr>
 <tr><td><a href="https://github.com/llvm/llvm-project/commit/80310178c079fc4ec712ace6d72a97bb5c619a12"><code>80310178c079</code></a> [clang][bytecode] Mark fields as being initialized, even without running a ctor for them (<a href="https://github.com/llvm/llvm-project/pull/225295">#225295</a>)</td><td class="num">922.33M</td><td class="num">38927.76M</td><td class="num">132440.34M</td></tr>
 </tbody>
 </table>
+</div>
+<p class="footer"><a href="https://github.com/tbaederr/ce-bench">Source Code</a></p>
 </body>
 </html>
