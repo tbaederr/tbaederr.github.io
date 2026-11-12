@@ -21,6 +21,12 @@
   .subtitle {
     color: #656d76; font-size: 0.8rem; margin-bottom: 1.5rem;
   }
+  .compare { margin: 0 0 1rem 0; }
+  .compare code {
+    background: #eff1f3; padding: 0.15rem 0.4rem;
+    border-radius: 4px; font-size: 0.8em;
+    font-family: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, monospace;
+  }
   .table-wrap {
     background: #fff; border: 1px solid #d0d7de; border-radius: 6px;
     overflow-x: auto;
@@ -74,6 +80,7 @@
 </head>
 <body>
 <h1>Bytecode Interpreter Benchmark</h1>
+<p class="compare" title="instructions:u; delta is bytecode relative to current"><strong>Current &rarr; bytecode</strong> @ <code>2b19c3f3cdb3</code>: arithmetic <span class="num">5963.96M &rarr; 724.11M</span> <span class="num better">(-87.9%)</span> &middot; heap-alloc-char <span class="num">190100.31M &rarr; 32420.33M</span> <span class="num better">(-82.9%)</span> &middot; sqlite3-embed <span class="num">294687.57M &rarr; 116048.97M</span> <span class="num better">(-60.6%)</span></p>
 <p class="subtitle">instructions:u delta between consecutive commits &middot; 104 commits</p>
 <div class="table-wrap">
 <table>
